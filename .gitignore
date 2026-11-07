@@ -1,0 +1,21 @@
+# Veri ve eğitim çıktıları Drive'da tutulur, git'e girmez
+data/
+runs/
+*.pt
+*.pth
+*.onnx
+# Python / Jupyter
+__pycache__/
+*.pyc
+.venv/
+.ipynb_checkpoints/
+# Gizli anahtarlar — asla commit edilmez
+kaggle.json
+.env
+# macOS / Office geçici dosyaları
+.DS_Store
+~$*
+# Makineye özel Claude/önizleme ayarları (mutlak yollar içerir)
+.claude/
+# pytest
+.pytest_cache/

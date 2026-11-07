@@ -1,0 +1,9 @@
+[browser]
+gatherUsageStats = false
+
+[server]
+runOnSave = true
+
+[client]
+# "Deploy" düğmesini ve geliştirici menüsünü gizler (panel yalnızca yerelde kullanılıyor)
+toolbarMode = "viewer"

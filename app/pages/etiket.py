@@ -1,0 +1,84 @@
+import pandas as pd
+import streamlit as st
+
+from common import C, basitce, class_legend, csv, overlay, plain, require_data, summary
+
+require_data()
+s = summary()
+rt = s["roundtrip"]
+
+st.title("🧹 Etiket Denetimi ve Dönüşüm")
+basitce(
+    "Uzmanların çizdiği sınırlar bir dosya biçiminde (LabelMe JSON) geliyor. Kullanacağımız iki model bu dosyayı "
+    "doğrudan okuyamıyor: **YOLO** kendi metin biçimini, **RF-DETR** ise **COCO** biçimini istiyor. Bu sayfa (1) çizimlerde "
+    "bulduğumuz hataları ve nasıl düzelttiğimizi, (2) dönüştürmenin hiçbir şeyi bozmadığının kanıtını gösterir."
+)
+
+# ------------------------------------------------------------------ dönüşüm doğrulaması
+st.subheader("1 · Dönüşüm doğru mu?")
+basitce(
+    "Her hastalıklı bölgeyi yeni biçimden geri okuyup orijinaliyle üst üste koyduk ve **ne kadar örtüştüğünü** ölçtük "
+    "(IoU: 1,00 = birebir aynı). Hepsi 0,99'un üstündeyse dönüşüm güvenilirdir."
+)
+c = st.columns(4)
+c[0].metric("Kontrol edilen bölge", f"{rt['n_instances']:,}".replace(",", "."))
+c[1].metric("En düşük örtüşme · YOLO", f"{rt["iou_yolo_min"]:.4f}".replace(".", ","))
+c[2].metric("En düşük örtüşme · COCO", f"{rt["iou_coco_min"]:.4f}".replace(".", ","))
+c[3].metric("0,99 altı", rt["n_iou_lt_0_99"], help="Örtüşmesi 0,99'un altında kalan bölge sayısı")
+ok = rt["class_ok"] and rt["count_ok"] and rt["n_iou_lt_0_99"] == 0
+(st.success if ok else st.error)(
+    ("✅ Tüm bölgeler her iki biçimde de doğru sınıf numarasıyla ve aynı sayıda yazıldı; geri okunan maskeler orijinalle örtüşüyor."
+     if ok else "⚠️ Doğrulamada sorun var — roundtrip.csv dosyasına bakın."))
+cl = pd.DataFrame(rt["coco_load"]).T.rename(columns={"images": "Görüntü", "annotations": "Bölge", "categories": "Kategori*"})
+st.dataframe(cl, width="content")
+st.caption("COCO dosyaları pycocotools ile sorunsuz yüklendi. *Kategori sayısı 8: Roboflow düzenindeki gibi 0 numaralı üst kategori + 7 hastalık.")
+
+# ------------------------------------------------------------------ düzeltmeler
+st.subheader("2 · Çizim hataları ve düzeltmeler")
+iss = csv("label_issues.csv")
+kural = pd.DataFrame([
+    {"Sorun": "Sınır çizgisi kendini kesiyor", "Kural": "Geometrik onarım (shapely make_valid); birden çok parçaya ayrılırsa en büyük parça tutulur", "Adet": int(iss["islem"].str.startswith("kendini_kesen").sum())},
+    {"Sorun": "Çizim fotoğrafın dışına taşıyor", "Kural": "Taşan noktalar fotoğraf kenarına çekilir", "Adet": int(iss["islem"].str.startswith("goruntu_disi").sum())},
+    {"Sorun": "3'ten az noktalı / alanı sıfır çizim", "Kural": "Atılır", "Adet": int(iss["islem"].str.contains("atildi").sum())},
+    {"Sorun": "Boş etiket dosyası / fotoğrafı olmayan etiket", "Kural": "Atılır", "Adet": int(iss["islem"].isin(["ornek_yok", "goruntu_yok"]).sum())},
+])
+st.dataframe(kural, hide_index=True, width="stretch")
+st.caption(f"Düzeltilen bölgelerde orijinal ile düzeltilmiş hal arasındaki en düşük örtüşme: **{str(round(rt["fixed_iou_vs_raw_min"], 3)).replace(".", ",")}** — düzeltmeler şekli neredeyse hiç değiştirmiyor.")
+
+if len(iss):
+    iss["göster"] = iss["split"] + "/" + iss["stem"] + " · " + iss["islem"].str.split(":").str[0]
+    sel = st.selectbox("Düzeltilen bir örneği inceleyin", iss["göster"].tolist())
+    r = iss[iss["göster"] == sel].iloc[0]
+    a, b = st.columns(2)
+    a.image(overlay(r["split"], r["stem"], show_raw=True), caption="Orijinal çizim", width="stretch")
+    b.image(overlay(r["split"], r["stem"]), caption="Düzeltilmiş çizim", width="stretch")
+    with st.expander("Tüm düzeltme kayıtları"):
+        st.dataframe(iss.drop(columns=["göster"]), hide_index=True, width="stretch")
+
+# ------------------------------------------------------------------ çok sınıflı
+st.subheader("3 · İki hastalığın birlikte olduğu fotoğraflar")
+basitce(
+    "Sınıflandırmada her fotoğrafa **tek** bir hastalık adı vermemiz gerekiyor. Bazı fotoğraflarda iki hastalık birden var "
+    f"(ör. yaprakta leke + meyvede külleme). Kuralımız: **{C.IMAGE_LABEL_RULE}** Bu fotoğraflar aynı zamanda hocanın "
+    "istediği 'meyve/yaprak hastalığı karışması' tartışmasının doğal örnekleri."
+)
+mc = csv("multiclass_images.csv")
+if len(mc):
+    st.dataframe(mc.rename(columns={"split": "Bölme", "stem": "Dosya", "dosya_oneki": "Dosya adındaki hastalık",
+                                    "siniflar": "Çizilen hastalıklar", "goruntu_etiketi": "Verilen tek etiket", "tur": "Tür"}),
+                 hide_index=True, width="stretch")
+    class_legend()
+    grid = st.columns(5)
+    for i, (_, r) in enumerate(mc.iterrows()):
+        with grid[i % 5]:
+            st.image(overlay(r["split"], r["stem"], size=240), caption=f"{r['split']}/{r['stem']} → {r['goruntu_etiketi']}", width="stretch")
+    st.warning("**`train/gray_mold1`**: dosya adı 'kurşuni küf', çizim ise 'çiçek yanıklığı' olarak etiketlenmiş. Çizim, "
+               "fotoğrafın ortasındaki gri tüylü meyveyi kapsıyor — görsel olarak kurşuni küfe benziyor, yani **muhtemel etiket hatası**. "
+               "Uzman etiketini değiştirmiyoruz (eğitimdeki 3.540 bölgeden 1'i, etkisi ihmal edilebilir); raporda etiket gürültüsü örneği olarak yazılacak.")
+    st.image(overlay("train", "gray_mold1", size=320), caption="train/gray_mold1 — çizilen bölge (çiçek yanıklığı rengiyle)")
+
+# ------------------------------------------------------------------ severity
+st.subheader("4 · \"Test Disease Severity Level\" klasörü")
+sv = s["severity_check"]
+st.markdown(f"Bu klasördeki **{sv['n_images']}** fotoğrafın **{sv['identical_to_test']}**'ü test kümesindekilerle bayt bayt aynı "
+            f"(Level 1: {sv['levels'].get('Level 1')}, Level 2: {sv['levels'].get('Level 2')}). **Karar:** {sv['karar']}.")

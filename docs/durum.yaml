@@ -1,0 +1,66 @@
+# Ödevin ilerleme durumu — panelin "Genel Bakış" sayfası bu dosyayı okur.
+# durum: tamam | devam | bekliyor
+# Bu dosya Claude tarafından her aşama sonunda güncellenir.
+
+teslimler:
+  - ad: "1. rapor — Sınıflandırma (CLS)"
+    tarih: "2026-11-24 23:59"
+  - ad: "2. rapor — Bölütleme (SEG)"
+    tarih: "2026-12-08 23:59"
+
+puanlama:
+  - bilesen: "Veri hazırlama ve etiket dönüşümünün doğruluğu"
+    agirlik: 20
+    durum: devam
+    not: "İndirme, denetim, dönüşüm, doğrulama ve sızıntı analizi tamam; Roboflow çapraz kontrolü bekliyor."
+  - bilesen: "Sınıflandırma deneyi"
+    agirlik: 20
+    durum: bekliyor
+    not: "02 notebook'u yazılacak; eğitim Colab'da."
+  - bilesen: "Segmentasyon karşılaştırması (YOLO-seg ve RF-DETR)"
+    agirlik: 25
+    durum: bekliyor
+    not: "03 notebook'u yazılacak; eğitim Colab'da."
+  - bilesen: "Hata analizi ve \"Dikkat\" maddesi"
+    agirlik: 20
+    durum: bekliyor
+    not: "Meyve/yaprak karışma matrisi CLS sonuçlarıyla gelecek. Veri tarafındaki karışık görüntüler tespit edildi."
+  - bilesen: "Rapor ve sunum"
+    agirlik: 15
+    durum: bekliyor
+    not: "Sonuçlar gelince taslaklar hazırlanacak."
+
+asamalar:
+  - ad: "Aşama 0 — Kurulum"
+    durum: tamam
+    adimlar:
+      - ["Kaggle API anahtarı", tamam]
+      - ["Colab T4 GPU kontrolü", tamam]
+      - ["Yerel Python 3.13 ortamı", tamam]
+      - ["Roboflow hesabı (private proje)", tamam]
+  - ad: "Aşama 1 — Veri hazırlama"
+    durum: devam
+    adimlar:
+      - ["Veriyi indirme + SHA-256 doğrulama", tamam]
+      - ["Keşifsel analiz (EDA)", tamam]
+      - ["Etiket denetimi ve kurallı düzeltme", tamam]
+      - ["Görüntü düzeyi etiket kuralı", tamam]
+      - ["Yinelenen / sızıntı analizi (pHash eşiği 12)", tamam]
+      - ["Dönüşümler: CLS klasörleri, YOLO-seg, COCO", tamam]
+      - ["Dönüşüm doğrulaması (geri-dönüş IoU, pycocotools)", tamam]
+      - ["01 notebook'u (yerelde baştan sona çalıştı; Colab'da denenecek)", devam]
+      - ["Roboflow çapraz kontrolü", bekliyor]
+  - ad: "Aşama 2 — Sınıflandırma"
+    durum: bekliyor
+    adimlar:
+      - ["02 notebook'u + yerel duman testi", bekliyor]
+      - ["Colab eğitimleri (n/s × 3 seed + ablasyon)", bekliyor]
+      - ["Metrikler, karmaşıklık matrisi, hata analizi", bekliyor]
+      - ["1. rapor", bekliyor]
+  - ad: "Aşama 3 — Segmentasyon"
+    durum: bekliyor
+    adimlar:
+      - ["03 notebook'u + yerel duman testi", bekliyor]
+      - ["Colab eğitimleri (YOLO-seg, RF-DETR)", bekliyor]
+      - ["Ortak değerlendirme (mAP, mIoU, Dice, hız, bellek)", bekliyor]
+      - ["2. rapor + sunum", bekliyor]

@@ -1,0 +1,8 @@
+mesafe,incelenen_cift,ayni_sahne,farkli,not
+0-4,6,6,0,"ilk inceleme paneli (7 Kas 2026)"
+5-8,3,3,0,"ilk inceleme paneli"
+9-12,3,3,0,"ilk inceleme paneli"
+12,16,16,0,"rastgele 16 bölmeler arası çift (random_state=3)"
+14,16,10,6,"rastgele 16 çift; farklı olanlar ör. val/angular_leafspot4 - test/leaf_spot623"
+16,7,3,4,"rastgele örnek; farklı olanlar ör. train/blossom_blight43 - test/gray_mold533"
+18-20,8,0,8,"rastgele örnek; hepsi farklı fotoğraf"
