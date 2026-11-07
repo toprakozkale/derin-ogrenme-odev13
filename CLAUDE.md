@@ -105,7 +105,20 @@ Notebook'lar elle değil `scripts/build_notebook_*.py` ile üretilir. Panel iler
 
 ## 7. Durum ve eksikler
 Güncel ilerleme: panelin Genel Bakış sayfası (`docs/durum.yaml`). Açık işlerin her biri GitHub issue olarak duruyor:
-`gh issue list` · kilometre taşları "1. rapor (CLS)" ve "2. rapor (SEG)".
+`gh issue list` · depo https://github.com/toprakozkale/derin-ogrenme-odev13 (private) · kilometre taşları "1. rapor (CLS)" ve "2. rapor (SEG)".
+Bir iş bitince ilgili issue'yu kapat ve `docs/durum.yaml`'ı güncelle.
+
+| # | İş | Etiket |
+|---|---|---|
+| 1 | [Karar] Sızıntı: resmi bölme + temiz test onayı | karar |
+| 2 | Roboflow çapraz kontrolü | aşama-1 |
+| 3 | 01 notebook'u Colab'da çalıştır | aşama-1, colab |
+| 4 | [Karar] Hocanın çalıştırabileceği Colab linki (private depo) | karar, colab |
+| 5–8 | 02 notebook · Colab CLS eğitimleri · CLS analizi · panel CLS sayfası | aşama-2 |
+| 9 | 1. rapor — 24 Kasım | rapor |
+| 10–13 | 03 notebook · Colab SEG eğitimleri · SEG analizi · panel SEG sayfası | aşama-3 |
+| 14 | 2. rapor + sunum — 8 Aralık | rapor |
+| 15 | Mac mini kurulumu | kurulum |
 
 Son durum (7 Kasım 2026): Aşama 0 bitti; Aşama 1'in kodu, analizi, dönüşüm ve doğrulaması bitti. Kalan: Roboflow çapraz
 kontrolü, 01 notebook'unun Colab'da denenmesi, sızıntı yaklaşımının onayı. Sırada Aşama 2 (02 sınıflandırma notebook'u).
