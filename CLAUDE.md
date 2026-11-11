@@ -7,14 +7,15 @@ başka bilgisayara taşınmaz; **bu proje hakkında bilinmesi gereken her şey b
 ---
 
 ## 0. Kaldığımız yer — yeni oturumda önce bunu oku
-**Son güncelleme: 11 Kasım 2026.** 1. rapora (CLS) son teslim **24 Kasım 23:59**.
+**Son güncelleme: 11 Kasım 2026 (öğleden önce).** 1. rapora (CLS) son teslim **24 Kasım 23:59**.
 
-- ✅ Aşama 0 (kurulum) ve Aşama 1 (veri hazırlama) bitti; 01 notebook'u hem Mac'te hem Colab'da çalıştı, sonuçlar birebir aynı.
+- ✅ Aşama 0 (kurulum) ve Aşama 1 (veri hazırlama) **tamamen** bitti; 01 notebook'u hem Mac'te hem Colab'da çalıştı, sonuçlar birebir aynı.
+- ✅ Roboflow çapraz kontrolü bitti (#2): 5.571 örnek, ort. IoU 0,99995; Roboflow'un atladığı 41 görüntü = bölme içi bayt kopyaları (train 13, test 28).
 - ✅ Aşama 2 kodu hazır: `02_siniflandirma` notebook'u yazıldı, yerel duman testi hatasız. Panelin Sınıflandırma sayfası sonuç
   dosyaları gelince kendiliğinden doluyor (duman verisiyle denendi).
-- ⏭ **Sıradaki adım: Colab'da gerçek sınıflandırma eğitimi (issue #6)** → bkz. §6 "Colab'da eğitim akışı".
+- ⏳ **Colab'da sınıflandırma eğitimi başladı (11 Kas ~09:20, issue #6)** — T4, torch 2.14.1+cu130, Ultralytics 8.4.210. Bitince §6 adım 5–6.
+  Süre henüz ölçülmedi; kullanıcı ilk epoch satırlarını gönderince hesaplanacak.
 - ⏳ Kullanıcının kararı bekleyenler: sızıntı yaklaşımı onayı (#1), hocanın çalıştırabileceği Colab linki (#4).
-- ⏳ Kullanıcının yapacağı: Roboflow çapraz kontrolü (#2).
 - Yeni bilgisayarda başlıyorsan: §5'teki kurulumu yap, sonra `git pull` ve paneli aç.
 
 ## 1. Ödev özeti
@@ -55,10 +56,11 @@ başka bilgisayara taşınmaz; **bu proje hakkında bilinmesi gereken her şey b
 | Poligon düzeltme | Kendini kesen → `shapely.make_valid` + en büyük parça (12 adet); görüntü dışı → kırpma (4 adet); <3 nokta/sıfır alan → at (0). |
 | `train/gray_mold1` | "Blossom Blight" etiketli ama görsel olarak kurşuni küf → muhtemel etiket hatası; **değiştirilmedi**, raporda not. |
 | "Test Disease Severity Level" klasörü | test/'in birebir kopyası (743/743) → kullanılmaz. |
+| Bölme içi bayt kopyaları | 41 çift: **train 13, test 28** (bölmeler arası yok). Resmi bölme korunur; test içindeki 28 kopya test notunda iki kez sayılır → raporda not. (İlk kayıtta yanlışlıkla "hepsi train" yazılmıştı, düzeltildi.) |
 | COCO kategori kimliği | Roboflow düzeni: 0 = üst kategori "diseases", sınıflar 1..7 (= YOLO kimliği + 1). |
 | Sınıf sırası | Alfabetik, `src/config.py: CLASSES`. Gruplar: yaprak (Angular Leafspot, Leaf Spot, PM Leaf), meyve (Anthracnose, Gray Mold, PM Fruit), çiçek (Blossom Blight). |
 | Lisans | Kaggle'da "Unknown"; yazarlar kullanım izni veriyor, atıf istiyor. Görüntüler çok sayıda web kaynağından (alamy.com dahil) → **Roboflow projesi private**. CC BY 4.0 makalenin lisansı, verinin değil. |
-| Roboflow | Ana dönüşüm Python; Roboflow bağımsız çapraz kontrol (zorunlu, `docs/PLAN.md` Aşama 1 adım 8). Workspace `topraks-workspace-k39ij`, Instance Segmentation projesi (Private, henüz boş). |
+| Roboflow | Ana dönüşüm Python; Roboflow bağımsız çapraz kontrol — **yapıldı** (11 Kas). Workspace `topraks-workspace-k39ij`, proje `strawberry-disease-segmentation-20mib` (Private, Core plan), sürüm v1 = ön işlemesiz COCO. Sonuç `docs/roboflow/`; ham dışa aktarım `data/roboflow_export/` (git'te yok). |
 | Model ailesi | **YOLO26** (Ultralytics 8.4.210'daki en güncel aile; plan "o tarihteki güncel aile" diyordu): CLS `yolo26n-cls` (1,54 M parametre), `yolo26s-cls`; SEG için `yolo26n-seg`, `yolo26s-seg` mevcut. |
 | CLS deney düzeni | imgsz 224, 100 epoch + patience 20, batch 64, optimizer auto, seed 0/1/2 → 6 ana koşu; ablasyon: nano imgsz 384 × 3 seed. Model seçimi val doğruluğuyla; en kötü 10 tahmin val ile seçilen koşudan. Karmaşıklık matrisi 3 seed toplamı. |
 | Duman testi | Yerelde GPU yokken `SMOKE` modu (1 epoch, verinin %5'i) → çıktılar `runs/cls_duman/`; asıl sonuçlara/panele/rapora **asla** karışmaz. |
@@ -68,16 +70,17 @@ başka bilgisayara taşınmaz; **bu proje hakkında bilinmesi gereken her şey b
 ```
 src/            config.py (yollar, sınıflar, eşikler; ODEV13_ROOT / ODEV13_DATA ile değiştirilebilir)
                 dataset.py (LabelMe okuma/düzeltme/istatistik) · convert.py (CLS / YOLO-seg / COCO + geri-dönüş doğrulaması)
-                dedup.py (MD5/pHash, sızıntı) · pipeline.py (Aşama 1 hattı + indirme)
+                dedup.py (MD5/pHash, sızıntı) · pipeline.py (Aşama 1 hattı + indirme) · roboflow_check.py (Roboflow COCO ↔ bizim dönüşüm)
                 metrics.py (P/R/F1, karmaşıklık + yaprak/meyve/çiçek grupları, bootstrap GA, McNemar)
                 cls.py (Aşama 2: eğitim — kaldığı yerden devam —, tahmin, değerlendirme, verimlilik, en kötü 10)
 scripts/        prepare_data.py (Aşama 1'i koşar) · build_notebook_01.py / _02.py (notebook'ları üretir)
                 _nb_common.py (notebook'ların ortak Colab kurulum hücresi) · import_runs.py (Drive'dan inen sonuç zip'ini runs/'a alır)
+                prepare_roboflow_upload.py (ham veriden data/roboflow_upload/{train,valid,test})
 notebooks/      01_veri_hazirlama.ipynb (çıktılı; Mac + Colab'da çalıştı) · 02_siniflandirma.ipynb (Colab'da eğitilecek) · 03 yazılacak
 app/            Streamlit paneli: Ana_Sayfa.py + sayfalar/ (klasör adı bilerek "pages" değil — Streamlit'in eski otomatik menüsü devreye girmesin)
 tests/          pytest: veri hattı (8) + metrikler (5) = 13 test
 docs/           PLAN.md · gunluk.md (ilerleme günlüğü, panelde gösterilir) · veri_bulgulari.md · durum.yaml (panelin ilerleme kaynağı)
-                phash_calibration.csv · hocanın PDF'i
+                phash_calibration.csv · roboflow/ (çapraz kontrol özeti, atlananlar, en düşük IoU'lar) · hocanın PDF'i
 rapor/figures/  rapora girecek şekiller (notebook'lar üretir; panelde "Rapor Şekilleri")
 data/           GIT'TE YOK — raw/, processed/ (cls, yoloseg, coco), derived/ (özet, CSV'ler) → scripts/prepare_data.py yeniden üretir
 runs/           GIT'TE YOK — eğitim çıktıları (Colab → Drive → scripts/import_runs.py → buraya)
@@ -148,9 +151,10 @@ Colab Secrets ve Roboflow hesaba bağlıdır; yeni Mac'te yeniden kurmak gerekme
 6. `ENV.md`'ye Colab'daki torch/ultralytics sürümlerini (`runs/cls/env.json`) yaz; `docs/gunluk.md`'ye kayıt ekle.
 
 **Roboflow**
-- https://app.roboflow.com/topraks-workspace-k39ij — proje **Private** kalmalı. **Upgrade'e basma, kart girme.**
-- Yüklemeden önce Settings → Plan'a bak (private proje deneme süresine bağlı mı?).
-- Dışa aktarırken ön işleme ve çoğaltma **kapalı**, bölme bizimkiyle aynı.
+- https://app.roboflow.com/topraks-workspace-k39ij — proje **Private** kalmalı. **Upgrade / Buy credits'e basma, kart girme.**
+- Plan: Core (private, ayda 10 kredi, dönem her ayın 1'i). Sürüm oluşturma kredi harcar. Kredi biterse ücret alınmaz, işlem durur.
+- Yüklemede Roboflow projede aynısı olan görüntüyü atlar (bizde 41 bölme içi kopya). Sürümde Auto-Orient ve Resize **kaldırılmalı**.
+- Doğru dışa aktarım biçimi: **COCO Segmentation** (YOLOv8-OBB poligon değil, döndürülmüş kutudur — kullanma).
 
 **Teslim**
 - E-posta: tekinler.cs@gmail.com · PDF rapor + Colab linki (gizli pencerede açılıyor mu kontrol et) + sunum.
@@ -164,11 +168,11 @@ Bir iş bitince: ilgili issue'yu kapat, `docs/durum.yaml` + `docs/gunluk.md` + b
 | # | İş | Durum |
 |---|---|---|
 | 1 | [Karar] Sızıntı: resmi bölme + temiz test onayı | açık — kullanıcı |
-| 2 | Roboflow çapraz kontrolü | açık — kullanıcı yükler, Claude karşılaştırma kodunu yazar |
+| 2 | Roboflow çapraz kontrolü | ✅ kapandı (11 Kas) |
 | 3 | 01 notebook'u Colab'da çalıştır | ✅ kapandı (11 Kas) |
 | 4 | [Karar] Hocanın çalıştırabileceği Colab linki (private depo) | açık — kullanıcı |
 | 5 | 02 notebook'u + yerel duman testi | ✅ kapandı (11 Kas) |
-| 6 | Colab: CLS eğitimleri | **sıradaki** |
+| 6 | Colab: CLS eğitimleri | **sürüyor** (11 Kas'ta başlatıldı) |
 | 7 | CLS sonuç analizi + en kötü 10 yorumları | eğitimden sonra |
 | 8 | Panel CLS sayfası | kod hazır ve duman verisiyle denendi; gerçek sonuçla kontrol edilip kapanacak |
 | 9 | 1. rapor — 24 Kasım | eğitimden sonra |

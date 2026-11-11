@@ -42,6 +42,31 @@ Panelde **İlerleme Günlüğü** sayfasında gösterilir. Buradaki her sayı ge
 - *`SecretNotFoundError: KAGGLE_USERNAME`:* gizli anahtarın adı yanlış yazılmıştı → doğru adla yeniden eklendi.
 - *Notebook çekirdeği:* notebook'larda yerel çekirdek adı ("odev13") yazılıydı, Colab tanımıyordu → standart "Python 3" yapıldı.
 
+### Roboflow çapraz kontrolü (issue #2) — hocanın "Dikkat" maddesi
+- Ham Kaggle verisi (bizim düzeltmelerimiz **uygulanmadan**, yalnız JSON içindeki base64 görüntü kopyası çıkarılarak;
+  `scripts/prepare_roboflow_upload.py`) Roboflow'daki **private** projeye yüklendi: valid → train → test.
+- Roboflow planı: Core (private veri, ayda 10 kredi, kart yok; kredi biterse ücret almaz, işlemi durdurur).
+- **Health Check:** 2.459 görüntü, **0 eksik etiket**, 5.571 örnek, 7 sınıf, hepsi 419×419 (`rapor/figures/roboflow_health_check.png`).
+- Sürüm v1: **ön işleme yok** (Auto-Orient ve Resize 432×432 kaldırıldı), çoğaltma yok → COCO Segmentation dışa aktarıldı.
+  Roboflow'un kategori düzeni bizimkiyle aynı (0 = üst kategori, sınıflar 1–7 alfabetik).
+- **Karşılaştırma** (`src/roboflow_check.py`, sonuç `docs/roboflow/`):
+
+| Ölçü | Sonuç |
+|---|---|
+| Roboflow'daki görüntü | 2.459 (train 1.437 / valid 307 / test 715) |
+| Roboflow'un atladığı | **41** — hepsinin aynı bölmede **bayt bayt aynı** eşi var (train 13, test 28) = bizim MD5 kopya listemizle birebir |
+| Eşleşen görüntüde boyut / örnek sayısı / sınıflar aynı | 2.459 / 2.459 / 2.459 |
+| Karşılaştırılan örnek | 5.571 |
+| Ortalama IoU (bizim ↔ Roboflow) | **0,99995** |
+| IoU < 0,99 | **1** — `test/gray_mold539` (0,979): bizim kendini kesen poligon düzeltmemizin uygulandığı örnek |
+| Düzeltme yapılmayan örneklerde en düşük IoU | 0,9936 |
+
+- **Düzeltme:** 7 Kasım kaydında "bayt düzeyinde aynı 41 dosyanın hepsi train içinde" yazılmıştı; doğrusu **train 13, test 28**
+  (hep aynı bölme içinde). Roboflow karşılaştırması sırasında fark edildi; günlük, veri bulguları ve panel düzeltildi.
+  Test içindeki 28 kopya sızıntı değildir ama test notunda iki kez sayılır → raporda belirtilecek.
+- Roboflow'dan yanlışlıkla YOLOv8-**OBB** (döndürülmüş kutu) biçimi de indirildi; maske karşılaştırmasına uygun olmadığı için
+  kullanılmadı. Poligon içeriği COCO karşılaştırmasıyla doğrulandığından ayrı YOLO karşılaştırmasına gerek görülmedi.
+
 ### Panel ve kayıt düzeni
 - Panele **İlerleme Günlüğü** (bu dosya + git geçmişi) ve **Rapor Şekilleri** (`rapor/figures/` galerisi, PNG indirme) sayfaları eklendi.
 - **Sınıflandırma sayfası** tamamlandı: koşuların durumu (bitti / yarım / başlamadı, en iyi val doğruluğu), ana tablo (ortalama ± std,
@@ -53,7 +78,7 @@ Panelde **İlerleme Günlüğü** sayfasında gösterilir. Buradaki her sayı ge
 - `CLAUDE.md` yeni bilgisayarda devam edilebilecek şekilde yenilendi: "kaldığımız yer", panel sayfaları, Colab eğitim akışı.
 
 ### Kapanan işler
-#5 (02 notebook'u + duman testi), #3 (01'i Colab'da çalıştırma).
+#5 (02 notebook'u + duman testi), #3 (01'i Colab'da çalıştırma), #2 (Roboflow çapraz kontrolü).
 
 ---
 
@@ -80,7 +105,8 @@ Panelde **İlerleme Günlüğü** sayfasında gösterilir. Buradaki her sayı ge
 - `train/gray_mold1`: "Blossom Blight" etiketli ama görsel olarak kurşuni küf → muhtemel etiket hatası, **değiştirilmedi**.
 
 ### Sızıntı analizi
-- Bayt düzeyinde aynı dosya: 41 grup, hepsi train içinde (bölmeler arası yok).
+- Bayt düzeyinde aynı dosya: 41 çift — **train içinde 13, test içinde 28** (hep aynı bölmenin kendi içinde; bölmeler arası yok).
+  *(Düzeltme, 11 Kas: ilk kayıtta yanlışlıkla "hepsi train içinde" yazılmıştı; Roboflow karşılaştırması sırasında fark edildi.)*
 - pHash yakın-yinelenen eşiği görsel kalibrasyonla **12** (`docs/phash_calibration.csv`: ≤12'de incelenen 16/16 çift aynı sahne,
   14'te 6/16 yanlış eşleşme). Sonuç: **test 51/743 (%6,9)** ve **val 108/307 (%35,2)** görüntünün benzeri eğitimde.
   → **Temiz test kümesi: 692 görüntü.** Ölçülen sızıntı bir alt sınır.

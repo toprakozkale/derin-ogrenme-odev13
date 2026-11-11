@@ -31,7 +31,8 @@ st.markdown(
   İki not arasındaki fark, sızıntının notu ne kadar şişirdiğini sayıyla gösterecek.
 - Doğrulama kümesindeki sızıntı daha büyük (%{dup['val_leaked'] / n_val * 100:.0f}): eğitim sırasındaki doğrulama skorları iyimser olacak.
   Bunu raporda sınırlılık olarak yazacağız.
-- Birebir aynı dosya ({dup['exact_groups']} grup) yalnızca **eğitim kümesinin kendi içinde** var; bölmeler arasında yok.
+- Birebir aynı dosya ({dup['exact_groups']} çift) yalnızca **aynı bölmenin kendi içinde** var (eğitimde 13, testte 28); bölmeler arasında yok.
+  Testteki 28 kopya sızıntı değildir ama bu fotoğraflar test notunda iki kez sayılır; raporda belirtilecek.
 """
 )
 

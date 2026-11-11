@@ -47,7 +47,7 @@ Anthracnose Fruit Rot 52 görüntü (~7×).
 - Boş JSON, 3'ten az noktalı poligon, görüntüsüz etiket: **yok**.
 
 ## Yinelenen görüntüler ve sızıntı (önemli)
-- Bayt düzeyinde aynı dosya: 41 grup, **hepsi train içinde** (ör. `leaf_spot485 = leaf_spot600`); bölmeler arası yok.
+- Bayt düzeyinde aynı dosya: 41 çift — **train içinde 13, test içinde 28** (ör. `train/leaf_spot485 = leaf_spot600`, `test/leaf_spot487 = leaf_spot601`); bölmeler arası yok. *(11 Kas düzeltmesi: ilk sürümde "hepsi train içinde" yazıyordu.)* Test içindeki 28 kopya, test metriklerinde bu görüntülerin iki kez sayılması demektir (sızıntı değil, ama raporda not edilecek).
 - Algısal hash (pHash, 64 bit) ile **bölmeler arası** benzer çiftler: gözle kontrol edilen örneklerde mesafe 0–12 aralığında
   çiftlerin hepsi aynı sahne (aynı yaprak/çiçek, hafif kayma veya kırpma — ardışık kare gibi).
 
@@ -67,3 +67,9 @@ Yorum: test sızıntısı küçük (~%4–7), **val sızıntısı büyük** → 
 - `train/gray_mold1`: tek poligon fotoğrafın ortasındaki gri tüylü meyveyi kapsıyor ama "Blossom Blight" etiketli —
   görsel olarak kurşuni küfe benziyor, **muhtemel etiket hatası**. Uzman etiketi değiştirilmedi; raporda etiket gürültüsü örneği.
 - Kesin ve güncel sayılar: `data/derived/summary.json` (panel ve 01 notebook'u bunu okur).
+
+## Roboflow çapraz kontrolü (11 Kasım 2026)
+Ham veri Roboflow'a yüklendi, ön işlemesiz sürüm COCO olarak indirildi ve bizim dönüşümümüzle örnek örnek karşılaştırıldı:
+2.459 eşleşen görüntünün hepsinde boyut, örnek sayısı ve sınıflar aynı; 5.571 örneğin ortalama IoU'su 0,99995, yalnız 1 örnek
+0,99'un altında (`test/gray_mold539`, bizim poligon düzeltmemiz). Roboflow'un atladığı 41 görüntünün hepsi bölme içi bayt bayt
+kopyalar (train 13, test 28). Ayrıntı: `docs/roboflow/`.

@@ -1,0 +1,26 @@
+{
+  "roboflow_goruntu": {
+    "train": 1437,
+    "val": 307,
+    "test": 715
+  },
+  "roboflow_toplam": 2459,
+  "atlanan_goruntu": 41,
+  "atlanan_bolmeye_gore": {
+    "test": 28,
+    "train": 13
+  },
+  "atlananlarin_esi_var": 41,
+  "eslesen_goruntu": 2459,
+  "boyut_ayni": 2459,
+  "ornek_sayisi_ayni": 2459,
+  "siniflar_ayni": 2459,
+  "ornek_karsilastirilan": 5571,
+  "iou_ortalama": 0.9999497265589636,
+  "iou_min": 0.9787188763566717,
+  "iou_p01": 0.9988572514726074,
+  "iou_lt_0_99": 1,
+  "iou_lt_0_95": 0,
+  "duzeltilen_ornek_iou_min": 0.9787188763566717,
+  "duzeltilmemis_iou_min": 0.9935897435897436
+}

@@ -1,0 +1,21 @@
+index,label,iou,split,stem,fixed
+0,Gray Mold,0.9787188763566717,test,gray_mold539,True
+2,Powdery Mildew Leaf,0.9935897435897436,train,powdery_mildew_leaf83,False
+0,Powdery Mildew Leaf,0.99375,train,powdery_mildew_leaf215,False
+0,Gray Mold,0.9945397815912637,test,gray_mold530,False
+0,Leaf Spot,0.9946671933636184,val,leaf_spot260,False
+0,Gray Mold,0.9948139109212935,test,gray_mold414,False
+0,Powdery Mildew Leaf,0.9954824136818329,train,powdery_mildew_leaf53,False
+0,Gray Mold,0.9961955487920867,train,gray_mold465,False
+0,Gray Mold,0.9963409384416703,test,gray_mold557,False
+1,Blossom Blight,0.9963784517881394,val,blossom_blight77,False
+0,Powdery Mildew Leaf,0.9964574898785425,train,powdery_mildew_leaf83,False
+0,Leaf Spot,0.9970008568980291,test,leaf_spot563,False
+0,Gray Mold,0.9970617042115573,test,gray_mold470,False
+0,Gray Mold,0.9971485600228115,test,gray_mold482,False
+0,Blossom Blight,0.9972279972279973,train,blossom_blight87,False
+1,Gray Mold,0.9974543911752227,train,gray_mold53,False
+0,Gray Mold,0.997488038277512,test,gray_mold481,False
+0,Blossom Blight,0.9975550122249389,test,blossom_blight181,False
+0,Gray Mold,0.997591328783621,test,gray_mold432,False
+1,Gray Mold,0.997682119205298,train,gray_mold308,False

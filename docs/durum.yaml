@@ -11,8 +11,8 @@ teslimler:
 puanlama:
   - bilesen: "Veri hazırlama ve etiket dönüşümünün doğruluğu"
     agirlik: 20
-    durum: devam
-    not: "İndirme, denetim, dönüşüm, doğrulama ve sızıntı analizi tamam; Roboflow çapraz kontrolü bekliyor."
+    durum: tamam
+    not: "İndirme, denetim, dönüşüm, doğrulama, sızıntı analizi ve Roboflow çapraz kontrolü tamam (Mac + Colab'da aynı sonuç)."
   - bilesen: "Sınıflandırma deneyi"
     agirlik: 20
     durum: devam
@@ -39,7 +39,7 @@ asamalar:
       - ["Yerel Python 3.13 ortamı", tamam]
       - ["Roboflow hesabı (private proje)", tamam]
   - ad: "Aşama 1 — Veri hazırlama"
-    durum: devam
+    durum: tamam
     adimlar:
       - ["Veriyi indirme + SHA-256 doğrulama", tamam]
       - ["Keşifsel analiz (EDA)", tamam]
@@ -49,7 +49,7 @@ asamalar:
       - ["Dönüşümler: CLS klasörleri, YOLO-seg, COCO", tamam]
       - ["Dönüşüm doğrulaması (geri-dönüş IoU, pycocotools)", tamam]
       - ["01 notebook'u (yerelde ve Colab'da çalıştı, sonuçlar birebir aynı)", tamam]
-      - ["Roboflow çapraz kontrolü", bekliyor]
+      - ["Roboflow çapraz kontrolü (5.571 örnek, ort. IoU 0,99995)", tamam]
   - ad: "Aşama 2 — Sınıflandırma"
     durum: devam
     adimlar:

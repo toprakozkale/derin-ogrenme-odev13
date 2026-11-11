@@ -10,12 +10,13 @@ basitce(
 
 FIG = ROOT / "rapor" / "figures"
 # Bilinen şekillerin açıklamaları — yeni şekiller listede yoksa dosya adıyla gösterilir
-TITLES = {'sinif_dagilimi': 'Sınıf dağılımı', 'ornekler': 'Örnek görüntüler', 'sizinti_esik': 'Sızıntı — eşik eğrisi', 'sizinti_ornek': 'Sızıntı — örnek çiftler', 'cls_egriler': 'Eğitim eğrileri', 'cls_karmasiklik_n': 'Karmaşıklık matrisi — nano', 'cls_karmasiklik_s': 'Karmaşıklık matrisi — small', 'cls_en_kotu10': 'En kötü 10 tahmin'}
+TITLES = {'sinif_dagilimi': 'Sınıf dağılımı', 'ornekler': 'Örnek görüntüler', 'sizinti_esik': 'Sızıntı — eşik eğrisi', 'sizinti_ornek': 'Sızıntı — örnek çiftler', 'cls_egriler': 'Eğitim eğrileri', 'cls_karmasiklik_n': 'Karmaşıklık matrisi — nano', 'cls_karmasiklik_s': 'Karmaşıklık matrisi — small', 'cls_en_kotu10': 'En kötü 10 tahmin', 'roboflow_health_check': 'Roboflow Health Check'}
 CAPTIONS = {
     "sinif_dagilimi": ("Aşama 1", "Bölmelere göre sınıf dağılımı (görüntü düzeyi etiket). Sınıf dengesizliği ~7×."),
     "ornekler": ("Aşama 1", "Her sınıftan bir eğitim görüntüsü, uzman poligonları bindirilmiş."),
     "sizinti_esik": ("Aşama 1", "pHash eşiğine göre benzeri eğitimde bulunan test/val oranı; kesikli çizgi seçilen eşik (12)."),
     "sizinti_ornek": ("Aşama 1", "Bölmeler arası yakın-yinelenen örnek çiftler (üst: eğitim, alt: test)."),
+    "roboflow_health_check": ("Aşama 1", "Roboflow çapraz kontrolü — Health Check: 2.459 görüntü (41 bölme-içi kopya atlandı), 0 eksik etiket, 5.571 örnek, 7 sınıf."),
     "cls_egriler": ("Aşama 2", "Sınıflandırma eğitim kaybı ve doğrulama doğruluğu (nano ve small, 3 seed)."),
     "cls_karmasiklik_n": ("Aşama 2", "YOLO26n-cls karmaşıklık matrisi (3 seed toplamı, satır normalize)."),
     "cls_karmasiklik_s": ("Aşama 2", "YOLO26s-cls karmaşıklık matrisi (3 seed toplamı, satır normalize)."),
