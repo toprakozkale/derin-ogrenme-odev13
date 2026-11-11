@@ -15,7 +15,8 @@ başka bilgisayara taşınmaz; **bu proje hakkında bilinmesi gereken her şey b
   dosyaları gelince kendiliğinden doluyor (duman verisiyle denendi).
 - ⏳ **Colab'da sınıflandırma eğitimi başladı (11 Kas ~09:20, issue #6)** — T4, torch 2.14.1+cu130, Ultralytics 8.4.210. Bitince §6 adım 5–6.
   Süre henüz ölçülmedi; kullanıcı ilk epoch satırlarını gönderince hesaplanacak.
-- ⏳ Kullanıcının kararı bekleyenler: sızıntı yaklaşımı onayı (#1), hocanın çalıştırabileceği Colab linki (#4).
+- ✅ Sızıntı yaklaşımı **onaylandı** (11 Kas, #1): resmi bölme + tüm test ve temiz test ayrı raporlanır.
+- ⏳ Kullanıcının kararı bekleyen: hocanın çalıştırabileceği Colab linki (#4; öneri: teslim günü depoyu public yapmak).
 - Yeni bilgisayarda başlıyorsan: §5'teki kurulumu yap, sonra `git pull` ve paneli aç.
 
 ## 1. Ödev özeti
@@ -50,7 +51,7 @@ başka bilgisayara taşınmaz; **bu proje hakkında bilinmesi gereken her şey b
 ## 3. Alınmış kararlar
 | Konu | Karar |
 |---|---|
-| Bölme | Resmi bölme korunur (ödev kuralı). **Sızıntı:** test metrikleri hem tüm test (743) hem **temiz test** (692) üzerinde raporlanır ("Yol 1"). ⚠️ Kullanıcının açık onayı bekleniyor — issue #1. |
+| Bölme | Resmi bölme korunur (ödev kuralı). **Sızıntı:** test metrikleri hem tüm test (743) hem **temiz test** (692) üzerinde raporlanır ("Yol 1"). ✅ **Kullanıcı onayladı (11 Kas 2026, #1).** Val sızıntısı (%35) sınırlılık olarak yazılır; val skorları iyimser kabul edilir. |
 | Yakın-yinelenen eşiği | pHash Hamming ≤ **12** (görsel kalibrasyon: `docs/phash_calibration.csv`). Ölçülen sızıntı bir alt sınır. Test %6,9, val %35,2. |
 | Görüntü düzeyi etiket | Tek sınıf → o sınıf; çok sınıflı → toplam poligon alanı en büyük sınıf (`src/config.py: IMAGE_LABEL_RULE`). 9 çok sınıflı görüntü. |
 | Poligon düzeltme | Kendini kesen → `shapely.make_valid` + en büyük parça (12 adet); görüntü dışı → kırpma (4 adet); <3 nokta/sıfır alan → at (0). |
@@ -167,7 +168,7 @@ Bir iş bitince: ilgili issue'yu kapat, `docs/durum.yaml` + `docs/gunluk.md` + b
 
 | # | İş | Durum |
 |---|---|---|
-| 1 | [Karar] Sızıntı: resmi bölme + temiz test onayı | açık — kullanıcı |
+| 1 | [Karar] Sızıntı: resmi bölme + temiz test onayı | ✅ onaylandı, kapandı (11 Kas) |
 | 2 | Roboflow çapraz kontrolü | ✅ kapandı (11 Kas) |
 | 3 | 01 notebook'u Colab'da çalıştır | ✅ kapandı (11 Kas) |
 | 4 | [Karar] Hocanın çalıştırabileceği Colab linki (private depo) | açık — kullanıcı |

@@ -88,6 +88,8 @@ odev13/
    **toplam poligon alanı en büyük olan sınıf**. Çok sınıflı görüntü sayısı raporlanır (kural raporda açıkça yazılır).
 5. **Bölme:** veri setinin resmi train/val/test bölmesi kullanılır (ödev kuralı). Yoksa sınıfa göre tabakalı 70/15/15, seed=42.
    pHash ile bölmeler arası yinelenen kontrolü; bulunursa sızıntı olarak raporlanır ve test'ten çıkarılır (öncesi/sonrası not edilir).
+   **Uygulanan karar (11 Kas 2026, kullanıcı onayı):** resmi bölme değiştirilmez; sızan 51 test görüntüsü çıkarılmış "temiz test" (692)
+   tüm testin (743) yanında ayrıca raporlanır. Val sızıntısı (%35) sınırlılık olarak yazılır.
 6. **Dönüşümler (kodla, tekrarlanabilir):**
    - CLS: `data/cls/{train,val,test}/<sınıf>/img.jpg` (Ultralytics klasör yapısı).
    - YOLO-seg: `images/` + `labels/*.txt` (`sınıf x1 y1 …`, 0–1 normalize) + `data.yaml`.

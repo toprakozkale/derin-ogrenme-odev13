@@ -42,6 +42,13 @@ Panelde **İlerleme Günlüğü** sayfasında gösterilir. Buradaki her sayı ge
 - *`SecretNotFoundError: KAGGLE_USERNAME`:* gizli anahtarın adı yanlış yazılmıştı → doğru adla yeniden eklendi.
 - *Notebook çekirdeği:* notebook'larda yerel çekirdek adı ("odev13") yazılıydı, Colab tanımıyordu → standart "Python 3" yapıldı.
 
+### Karar: sızıntı yaklaşımı onaylandı (issue #1)
+- Kullanıcı "Yol 1"i onayladı: veri setinin **resmi bölmesi değiştirilmez** (ödev kuralı); test sonuçları hem **tüm test (743)** hem
+  **temiz test (692)** üzerinde ayrı raporlanır, aradaki fark sızıntının etkisi olarak yorumlanır. Doğrulama kümesindeki sızıntı (%35)
+  raporda sınırlılık olarak yazılır; eğitim sırasında görülen val doğruluğu (%98–99) iyimser kabul edilir ve sonuç olarak kullanılmaz.
+- Neden "Yol 2" (benzerleri gruplayıp yeniden bölmek) değil: ödevin "resmi bölme varsa onu kullan" kuralını çiğner ve
+  Afzaal ve ark. (2021) ile karşılaştırmayı bozar.
+
 ### Roboflow çapraz kontrolü (issue #2) — hocanın "Dikkat" maddesi
 - Ham Kaggle verisi (bizim düzeltmelerimiz **uygulanmadan**, yalnız JSON içindeki base64 görüntü kopyası çıkarılarak;
   `scripts/prepare_roboflow_upload.py`) Roboflow'daki **private** projeye yüklendi: valid → train → test.
@@ -78,7 +85,7 @@ Panelde **İlerleme Günlüğü** sayfasında gösterilir. Buradaki her sayı ge
 - `CLAUDE.md` yeni bilgisayarda devam edilebilecek şekilde yenilendi: "kaldığımız yer", panel sayfaları, Colab eğitim akışı.
 
 ### Kapanan işler
-#5 (02 notebook'u + duman testi), #3 (01'i Colab'da çalıştırma), #2 (Roboflow çapraz kontrolü).
+#5 (02 notebook'u + duman testi), #3 (01'i Colab'da çalıştırma), #2 (Roboflow çapraz kontrolü), #1 (sızıntı kararı).
 
 ---
 
@@ -110,7 +117,7 @@ Panelde **İlerleme Günlüğü** sayfasında gösterilir. Buradaki her sayı ge
 - pHash yakın-yinelenen eşiği görsel kalibrasyonla **12** (`docs/phash_calibration.csv`: ≤12'de incelenen 16/16 çift aynı sahne,
   14'te 6/16 yanlış eşleşme). Sonuç: **test 51/743 (%6,9)** ve **val 108/307 (%35,2)** görüntünün benzeri eğitimde.
   → **Temiz test kümesi: 692 görüntü.** Ölçülen sızıntı bir alt sınır.
-- Karar ("Yol 1"): resmi bölme korunur, test metrikleri tüm test + temiz test için ayrı raporlanır (onay bekliyor: #1).
+- Karar ("Yol 1"): resmi bölme korunur, test metrikleri tüm test + temiz test için ayrı raporlanır (11 Kas'ta onaylandı, #1).
 
 ### Dönüşüm ve doğrulama
 - Üç biçim: Ultralytics sınıflandırma klasörleri, YOLO-seg, COCO (Roboflow düzeni: 0 = üst kategori, sınıflar 1..7).

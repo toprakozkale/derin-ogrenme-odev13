@@ -46,6 +46,7 @@ asamalar:
       - ["Etiket denetimi ve kurallı düzeltme", tamam]
       - ["Görüntü düzeyi etiket kuralı", tamam]
       - ["Yinelenen / sızıntı analizi (pHash eşiği 12)", tamam]
+      - ["Sızıntı kararı: resmi bölme + temiz test (kullanıcı onayı, 11 Kas)", tamam]
       - ["Dönüşümler: CLS klasörleri, YOLO-seg, COCO", tamam]
       - ["Dönüşüm doğrulaması (geri-dönüş IoU, pycocotools)", tamam]
       - ["01 notebook'u (yerelde ve Colab'da çalıştı, sonuçlar birebir aynı)", tamam]

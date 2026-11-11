@@ -24,6 +24,9 @@ c[2].metric("Temiz test kümesi", dup["test_clean"], help="Eğitim/doğrulamada 
 c[3].metric("Sızan doğrulama fotoğrafı", f"{dup['val_leaked']} / {n_val}", f"%{dup['val_leaked'] / n_val * 100:.1f}", delta_color="off")
 
 st.subheader("Ne yapıyoruz?")
+st.success("✅ **Karar onaylandı (11 Kasım 2026):** Resmi bölme korunuyor, test sonuçları **tüm test** ve **temiz test** için ayrı "
+           "ayrı raporlanıyor. Diğer seçenek olan benzer fotoğrafları gruplayıp veriyi yeniden bölmek, ödevin \"resmi bölmeyi kullan\" "
+           "kuralını çiğneyeceği ve veri setinin makalesiyle karşılaştırmayı bozacağı için seçilmedi.")
 st.markdown(
     f"""
 - Ödev kuralı gereği veri setinin **resmi bölmesini değiştirmiyoruz**.
