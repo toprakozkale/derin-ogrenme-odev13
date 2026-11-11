@@ -19,3 +19,7 @@ kaggle.json
 .claude/
 # pytest
 .pytest_cache/
+
+# Ön-eğitimli model ağırlıkları ve Ultralytics önbellekleri
+weights/
+*.cache

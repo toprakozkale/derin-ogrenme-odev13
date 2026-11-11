@@ -15,8 +15,8 @@ puanlama:
     not: "İndirme, denetim, dönüşüm, doğrulama ve sızıntı analizi tamam; Roboflow çapraz kontrolü bekliyor."
   - bilesen: "Sınıflandırma deneyi"
     agirlik: 20
-    durum: bekliyor
-    not: "02 notebook'u yazılacak; eğitim Colab'da."
+    durum: devam
+    not: "02 notebook'u hazır (YOLO26n/s-cls × 3 seed + imgsz 384 ablasyonu), yerel duman testi geçti; eğitim Colab'da yapılacak."
   - bilesen: "Segmentasyon karşılaştırması (YOLO-seg ve RF-DETR)"
     agirlik: 25
     durum: bekliyor
@@ -51,9 +51,9 @@ asamalar:
       - ["01 notebook'u (yerelde baştan sona çalıştı; Colab'da denenecek)", devam]
       - ["Roboflow çapraz kontrolü", bekliyor]
   - ad: "Aşama 2 — Sınıflandırma"
-    durum: bekliyor
+    durum: devam
     adimlar:
-      - ["02 notebook'u + yerel duman testi", bekliyor]
+      - ["02 notebook'u + yerel duman testi", tamam]
       - ["Colab eğitimleri (n/s × 3 seed + ablasyon)", bekliyor]
       - ["Metrikler, karmaşıklık matrisi, hata analizi", bekliyor]
       - ["1. rapor", bekliyor]

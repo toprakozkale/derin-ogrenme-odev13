@@ -9,7 +9,9 @@ import sys
 import nbformat as nbf
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 from src.config import IMAGE_LABEL_RULE as RULE  # noqa: E402
+from _nb_common import setup_code  # noqa: E402
 
 nb = nbf.v4.new_notebook()
 md, code = nbf.v4.new_markdown_cell, nbf.v4.new_code_cell
@@ -27,24 +29,8 @@ keşifsel analiz yapmak, bölmeler arası sızıntıyı ölçmek ve etiketleri �
 Tüm hesaplar `src/` altındaki fonksiyonlarla yapılır; yerel panel (`app/`) ve rapor aynı çıktıları (`data/derived/`) kullanır.
 Notebook baştan sona **Runtime → Run all** ile çalışır; GPU gerekmez."""),
     md("## 0 · Ortam"),
-    code("""import os, sys, platform, random, subprocess
-from pathlib import Path
-
-IN_COLAB = "google.colab" in sys.modules
-if IN_COLAB:
-    from google.colab import drive
-    drive.mount("/content/drive")
-    # Proje klasörü Drive'da (GitHub'dan klonlanmış ya da yüklenmiş): MyDrive/odev13
-    os.environ.setdefault("ODEV13_ROOT", "/content/drive/MyDrive/odev13")
-    subprocess.run([sys.executable, "-m", "pip", "install", "-q", "imagehash", "kagglehub", "pycocotools", "shapely"], check=True)
-    ROOT = Path(os.environ["ODEV13_ROOT"])
-else:
-    ROOT = Path.cwd().resolve().parent if Path.cwd().name == "notebooks" else Path.cwd().resolve()
-    os.environ.setdefault("ODEV13_ROOT", str(ROOT))
-
-sys.path.insert(0, str(ROOT))
-assert (ROOT / "src" / "pipeline.py").exists(), f"Proje kodu bulunamadı: {ROOT}"
-
+    code(setup_code() + """
+import platform, random
 from src import config as C
 random.seed(C.SEED)
 import numpy as np; np.random.seed(C.SEED)
@@ -57,14 +43,9 @@ print("numpy", np.__version__, "| pandas", pd.__version__, "| shapely", shapely.
     md("""## 1 · İndirme
 
 Veri Kaggle'dan `kagglehub` ile iner (`usmanafzaal/strawberry-disease-detection-dataset`, sürüm 1).
-Colab'da Kaggle kimliği için sol menüdeki 🔑 **Secrets** bölümüne `KAGGLE_USERNAME` ve `KAGGLE_KEY` eklenir.
+Colab'da sol menüdeki 🔑 **Secrets** bölümüne `KAGGLE_USERNAME`, `KAGGLE_KEY` ve (proje kodunu GitHub'dan çekmek için) `GITHUB_TOKEN` eklenir.
 Yerelde `~/.kaggle/kaggle.json` kullanılır. Veri zaten iniyse bu adım atlanır."""),
-    code("""if IN_COLAB and not os.environ.get("KAGGLE_KEY"):
-    from google.colab import userdata
-    os.environ["KAGGLE_USERNAME"] = userdata.get("KAGGLE_USERNAME")
-    os.environ["KAGGLE_KEY"] = userdata.get("KAGGLE_KEY")
-
-from src.pipeline import download
+    code("""from src.pipeline import download
 raw = download()
 print("Ham veri:", raw)
 for d in sorted(p for p in raw.iterdir() if p.is_dir()):

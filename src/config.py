@@ -8,7 +8,9 @@ import os
 from pathlib import Path
 
 ROOT = Path(os.environ.get("ODEV13_ROOT", Path(__file__).resolve().parents[1]))
-DATA = ROOT / "data"
+# Veri klasörü ayrıca değiştirilebilir: Colab'da kod ve sonuçlar Drive'da dururken veri Colab'ın hızlı yerel
+# diskine (/content) yazılır — binlerce küçük dosyayı Drive'a yazmak çok yavaştır. Veri her oturumda ~1-2 dk'da yeniden üretilir.
+DATA = Path(os.environ.get("ODEV13_DATA", ROOT / "data"))
 RAW = DATA / "raw" / "strawberry"          # Kaggle zip'inin açıldığı yer
 PROCESSED = DATA / "processed"             # cls/, yoloseg/, coco/
 DERIVED = DATA / "derived"                 # istatistik, sorun listeleri, doğrulama çıktıları (panel bunları okur)

@@ -45,14 +45,19 @@ Her önemli karar ya da aşama sonunda güncellenir.
 | Sınıf sırası | Alfabetik, `src/config.py: CLASSES`. Gruplar: yaprak (Angular Leafspot, Leaf Spot, PM Leaf), meyve (Anthracnose, Gray Mold, PM Fruit), çiçek (Blossom Blight). |
 | Lisans | Kaggle'da "Unknown"; yazarlar kullanım izni veriyor, atıf istiyor. Görüntüler çok sayıda web kaynağından (alamy.com dahil) → **Roboflow projesi private**. CC BY 4.0 makalenin lisansı, verinin değil. |
 | Roboflow | Ana dönüşüm Python; Roboflow bağımsız çapraz kontrol (zorunlu, `docs/PLAN.md` Aşama 1 adım 8). Workspace `topraks-workspace-k39ij`, Instance Segmentation projesi (Private, henüz boş). |
+| Model ailesi | **YOLO26** (Ultralytics 8.4.210'daki en güncel aile; plan "o tarihteki güncel aile" diyordu): CLS `yolo26n-cls`, `yolo26s-cls`; SEG için `yolo26n-seg`, `yolo26s-seg` mevcut. |
+| CLS deney düzeni | imgsz 224, 100 epoch + patience 20, batch 64, optimizer auto, seed 0/1/2 → 6 ana koşu; ablasyon: nano imgsz 384 × 3 seed. Model seçimi val doğruluğuyla; en kötü 10 tahmin val ile seçilen koşudan. Karmaşıklık matrisi 3 seed toplamı. |
+| Duman testi | Yerelde GPU yokken `SMOKE` modu (1 epoch, verinin %5'i) → çıktılar `runs/cls_duman/`; asıl sonuçlara/panele/rapora **asla** karışmaz. |
 | Colab | Ücretsiz plan yeterli; sekme açık kalmalı. Eğitimler her epoch Drive'a checkpoint yazacak ve 2–3 saatlik parçalara bölünecek. Ücretli planda da modeller **T4**'te koşulacak (adil hız ölçümü). |
 
 ## 4. Depo yapısı
 ```
 src/            config.py (yollar, sınıflar, eşikler) · dataset.py (LabelMe okuma/düzeltme/istatistik)
                 convert.py (CLS / YOLO-seg / COCO + geri-dönüş doğrulaması) · dedup.py (MD5/pHash, sızıntı) · pipeline.py (Aşama 1 hattı)
-scripts/        prepare_data.py (Aşama 1'i baştan sona koşar) · build_notebook_01.py (01 notebook'unu üretir)
-notebooks/      01_veri_hazirlama.ipynb (yerelde hatasız çalıştı; Colab'da denenecek) · 02, 03 yazılacak
+                metrics.py (P/R/F1, karmaşıklık + yaprak/meyve/çiçek grupları, bootstrap GA, McNemar) · cls.py (Aşama 2 eğitim/tahmin/değerlendirme)
+scripts/        prepare_data.py · build_notebook_01.py · build_notebook_02.py · _nb_common.py (notebook'ların ortak Colab kurulum hücresi)
+notebooks/      01_veri_hazirlama.ipynb (yerelde çalıştı, çıktılı) · 02_siniflandirma.ipynb (duman testi geçti, Colab'da eğitilecek) · 03 yazılacak
+weights/        GIT'TE YOK — ön-eğitimli ağırlıklar (otomatik iner)
 app/            Streamlit paneli (Ana_Sayfa.py + pages/) — data/derived/ ve docs/durum.yaml'ı okur
 tests/          sentetik verili pytest testleri (8 test)
 docs/           PLAN.md · veri_bulgulari.md · durum.yaml (panelin ilerleme kaynağı) · phash_calibration.csv · hocanın PDF'i
@@ -90,8 +95,15 @@ Notebook'lar elle değil `scripts/build_notebook_*.py` ile üretilir. Panel iler
 - Çalışma zamanı → Çalışma zamanı türünü değiştir → **T4 GPU** → Kaydet. Kontrol: `!nvidia-smi`.
 - Colab ortamı (7 Kas 2026): Tesla T4 15 GB, sürücü 580.82.07, CUDA 13.0, **Python 3.13.16** (Eylül 2026 imajı).
 - Ücretsiz plan: sekme/Mac açık kalmalı, oturum ≤ ~12 saat, arada "Hâlâ orada mısınız?" çıkabilir. Pro 9,99 $/ay, Pro+ 49,99 $/ay (arka planda çalışma).
-- Proje kodu Colab'a nasıl gelecek? Drive'da `MyDrive/odev13` (notebook bu yolu bekliyor, `ODEV13_ROOT`). Depo private olduğu için
-  hocanın da çalıştırabileceği Colab linki kararı açık — bkz. GitHub issue.
+- Proje kodu Colab'a nasıl gelir? Notebook'ların ilk hücresi (`scripts/_nb_common.py`) Drive'ı bağlar; `MyDrive/odev13` yoksa depoyu
+  GitHub'dan **klonlar**, varsa `git pull` yapar. Depo private → Colab 🔑 Secrets'a **`GITHUB_TOKEN`** eklenmeli: github.com →
+  Settings → Developer settings → Fine-grained tokens → yalnız `derin-ogrenme-odev13` deposu, Contents: **Read-only**.
+  Token yalnız istek başlığında kullanılır, Drive'daki .git/config'e yazılmaz. Bu kod yolu henüz gerçek Colab'da denenmedi (issue #3).
+- Colab Secrets toplam: `KAGGLE_USERNAME`, `KAGGLE_KEY`, `GITHUB_TOKEN` (her biri için "Notebook access" açık).
+- Colab'da **kod + sonuçlar (`runs/`) Drive'da** (`MyDrive/odev13`, kalıcı), **veri Colab'ın yerel diskinde** (`/content/odev13_data`,
+  `ODEV13_DATA`): Drive'a binlerce küçük dosya yazmak çok yavaş. Veri her yeni oturumda notebook tarafından ~1–2 dk'da yeniden üretilir.
+- 01 notebook'u GPU istemez → GPU kotasını harcamamak için onu CPU çalışma zamanında çalıştır; T4 yalnız 02/03 eğitimleri için.
+- Hocanın da çalıştırabileceği Colab linki kararı açık — bkz. issue #4.
 - Sonuçlar Drive'a yazılır → yerelde `runs/` altına kopyalanınca panel dolar.
 
 **Roboflow**
@@ -120,13 +132,15 @@ Bir iş bitince ilgili issue'yu kapat ve `docs/durum.yaml`'ı güncelle.
 | 14 | 2. rapor + sunum — 8 Aralık | rapor |
 | 15 | Mac mini kurulumu | kurulum |
 
-Son durum (7 Kasım 2026): Aşama 0 bitti; Aşama 1'in kodu, analizi, dönüşüm ve doğrulaması bitti. Kalan: Roboflow çapraz
-kontrolü, 01 notebook'unun Colab'da denenmesi, sızıntı yaklaşımının onayı. Sırada Aşama 2 (02 sınıflandırma notebook'u).
+Son durum (11 Kasım 2026): Aşama 0 ve Aşama 1'in kodu bitti. Aşama 2: `02_siniflandirma` notebook'u yazıldı, yerel duman testi
+hatasız (issue #5 kapandı). Sırada: Colab Secrets (KAGGLE + GITHUB_TOKEN) → 01'i Colab'da dene (#3) → 02 ile gerçek eğitim (#6).
+Hâlâ açık: Roboflow (#2), sızıntı onayı (#1), Colab-link kararı (#4), panel CLS sayfası (#8; sonuç biçimi artık belli: `runs/cls/*.csv`).
 
 ## 8. Sık komutlar
 ```bash
 .venv/bin/python scripts/prepare_data.py          # Aşama 1'i baştan üret (data/processed, data/derived)
-.venv/bin/python scripts/build_notebook_01.py     # 01 notebook'unu yeniden üret
-.venv/bin/python -m pytest -q tests               # testler
+.venv/bin/python scripts/build_notebook_01.py     # 01 notebook'unu yeniden üret (02 için build_notebook_02.py)
+.venv/bin/python -m pytest -q tests               # testler (13)
+cd notebooks && ODEV13_SMOKE=1 ../.venv/bin/jupyter nbconvert --to notebook --execute 02_siniflandirma.ipynb --output-dir /tmp   # 02 duman testi
 .venv/bin/streamlit run app/Ana_Sayfa.py          # panel → http://localhost:8501
 ```

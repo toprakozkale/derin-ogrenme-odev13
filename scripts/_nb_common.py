@@ -1,0 +1,38 @@
+"""Notebook üreticilerinin ortak hücre kodu."""
+
+REPO = "toprakozkale/derin-ogrenme-odev13"
+
+# Colab'da: Drive'ı bağlar; proje kodu Drive'da yoksa GitHub'dan klonlar, varsa günceller.
+# Depo private olduğu için Colab 🔑 Secrets'ta GITHUB_TOKEN (yalnız bu depoya salt-okuma izinli) gerekir.
+# Token yalnız istek başlığında kullanılır; .git/config'e ya da çıktıya yazılmaz.
+SETUP = f'''import os, sys, subprocess, base64
+from pathlib import Path
+
+IN_COLAB = "google.colab" in sys.modules
+if IN_COLAB:
+    from google.colab import drive, userdata
+    drive.mount("/content/drive")
+    ROOT = Path(os.environ.setdefault("ODEV13_ROOT", "/content/drive/MyDrive/odev13"))   # kod + sonuçlar (kalıcı)
+    os.environ.setdefault("ODEV13_DATA", "/content/odev13_data")                         # veri (hızlı yerel disk)
+    auth = base64.b64encode(("x-access-token:" + userdata.get("GITHUB_TOKEN")).encode()).decode()
+    git = ["git", "-c", f"http.extraHeader=Authorization: Basic {{auth}}"]
+    if not (ROOT / "src").exists():
+        subprocess.run(git + ["clone", "-q", "https://github.com/{REPO}.git", str(ROOT)], check=True)
+        print("Proje kodu GitHub'dan Drive'a klonlandı:", ROOT)
+    else:
+        r = subprocess.run(git + ["-C", str(ROOT), "pull", "-q", "--ff-only"], capture_output=True, text=True)
+        print("Proje kodu güncellendi" if r.returncode == 0 else "UYARI: git pull başarısız: " + r.stderr[-300:])
+    subprocess.run([sys.executable, "-m", "pip", "install", "-q", PIP_EXTRA, "imagehash", "kagglehub", "pycocotools", "shapely", "statsmodels"], check=True)
+    if not os.environ.get("KAGGLE_KEY"):
+        os.environ["KAGGLE_USERNAME"] = userdata.get("KAGGLE_USERNAME"); os.environ["KAGGLE_KEY"] = userdata.get("KAGGLE_KEY")
+else:
+    ROOT = Path.cwd().resolve().parent if Path.cwd().name == "notebooks" else Path.cwd().resolve()
+    os.environ.setdefault("ODEV13_ROOT", str(ROOT))
+sys.path.insert(0, str(ROOT))
+assert (ROOT / "src" / "config.py").exists(), f"Proje kodu bulunamadı: {{ROOT}}"
+'''
+
+
+def setup_code(pip_extra: str = "pip") -> str:
+    """pip_extra: Colab'a ek kurulacak paket (ör. 'ultralytics'); gerekmezse 'pip' (zararsız)."""
+    return SETUP.replace("PIP_EXTRA", repr(pip_extra))

@@ -6,7 +6,7 @@ Bu dosya her aşamada gerçek çalıştırma çıktılarıyla doldurulur; değer
 - Makine: Apple M2, 8 GB RAM, macOS 26.6.2
 - Python: 3.13.18 (Homebrew `python@3.13`), sanal ortam `.venv/` — Colab 3.13.16 ile aynı ana sürüm
 - Jupyter çekirdeği: "Python 3.13 (odev13)"
-- PyTorch / Ultralytics / RF-DETR: yerelde henüz kurulu değil (duman testi aşamasında eklenecek)
+- PyTorch 2.15.0 · torchvision 0.29.2 · Ultralytics 8.4.210 (yerel duman testi; Apple M2 CPU/MPS) — RF-DETR henüz kurulu değil
 - Paket sürümleri: `requirements-local.txt` (pip freeze)
 
 ## Colab (eğitim)
