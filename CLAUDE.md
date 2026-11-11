@@ -98,7 +98,7 @@ Notebook'lar elle değil `scripts/build_notebook_*.py` ile üretilir. Panel iler
 - Proje kodu Colab'a nasıl gelir? Notebook'ların ilk hücresi (`scripts/_nb_common.py`) Drive'ı bağlar; `MyDrive/odev13` yoksa depoyu
   GitHub'dan **klonlar**, varsa `git pull` yapar. Depo private → Colab 🔑 Secrets'a **`GITHUB_TOKEN`** eklenmeli: github.com →
   Settings → Developer settings → Fine-grained tokens → yalnız `derin-ogrenme-odev13` deposu, Contents: **Read-only**.
-  Token yalnız istek başlığında kullanılır, Drive'daki .git/config'e yazılmaz. Bu kod yolu henüz gerçek Colab'da denenmedi (issue #3).
+  Token yalnız istek başlığında kullanılır, Drive'daki .git/config'e yazılmaz. Gerçek Colab'da denendi ve çalıştı (11 Kas 2026). Kod değişince Colab'da **Oturumu yeniden başlat** gerekir (kurulum hücresi eski src modüllerini de temizler).
 - Colab Secrets toplam: `KAGGLE_USERNAME`, `KAGGLE_KEY`, `GITHUB_TOKEN` (her biri için "Notebook access" açık).
 - Colab'da **kod + sonuçlar (`runs/`) Drive'da** (`MyDrive/odev13`, kalıcı), **veri Colab'ın yerel diskinde** (`/content/odev13_data`,
   `ODEV13_DATA`): Drive'a binlerce küçük dosya yazmak çok yavaş. Veri her yeni oturumda notebook tarafından ~1–2 dk'da yeniden üretilir.
@@ -133,7 +133,7 @@ Bir iş bitince ilgili issue'yu kapat ve `docs/durum.yaml`'ı güncelle.
 | 15 | Mac mini kurulumu | kurulum |
 
 Son durum (11 Kasım 2026): Aşama 0 ve Aşama 1'in kodu bitti. Aşama 2: `02_siniflandirma` notebook'u yazıldı, yerel duman testi
-hatasız (issue #5 kapandı). Sırada: Colab Secrets (KAGGLE + GITHUB_TOKEN) → 01'i Colab'da dene (#3) → 02 ile gerçek eğitim (#6).
+hatasız (issue #5 kapandı). 01 notebook'u Colab'da çalıştı; bölme SHA-256'ları, temiz test (692) ve IoU'lar yerelle birebir aynı (#3 kapandı). Colab Secrets kurulu. Sırada: 02 ile gerçek eğitim (#6, T4).
 Hâlâ açık: Roboflow (#2), sızıntı onayı (#1), Colab-link kararı (#4), panel CLS sayfası (#8; sonuç biçimi artık belli: `runs/cls/*.csv`).
 
 ## 8. Sık komutlar

@@ -48,7 +48,7 @@ asamalar:
       - ["Yinelenen / sızıntı analizi (pHash eşiği 12)", tamam]
       - ["Dönüşümler: CLS klasörleri, YOLO-seg, COCO", tamam]
       - ["Dönüşüm doğrulaması (geri-dönüş IoU, pycocotools)", tamam]
-      - ["01 notebook'u (yerelde baştan sona çalıştı; Colab'da denenecek)", devam]
+      - ["01 notebook'u (yerelde ve Colab'da çalıştı, sonuçlar birebir aynı)", tamam]
       - ["Roboflow çapraz kontrolü", bekliyor]
   - ad: "Aşama 2 — Sınıflandırma"
     durum: devam
