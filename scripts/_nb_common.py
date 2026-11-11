@@ -22,6 +22,12 @@ if IN_COLAB:
     else:
         r = subprocess.run(git + ["-C", str(ROOT), "pull", "-q", "--ff-only"], capture_output=True, text=True)
         print("Proje kodu güncellendi" if r.returncode == 0 else "UYARI: git pull başarısız: " + r.stderr[-300:])
+    sürüm = subprocess.run(["git", "-C", str(ROOT), "log", "-1", "--format=%h · %ad · %s", "--date=format:%d.%m %H:%M"],
+                           capture_output=True, text=True).stdout.strip()
+    print("Kod sürümü:", sürüm)
+    # Oturum açık kaldıysa Python eski src modüllerini hafızada tutar → yeni indirilen kodun kullanılması için temizle
+    for m in [m for m in sys.modules if m == "src" or m.startswith("src.")]:
+        del sys.modules[m]
     subprocess.run([sys.executable, "-m", "pip", "install", "-q", PIP_EXTRA, "imagehash", "kagglehub", "pycocotools", "shapely", "statsmodels"], check=True)
     if not os.environ.get("KAGGLE_KEY"):
         os.environ["KAGGLE_USERNAME"] = userdata.get("KAGGLE_USERNAME"); os.environ["KAGGLE_KEY"] = userdata.get("KAGGLE_KEY")
