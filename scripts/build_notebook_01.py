@@ -152,7 +152,7 @@ print("Kaggle zip beklenen SHA-256:", summary["zip_sha256_beklenen"])
 print("Süre:", summary["sure_sn"], "sn")"""),
 ]
 nb["cells"] = cells
-nb["metadata"] = {"kernelspec": {"name": "odev13", "display_name": "Python 3.13 (odev13)", "language": "python"},
+nb["metadata"] = {"kernelspec": {"name": "python3", "display_name": "Python 3", "language": "python"},
                   "language_info": {"name": "python"}, "colab": {"provenance": []}}
 out = Path(__file__).resolve().parents[1] / "notebooks" / "01_veri_hazirlama.ipynb"
 nbf.write(nb, out)

@@ -160,7 +160,9 @@ def run(threshold: int = C.PHASH_THRESHOLD, write_formats: bool = True, verbose:
             coco_load[s] = {"images": len(cc.getImgIds()), "annotations": len(cc.getAnnIds()), "categories": len(cc.getCatIds())}
         roundtrip_summary["coco_load"] = coco_load
         roundtrip_summary["cls_counts"] = cls_counts
-        roundtrip_summary["yolo_yaml"] = str(yaml_path.relative_to(C.ROOT))
+        # Colab'da veri proje klasörünün dışında (ODEV13_DATA) olabilir; o durumda tam yol yazılır
+        roundtrip_summary["yolo_yaml"] = (str(yaml_path.relative_to(C.ROOT))
+                                          if yaml_path.is_relative_to(C.ROOT) else str(yaml_path))
 
     summary = {
         "olusturma_zamani": time.strftime("%Y-%m-%d %H:%M:%S"),

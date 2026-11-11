@@ -175,7 +175,7 @@ if SMOKE:
 
 nb = nbf.v4.new_notebook()
 nb["cells"] = cells
-nb["metadata"] = {"kernelspec": {"name": "odev13", "display_name": "Python 3.13 (odev13)", "language": "python"},
+nb["metadata"] = {"kernelspec": {"name": "python3", "display_name": "Python 3", "language": "python"},
                   "language_info": {"name": "python"}, "accelerator": "GPU", "colab": {"provenance": [], "gpuType": "T4"}}
 out = Path(__file__).resolve().parents[1] / "notebooks" / "02_siniflandirma.ipynb"
 nbf.write(nb, out)
