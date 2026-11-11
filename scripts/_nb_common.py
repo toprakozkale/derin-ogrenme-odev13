@@ -14,7 +14,13 @@ if IN_COLAB:
     drive.mount("/content/drive")
     ROOT = Path(os.environ.setdefault("ODEV13_ROOT", "/content/drive/MyDrive/odev13"))   # kod + sonuçlar (kalıcı)
     os.environ.setdefault("ODEV13_DATA", "/content/odev13_data")                         # veri (hızlı yerel disk)
-    auth = base64.b64encode(("x-access-token:" + userdata.get("GITHUB_TOKEN")).encode()).decode()
+    # Gizli anahtarların hepsi EN BAŞTA okunur: Colab her yeni notebook için erişim izni penceresi açar; pencereler
+    # birlikte çıksın ve uzun paket kurulumunun ardında gözden kaçıp zaman aşımına uğramasın (TimeoutException).
+    print("Gizli anahtar erişimi istenirse açılan pencerelerde 'Erişim izni ver' deyin…")
+    _gh = userdata.get("GITHUB_TOKEN")
+    if not os.environ.get("KAGGLE_KEY"):
+        os.environ["KAGGLE_USERNAME"] = userdata.get("KAGGLE_USERNAME"); os.environ["KAGGLE_KEY"] = userdata.get("KAGGLE_KEY")
+    auth = base64.b64encode(("x-access-token:" + _gh).encode()).decode()
     git = ["git", "-c", f"http.extraHeader=Authorization: Basic {{auth}}"]
     if not (ROOT / "src").exists():
         subprocess.run(git + ["clone", "-q", "https://github.com/{REPO}.git", str(ROOT)], check=True)
@@ -29,8 +35,6 @@ if IN_COLAB:
     for m in [m for m in sys.modules if m == "src" or m.startswith("src.")]:
         del sys.modules[m]
     subprocess.run([sys.executable, "-m", "pip", "install", "-q", PIP_EXTRA, "imagehash", "kagglehub", "pycocotools", "shapely", "statsmodels"], check=True)
-    if not os.environ.get("KAGGLE_KEY"):
-        os.environ["KAGGLE_USERNAME"] = userdata.get("KAGGLE_USERNAME"); os.environ["KAGGLE_KEY"] = userdata.get("KAGGLE_KEY")
 else:
     ROOT = Path.cwd().resolve().parent if Path.cwd().name == "notebooks" else Path.cwd().resolve()
     os.environ.setdefault("ODEV13_ROOT", str(ROOT))
