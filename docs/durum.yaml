@@ -54,7 +54,8 @@ asamalar:
     durum: devam
     adimlar:
       - ["02 notebook'u + yerel duman testi", tamam]
-      - ["Colab eğitimleri (n/s × 3 seed + ablasyon)", bekliyor]
+      - ["Colab eğitimleri (n/s × 3 seed + ablasyon) — sıradaki adım", bekliyor]
+      - ["Panel: Sınıflandırma sayfası (sonuçlar gelince otomatik dolar; duman verisiyle denendi)", tamam]
       - ["Metrikler, karmaşıklık matrisi, hata analizi", bekliyor]
       - ["1. rapor", bekliyor]
   - ad: "Aşama 3 — Segmentasyon"
