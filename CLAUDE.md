@@ -65,6 +65,7 @@ başka bilgisayara taşınmaz; **bu proje hakkında bilinmesi gereken her şey b
 | Model ailesi | **YOLO26** (Ultralytics 8.4.210'daki en güncel aile; plan "o tarihteki güncel aile" diyordu): CLS `yolo26n-cls` (1,54 M parametre), `yolo26s-cls`; SEG için `yolo26n-seg`, `yolo26s-seg` mevcut. |
 | CLS deney düzeni | imgsz 224, 100 epoch + patience 20, batch 64, optimizer auto, seed 0/1/2 → 6 ana koşu; ablasyon: nano imgsz 384 × 3 seed. Model seçimi val doğruluğuyla; en kötü 10 tahmin val ile seçilen koşudan. Karmaşıklık matrisi 3 seed toplamı. |
 | Duman testi | Yerelde GPU yokken `SMOKE` modu (1 epoch, verinin %5'i) → çıktılar `runs/cls_duman/`; asıl sonuçlara/panele/rapora **asla** karışmaz. |
+| Hesaplama ortamı (11 Kas kararı) | **Tüm eğitimler ücretsiz Colab'da, T4 GPU** — Colab Pro alınmadı (kullanıcının zaman sıkıntısı yok), Kaggle Notebooks kullanılmıyor (hocanın PDF'i teslimde yalnız "Colab linki" istiyor; Kaggle'dan söz etmiyor). Kaggle yalnız Colab kotası uzun süre engellerse yedek. Segmentasyon gerekirse 3→2 seed. |
 | Colab düzeni | Kod + sonuçlar Drive'da (`MyDrive/odev13`), veri Colab'ın yerel diskinde (`/content/odev13_data`, `ODEV13_DATA`). Ücretsiz plan; sekme açık kalmalı. Modeller **T4**'te koşulur (adil hız ölçümü). |
 
 ## 4. Depo yapısı

@@ -42,6 +42,12 @@ Panelde **İlerleme Günlüğü** sayfasında gösterilir. Buradaki her sayı ge
 - *`SecretNotFoundError: KAGGLE_USERNAME`:* gizli anahtarın adı yanlış yazılmıştı → doğru adla yeniden eklendi.
 - *Notebook çekirdeği:* notebook'larda yerel çekirdek adı ("odev13") yazılıydı, Colab tanımıyordu → standart "Python 3" yapıldı.
 
+### Karar: hesaplama ortamı
+- Tüm eğitimler **ücretsiz Colab'da, T4 GPU** ile yapılacak. Colab Pro (9,99 $/ay) ve Kaggle Notebooks (2×T4, arka planda çalışma)
+  değerlendirildi; zaman sıkıntısı olmadığı ve hocanın teslim şartı "Colab linki" olduğu için gerek görülmedi.
+- Sonuç: tüm modellerin eğitimi ve hız ölçümü aynı GPU'da (T4) → hız karşılaştırması tutarlı. Segmentasyon eğitimleri birkaç güne
+  yayılabilir; kota sorun olursa seed sayısı 3→2 (raporda belirtilir) ya da Kaggle yedek olarak düşünülür.
+
 ### Karar: sızıntı yaklaşımı onaylandı (issue #1)
 - Kullanıcı "Yol 1"i onayladı: veri setinin **resmi bölmesi değiştirilmez** (ödev kuralı); test sonuçları hem **tüm test (743)** hem
   **temiz test (692)** üzerinde ayrı raporlanır, aradaki fark sızıntının etkisi olarak yorumlanır. Doğrulama kümesindeki sızıntı (%35)
