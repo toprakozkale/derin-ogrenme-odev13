@@ -47,14 +47,20 @@ st.subheader("Koşuların durumu")
 rows = []
 for s in cls.MAIN_RUNS + cls.ABLATION_RUNS:
     log = cls.train_log(s)
-    done = cls.is_done(s)
+    # DONE işareti git'le gelir; ağırlıklar (best.pt) yalnız Drive'da olabilir → "bitti" için DONE yeterli
+    done = (s.dir / "DONE").exists()
+    has_w = (s.dir / "weights" / "best.pt").exists()
     rows.append({"durum": "✅ bitti" if done else ("⏳ yarım" if len(log) else "⬜ başlamadı"),
                  "koşu": s.name, "model": s.model, "imgsz": s.imgsz, "seed": s.seed,
-                 "biten epoch": len(log), "en iyi val doğruluğu": round(cls.best_val_acc(s), 4) if len(log) else None})
+                 "biten epoch": len(log), "en iyi val doğruluğu": round(cls.best_val_acc(s), 4) if len(log) else None,
+                 "ağırlık (best.pt)": "bu bilgisayarda" if has_w else ("Drive'da" if done else "—")})
 status = pd.DataFrame(rows)
 st.dataframe(status, hide_index=True, width="stretch")
 n_done = (status["durum"] == "✅ bitti").sum()
 st.progress(n_done / len(status), text=f"{n_done}/{len(status)} koşu bitti")
+if n_done and (status["ağırlık (best.pt)"] == "Drive'da").any():
+    st.caption("Ağırlık dosyaları (best.pt) bu bilgisayarda yok, Google Drive'da (`odev13/runs/cls`). Sonuç tabloları ve şekiller "
+               "için gerekmez; yeniden tahmin gerekirse Drive'dan indirip `scripts/import_runs.py` ile alın.")
 
 if not (OUT / "results.csv").exists():
     st.warning(

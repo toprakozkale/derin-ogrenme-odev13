@@ -43,6 +43,6 @@ assert (ROOT / "src" / "config.py").exists(), f"Proje kodu bulunamadı: {{ROOT}}
 '''
 
 
-def setup_code(pip_extra: str = "pip") -> str:
-    """pip_extra: Colab'a ek kurulacak paket (ör. 'ultralytics'); gerekmezse 'pip' (zararsız)."""
-    return SETUP.replace("PIP_EXTRA", repr(pip_extra))
+def setup_code(*pip_extra: str) -> str:
+    """pip_extra: Colab'a ek kurulacak paket(ler) (ör. 'ultralytics', 'rfdetr[train]'); verilmezse 'pip' (zararsız)."""
+    return SETUP.replace("PIP_EXTRA", ", ".join(repr(p) for p in (pip_extra or ("pip",))))

@@ -19,8 +19,8 @@ puanlama:
     not: "9 eğitim Colab T4'te bitti (~2 sa). Test doğruluğu (3 seed ort.): nano 0,915, small 0,904, nano-384 0,934; sonuçlar panelde. Kalan: sonuç yorumu ve rapor."
   - bilesen: "Segmentasyon karşılaştırması (YOLO-seg ve RF-DETR)"
     agirlik: 25
-    durum: bekliyor
-    not: "03 notebook'u yazılacak; eğitim Colab'da."
+    durum: devam
+    not: "03 notebook'u ve ortak değerlendirme kodu yazıldı, yerel duman testi geçti (12 Kas). Kararlar: ortak çözünürlük 480, RF-DETR Seg Small. Sırada Colab eğitimleri."
   - bilesen: "Hata analizi ve \"Dikkat\" maddesi"
     agirlik: 20
     durum: bekliyor
@@ -61,9 +61,13 @@ asamalar:
       - ["Sonuç yorumu ve en kötü 10 tahminin açıklaması", bekliyor]
       - ["1. rapor", bekliyor]
   - ad: "Aşama 3 — Segmentasyon"
-    durum: bekliyor
+    durum: devam
     adimlar:
-      - ["03 notebook'u + yerel duman testi (sıradaki; Mac mini'de, plan CLAUDE.md §6a)", bekliyor]
-      - ["Colab eğitimleri (YOLO-seg, RF-DETR)", bekliyor]
-      - ["Ortak değerlendirme (mAP, mIoU, Dice, hız, bellek)", bekliyor]
+      - ["Mac mini kurulumu", tamam]
+      - ["Kararlar: ortak çözünürlük 480, RF-DETR Seg Small (kullanıcı, 12 Kas)", tamam]
+      - ["Ortak değerlendirme kodu + testler (mAP, mIoU, Dice, örnek karışma)", tamam]
+      - ["03 notebook'u + yerel duman testi", tamam]
+      - ["Colab eğitimleri (YOLO26n/s-seg, RF-DETR Seg Small × 3 seed)", bekliyor]
+      - ["Test değerlendirmesi, verimlilik, en kötü 10 (Colab'da)", bekliyor]
+      - ["Panel: Segmentasyon sayfası", bekliyor]
       - ["2. rapor + sunum", bekliyor]

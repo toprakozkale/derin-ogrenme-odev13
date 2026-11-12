@@ -6,6 +6,55 @@ Panelde **İlerleme Günlüğü** sayfasında gösterilir. Buradaki her sayı ge
 
 ---
 
+## 12 Kasım 2026 (akşam) — Mac mini kuruldu, 03 segmentasyon notebook'u yazıldı ve duman testinden geçti (#15, #10)
+
+### Mac mini kurulumu (#15)
+- Depo `~/Desktop/derin-ogrenme-odev13`'e klonlandı (CLAUDE.md §5'teki addan farklı). Python 3.13.18, `.venv`, Jupyter çekirdeği,
+  Kaggle anahtarı (AirDrop). `prepare_data.py`: bölme 1.450 / 307 / 743, temiz test 692 — kayıtlarla aynı. CLS tahmin dosyalarındaki
+  743 dosya adı yeni test listesiyle birebir eşleşti. Testler geçti, panel açıldı.
+- Panel düzeltmesi: Sınıflandırma sayfası ağırlık (`best.pt`) Drive'da olduğu için "0/9 koşu bitti" diyordu → bitmişlik artık
+  DONE işaretinden okunuyor ("9/9"); ağırlığın nerede olduğu ayrı sütunda.
+
+### Kararlar (kullanıcı, 12 Kas)
+- **Ortak giriş çözünürlüğü 480** (YOLO ve RF-DETR). Görüntüler 419×419; 480, iki paketin kuralına (YOLO: 32'nin katı,
+  RF-DETR Seg Small: 24'ün katı) birlikte uyan ve gerçek boyuta en yakın değer. Plandaki "YOLO 640 / RF-DETR kendi varsayılanı" yerine.
+- **RF-DETR Seg Small** (Medium değil): bütün RF-DETR Seg boyları aynı DINOv2 omurgasını kullanıyor (~33–35 M parametre);
+  Small daha az katman/sorguyla ücretsiz T4'e daha uygun. 7 sınıf, 480'de 33,6 M parametre (YOLO26n-seg ~3,1 M, s ~11,4 M; kesin
+  sayılar verimlilik tablosundan gelecek).
+- Eşit bütçe: en çok 100 epoch, 20 epoch iyileşme yoksa erken durdurma, etkin batch 16 (RF-DETR 4 × 4 birikim), seed 0/1/2.
+  Sıra seed'e göre (önce üç modelin seed 0'ı) → kota yetmezse yine tam bir karşılaştırma kalır. Seed sayısı ilk Colab süreleri görülünce kesinleşecek.
+
+### RF-DETR 1.12.0 incelemesi (kaynak kodu + küçük denemelerle; tahminle değil)
+- Roboflow COCO yükleyicisi kategori 1..7'yi 0..6'ya çeviriyor (üst kategori 0 "diseases" atlanıyor); tahmindeki `class_name`
+  aynı sırada. Düşük eşikte bir de `__background__` (nesne yok) yuvası dönüyor → bizim kod atıyor.
+- **Çapraz kontrol:** aynı küçük val alt kümesinde bizim kodla mask mAP50-95 = 0,132, kütüphanenin kendi değeri 0,130 → eşleme doğru.
+  Notebook bu kontrolü tam val'de her koşu için tekrarlıyor.
+- Kaldığı yerden devam (`last.ckpt`) çalışıyor; ama **ayar değişirse (ör. çözünürlük) yüklenemiyor** — denendi.
+- Dosya boyutları: `last.ckpt` ~535 MB, her `.pth` ~134 MB; ara arşiv varsayılanı her 10 epoch'ta bir ~535 MB → kapatıldı
+  (`checkpoint_interval=1000`). Koşu bitince yalnız `checkpoint_best_total.pth` + günlükler kalıyor (Drive'da yer için).
+
+### Düzeltme: COCO örnek kimliği 0
+- `pycocotools` COCOeval eşleşmeyi örnek kimliğiyle kaydedip **0'ı "eşleşmedi" sayıyor** → kimliği 0 olan gerçek örnek hiç doğru
+  bulunamazdı (her bölmede 1 örnek). Testle yakalandı. `src/convert.py` artık kimlikleri 1'den başlatıyor (COCO kuralı);
+  `coco_mask_map` de kendi içinde yeniden numaralıyor. Veri yeniden üretildi: geri-dönüş doğrulaması aynı (IoU < 0,99 yok), temiz test 692.
+  CLS sonuçlarını etkilemez (CLS COCO dosyası kullanmıyor).
+
+### Kod (#10)
+- `src/metrics.py`: ortak SEG ölçütleri — RLE dönüşümü, piksel sınıf haritası (çakışmada yüksek skor kazanır), piksel karışma →
+  sınıf IoU/Dice, mIoU, mDice, hastalık↔arka plan IoU; görüntü başına IoU; IoU ≥ 0,5 açgözlü örnek eşleştirme → 8×8 karışma
+  (kaçırılan/fazladan dahil); pycocotools mask mAP50/50-95 + sınıf AP. `tests/test_seg_metrics.py`: elle hesaplanmış 5 test → toplam **18 test**.
+- `src/seg.py`: eğitim (iki aile, kaldığı yerden devam, RF-DETR temizliği), tahmin → COCO results (`.json.gz`), val'de güven eşiği
+  seçimi (piksel metrikleri için mIoU'yu en yükselten eşik; test bakılmaz), tüm test + temiz test değerlendirmesi, en kötü 10,
+  verimlilik (parametre, yalnız ağ ve uçtan uca ms/görüntü, tepe GPU belleği).
+- `scripts/build_notebook_03.py` → `notebooks/03_segmentasyon.ipynb`. **Yerel duman testi** (CPU, 1 epoch, küçük alt küme): bütün
+  hücreler hatasız, ~50 sn. Çıktılar `runs/seg_duman/` (git dışı) — sayılar anlamsız, sonuç değildir.
+- `.gitignore`: `runs/seg/` için küçük sonuç dosyaları git'te; ağırlık (`*.pt`, `*.pth`, `*.ckpt`) ve ham tahmin (`*.json.gz`) Drive'da.
+
+### Sıradaki
+- #11: Colab'da 03 notebook'u (T4). İlk oturumdan sonra epoch süreleri ölçülüp seed sayısı ve takvim kesinleşecek.
+
+---
+
 ## 12 Kasım 2026 (öğleden sonra) — Mac mini'ye devir hazırlığı
 
 - Kullanıcı segmentasyon aşamasını **başka bilgisayardan (Mac mini)** yürütmeye karar verdi.

@@ -103,7 +103,7 @@ def coco_dict(recs: list[Record]) -> dict:
         {"id": coco_cat_id(c), "name": c, "supercategory": COCO_SUPERCATEGORY} for c in C.CLASSES
     ]
     images, anns = [], []
-    ann_id = 0
+    ann_id = 1     # COCO kuralı: 1'den başlar (pycocotools COCOeval id'si 0 olan örneği eşleşmemiş sayar)
     for img_id, r in enumerate(recs):
         images.append({"id": img_id, "file_name": r.image_path.name, "width": r.width, "height": r.height})
         for inst in r.instances:

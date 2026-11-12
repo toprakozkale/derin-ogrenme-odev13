@@ -7,10 +7,11 @@ başka bilgisayara taşınmaz; **bu proje hakkında bilinmesi gereken her şey b
 ---
 
 ## 0. Kaldığımız yer — yeni oturumda önce bunu oku
-**Son güncelleme: 12 Kasım 2026 (öğleden sonra).** Teslimler: 1. rapor (CLS) **24 Kasım 23:59** · 2. rapor (SEG) **8 Aralık 23:59**.
+**Son güncelleme: 12 Kasım 2026 (akşam, Mac mini).** Teslimler: 1. rapor (CLS) **24 Kasım 23:59** · 2. rapor (SEG) **8 Aralık 23:59**.
 
-> **Kullanıcı 12 Kas'ta: "Segmentasyonu başka bilgisayardan (Mac mini) yapacağız."** Bu dosya oraya devir için güncellendi.
-> Mac mini'de ilk iş: §5 kurulumu (hiç kurulmadıysa) → `git pull` → `pytest` 13 passed → paneli aç → **§6a'daki Aşama 3 planıyla başla (#10).**
+> **Çalışma artık Mac mini'de** (`~/Desktop/derin-ogrenme-odev13`; kurulum bitti, #15). 03 segmentasyon notebook'u yazıldı ve
+> yerel duman testinden geçti (#10). **Sıradaki: kullanıcı 03'ü Colab'da T4 ile çalıştıracak (#11)** — akış §6 "Aşama 3 eğitim akışı".
+> İlk Colab oturumundan sonra epoch sürelerine bakıp seed sayısını (3 mü 2 mi) ve takvimi kullanıcıyla kesinleştir.
 
 - ✅ Aşama 0 (kurulum) ve Aşama 1 (veri hazırlama) **tamamen** bitti; 01 notebook'u hem Mac'te hem Colab'da çalıştı, sonuçlar birebir aynı.
 - ✅ Roboflow çapraz kontrolü bitti (#2): 5.571 örnek, ort. IoU 0,99995; Roboflow'un atladığı 41 görüntü = bölme içi bayt kopyaları (train 13, test 28).
@@ -20,7 +21,10 @@ başka bilgisayara taşınmaz; **bu proje hakkında bilinmesi gereken her şey b
   Ağırlıklar (`*.pt`, ~120 MB) yalnız Drive'da (`MyDrive/odev13/runs/cls`). Şekiller `rapor/figures/cls_*` (git'te).
   Test doğruluğu (3 seed ort. ± std): nano 0,915 ± 0,015 · small 0,904 ± 0,005 · nano-384 0,934 ± 0,008; temiz test ~0,5 puan düşük.
   Val ile seçilen: `ana_yolo26n-cls_im224_s1`. Gruplar arası (yaprak/meyve/çiçek) karışma ~%2. Ayrıntı: `docs/gunluk.md` (12 Kas).
-- ⏭️ **Sıradaki iş: Aşama 3 — segmentasyon (#10 → #11 → #12 → #13).** Plan ve açık tasarım kararları §6a'da.
+- ✅ **Aşama 3 hazırlığı (12 Kas, #10):** kararlar ortak çözünürlük **480** + **RF-DETR Seg Small** (kullanıcı); `src/seg.py`,
+  ortak SEG metrikleri (`src/metrics.py`, 18 test), `notebooks/03_segmentasyon.ipynb`; duman testi hatasız (~50 sn, `runs/seg_duman/`).
+  RF-DETR sınıf eşlemesi çapraz kontrolle doğrulandı. COCO örnek kimliği 0 hatası düzeltildi (ayrıntı `docs/gunluk.md`, 12 Kas akşam).
+- ⏭️ **Sıradaki iş: #11 Colab SEG eğitimleri → #12 karşılaştırma/hata analizi → #13 panel SEG sayfası.**
 - ⏸️ #7 (CLS sonuç yorumu, en kötü 10 açıklaması) ve raporlar (#9, #14) + sunum: **kullanıcı "hepsini en son yaparız" dedi** —
   kendiliğinden başlama; ama 1. rapor 24 Kas'ta teslim, takvimi kullanıcıya hatırlat.
 - ⏳ Kullanıcının kararı bekleyen: hocanın çalıştırabileceği Colab linki (#4; öneri: teslim günü depoyu public yapmak).
@@ -79,22 +83,30 @@ başka bilgisayara taşınmaz; **bu proje hakkında bilinmesi gereken her şey b
 | Duman testi | Yerelde GPU yokken `SMOKE` modu (1 epoch, verinin %5'i) → çıktılar `runs/cls_duman/`; asıl sonuçlara/panele/rapora **asla** karışmaz. SEG için de aynı düzen (`runs/seg_duman/`). |
 | Hesaplama ortamı (11 Kas kararı) | **Tüm eğitimler ücretsiz Colab'da, T4 GPU** — Colab Pro alınmadı (kullanıcının zaman sıkıntısı yok), Kaggle Notebooks kullanılmıyor (hocanın PDF'i teslimde yalnız "Colab linki" istiyor; Kaggle'dan söz etmiyor). Kaggle yalnız Colab kotası uzun süre engellerse yedek. Segmentasyon gerekirse 3→2 seed. |
 | Colab düzeni | Kod + sonuçlar Drive'da (`MyDrive/odev13`), veri Colab'ın yerel diskinde (`/content/odev13_data`, `ODEV13_DATA`). Ücretsiz plan; sekme açık kalmalı. Modeller **T4**'te koşulur (adil hız ölçümü). |
-| Sonuçlar git'te mi? (12 Kas) | Eğitim sonuçlarının **küçük metin dosyaları git'te** (`.gitignore` istisnaları: `runs/cls/*.csv|json`, `preds/*.csv`, `train/*/{results.csv,args.yaml,DONE}`), ağırlık ve eğitim görselleri yalnız Drive'da. İki Mac arasında Drive indirmesi gerekmesin diye. SEG için aynı istisnalar `runs/seg/` için eklenecek. |
+| SEG deney düzeni (12 Kas, kullanıcı) | **Ortak çözünürlük 480** (YOLO 32'nin, RF-DETR Seg Small 24'ün katı ister; 419'a en yakın ortak değer). Modeller `yolo26n-seg`, `yolo26s-seg`, **`RFDETRSegSmall`** (rfdetr 1.12.0; 7 sınıfta 480'de 33,6 M parametre — tüm RF-DETR Seg boyları aynı DINOv2 omurgası, ~33–35 M). 100 epoch + erken durdurma 20, etkin batch 16 (RF-DETR 4×4), seed 0/1/2, sıra seed'e göre. Ayarlar `src/seg.py` başında. |
+| SEG değerlendirme (12 Kas) | Tahminler COCO results'a (RLE) → mask mAP (pycocotools, `CONF_MIN` 0,001, en çok 100 tahmin). Piksel metrikleri (mIoU, Dice) için güven eşiği **val'de mIoU'yu en yükselten** eşik (model başına; `esikler.csv`). mIoU/mDice = 7 hastalık sınıfı ortalaması (arka plan hariç). Örnek karışma: sınıftan bağımsız açgözlü IoU ≥ 0,5 eşleşme. En kötü 10: val ile seçilen en iyi YOLO + en iyi RF-DETR'ın görüntü IoU ortalaması. |
+| RF-DETR ayrıntıları (12 Kas) | Roboflow yükleyicisi kategori 1..7 → 0..6; `__background__` yuvası atılır. Bizim val mAP ↔ kütüphanenin val mAP'si çapraz kontrolü notebook'ta (yakın olmalı). Kaldığı yerden devam ayar değişmezse çalışır. Ara arşiv kapalı (`checkpoint_interval=1000`); bitince yalnız `checkpoint_best_total.pth` kalır (`last.ckpt` ~535 MB silinir). |
+| COCO örnek kimliği (12 Kas) | 1'den başlar (`convert.py`). pycocotools COCOeval kimliği 0 olan örneği hiç eşleştiremiyor; `coco_mask_map` ayrıca kendi içinde yeniden numaralar. |
+| Sonuçlar git'te mi? (12 Kas) | Eğitim sonuçlarının **küçük metin dosyaları git'te** (`.gitignore` istisnaları: `runs/cls/*.csv|json`, `preds/*.csv`, `train/*/{results.csv,args.yaml,DONE}`), ağırlık ve eğitim görselleri yalnız Drive'da. İki Mac arasında Drive indirmesi gerekmesin diye. SEG için aynı istisnalar `runs/seg/` için eklendi (+ RF-DETR `metrics.csv`, `training_config.json`; `*.pth`, `*.ckpt`, `*.json.gz` git dışı). |
 
 ## 4. Depo yapısı
 ```
 src/            config.py (yollar, sınıflar, eşikler; ODEV13_ROOT / ODEV13_DATA ile değiştirilebilir)
                 dataset.py (LabelMe okuma/düzeltme/istatistik) · convert.py (CLS / YOLO-seg / COCO + geri-dönüş doğrulaması)
                 dedup.py (MD5/pHash, sızıntı) · pipeline.py (Aşama 1 hattı + indirme) · roboflow_check.py (Roboflow COCO ↔ bizim dönüşüm)
-                metrics.py (P/R/F1, karmaşıklık + yaprak/meyve/çiçek grupları, bootstrap GA, McNemar)
+                metrics.py (P/R/F1, karmaşıklık + yaprak/meyve/çiçek grupları, bootstrap GA, McNemar;
+                            SEG: RLE, piksel IoU/Dice/mIoU, örnek eşleştirme + karışma, pycocotools mask mAP)
                 cls.py (Aşama 2: eğitim — kaldığı yerden devam —, tahmin, değerlendirme, verimlilik, en kötü 10)
-scripts/        prepare_data.py (Aşama 1'i koşar) · build_notebook_01.py / _02.py (notebook'ları üretir)
+                seg.py (Aşama 3: YOLO26-seg + RF-DETR eğitimi, COCO results tahmini, val'de eşik, ortak değerlendirme,
+                        en kötü 10, verimlilik; çıktılar runs/seg, duman testi runs/seg_duman)
+scripts/        prepare_data.py (Aşama 1'i koşar) · build_notebook_01.py / _02.py / _03.py (notebook'ları üretir)
                 _nb_common.py (notebook'ların ortak Colab kurulum hücresi) · import_runs.py (Drive'dan inen sonuç zip'ini runs/'a alır)
                 make_cls_figures.py (runs/cls'ten rapor şekilleri + tutarlılık denetimi)
                 prepare_roboflow_upload.py (ham veriden data/roboflow_upload/{train,valid,test})
-notebooks/      01_veri_hazirlama.ipynb (çıktılı; Mac + Colab'da çalıştı) · 02_siniflandirma.ipynb (Colab'da çalıştı, 11 Kas) · 03 yazılacak (#10)
+notebooks/      01_veri_hazirlama.ipynb (çıktılı; Mac + Colab'da çalıştı) · 02_siniflandirma.ipynb (Colab'da çalıştı, 11 Kas)
+                03_segmentasyon.ipynb (12 Kas; yerel duman testi geçti, Colab'da çalıştırılacak — #11)
 app/            Streamlit paneli: Ana_Sayfa.py + sayfalar/ (klasör adı bilerek "pages" değil — Streamlit'in eski otomatik menüsü devreye girmesin)
-tests/          pytest: veri hattı (8) + metrikler (5) = 13 test
+tests/          pytest: veri hattı (8) + CLS metrikleri (5) + SEG metrikleri (5) = 18 test
 docs/           PLAN.md · gunluk.md (ilerleme günlüğü, panelde gösterilir) · veri_bulgulari.md · durum.yaml (panelin ilerleme kaynağı)
                 phash_calibration.csv · roboflow/ (çapraz kontrol özeti, atlananlar, en düşük IoU'lar) · hocanın PDF'i
 rapor/figures/  rapora girecek şekiller (notebook'lar üretir; panelde "Rapor Şekilleri")
@@ -130,7 +142,7 @@ Panel dosyaları değişiklik zamanına göre önbelleği yeniler: veri yeniden 
    (Kaybolursa kaggle.com → profil → Settings → API → Create New Token; eskisi geçersiz olur ve Colab Secrets'taki `KAGGLE_KEY` de güncellenmeli.)
    Not: Kaggle kullanıcı adı **`toprakzkale`** ("o" yok), GitHub'daki `toprakozkale`'den farklı.
 8. **Veriyi indir ve hazırla (~1 dk):** `.venv/bin/python scripts/prepare_data.py` → `data/` oluşur (temiz test 692 çıkmalı).
-9. **Testler:** `.venv/bin/python -m pytest -q tests` → **13 passed**.
+9. **Testler:** `.venv/bin/python -m pytest -q tests` → **18 passed**.
 10. **Panel:** `.venv/bin/streamlit run app/Ana_Sayfa.py` → http://localhost:8501
 11. **CLS sonuçları git'le gelir** (ağırlıklar hariç). Ağırlık gerekirse (yeniden tahmin vb.): Drive'da `odev13/runs/cls` → İndir →
     `.venv/bin/python scripts/import_runs.py ~/Downloads/cls-*.zip`. SEG sonuçları da aynı yolla (`seg-*.zip`).
@@ -142,7 +154,7 @@ Colab Secrets ve Roboflow hesaba bağlıdır; yeni Mac'te yeniden kurmak gerekme
 **İki Mac arasında çalışma düzeni:** başlarken `git pull`, bitirirken commit + `git push`. `data/` her makinede komutla yeniden üretilir;
 `runs/` içindeki sonuç tabloları git'le gelir, ağırlıklar Drive'dan `import_runs.py` ile alınır.
 Claude'un makineye özel hafızası taşınmaz: Mac mini'deki Claude yalnız bu dosyayı, `docs/` ve `git log`'u bilir — eksik bağlam buraya yazılır.
-RF-DETR yerelde henüz kurulu değil: 03 yazılırken `.venv/bin/pip install "rfdetr[train]"` (sürüm `requirements-local.txt` ve `ENV.md`'ye işlenir).
+RF-DETR (`rfdetr[train]` 1.12.0) `requirements-local.txt`'te; ön-eğitimli ağırlığı ilk kullanımda `~/.roboflow/models`'a iner (~135 MB).
 
 ## 6. Hatırlatıcılar — dış servisler
 **Kaggle**
@@ -186,36 +198,32 @@ RF-DETR yerelde henüz kurulu değil: 03 yazılırken `.venv/bin/pip install "rf
 - E-posta: tekinler.cs@gmail.com · PDF rapor + Colab linki (gizli pencerede açılıyor mu kontrol et) + sunum.
 - Raporda kısa "Yapay zekâ araçlarının kullanımı" beyanı önerildi.
 
-## 6a. Aşama 3 — segmentasyon planı (Mac mini'de buradan başla)
+## 6a. Aşama 3 — segmentasyon (durum: kod hazır, Colab bekleniyor)
 Ayrıntılı plan: `docs/PLAN.md` §7 · issue'lar #10–#13 · puan ağırlığı %25 (en büyük kalem) + hata analizi %20'nin bir kısmı.
+Kararlar ve değerlendirme kuralları: §3 ("SEG deney düzeni", "SEG değerlendirme", "RF-DETR ayrıntıları").
 
-**Hazır olanlar (Aşama 1'den):**
-- YOLO-seg verisi: `data/processed/yoloseg/` (`data.yaml`, `images/{train,val,test}`, `labels/...`; `data.yaml` yolu makineye göre yeniden üretilir).
-- COCO verisi: `data/processed/coco/{train,valid,test}/_annotations.coco.json` — RF-DETR'in beklediği Roboflow düzeni;
-  kategori 0 = üst kategori, sınıflar 1..7 (= YOLO kimliği + 1). Geri-dönüş IoU'su ≥ 0,99 doğrulandı, Roboflow'la da karşılaştırıldı.
-- Temiz test listesi: `data/derived/splits/test_clean.txt` (692). Gruplar: `src/config.py: GROUP_OF`.
-- Örnek alınacak kod: `src/cls.py` (RunSpec adlandırma, `last.pt`'den devam, DONE işareti, SMOKE modu, `efficiency`, `select_by_val`),
-  `scripts/build_notebook_02.py` + `_nb_common.py` (Colab kurulum hücresi), `app/sayfalar/siniflandirma.py` (panel sayfası düzeni).
+**Yapılanlar (12 Kas, #10):** `src/seg.py`, ortak SEG metrikleri (`src/metrics.py` + `tests/test_seg_metrics.py`),
+`scripts/build_notebook_03.py` → `notebooks/03_segmentasyon.ipynb`, `.gitignore` istisnaları. Duman testi (CPU, 1 epoch, küçük alt
+küme) bütün hücrelerde hatasız. RF-DETR sınıf eşlemesi çapraz kontrolle doğrulandı (bizim 0,132 ↔ kütüphane 0,130, aynı görüntüler).
 
-**Yapılacaklar (sırayla):**
-1. `src/seg.py` + `scripts/build_notebook_03.py` → `notebooks/03_segmentasyon.ipynb` (#10). Modeller: `yolo26n-seg`, `yolo26s-seg`, RF-DETR Seg
-   (`pip install "rfdetr[train]"`; paketin o günkü güncel küçük/orta Seg modeli — adı ve sürümü kurulunca kontrol edilip `ENV.md`'ye yazılır,
-   **tahminle yazılmaz**).
-2. **Ortak değerlendirme kodu** (adaletin kalbi; `src/metrics.py`'ye eklenip testle sınanmalı): her iki modelin test tahminleri →
-   COCO results JSON → `pycocotools` mask **mAP50 / mAP50-95** (+ sınıf bazında AP); maskeler sınıf bazında semantik haritaya →
-   **mIoU, Dice, sınıf bazında IoU**; IoU ≥ 0,5 eşleşmeleriyle **sınıf karışma matrisi + yaprak/meyve/çiçek** (Dikkat maddesi SEG'de de).
-   Hepsi tüm test (743) + temiz test (692). Ultralytics/RF-DETR'in kendi raporladığı değerler yalnız ek tablo.
-3. Verimlilik: aynı T4, batch 1, 20 ısınma, ms/görüntü (ön/son işlem dahil/hariç), parametre, `torch.cuda.max_memory_allocated`.
-4. Hata analizi: görüntü başına IoU'su en düşük 10 test görüntüsü → GT | YOLO | RF-DETR yan yana; hata türleri.
-5. Yerel duman testi (CPU, küçük alt küme, `runs/seg_duman/`) → kullanıcı Colab'da çalıştırır (#11) → `import_runs.py` → panel SEG sayfası (#13).
-6. `.gitignore`'a `runs/seg/` için CLS'deki gibi küçük-dosya istisnaları ekle.
+**Google Colab — Aşama 3 eğitim akışı (#11)**
+1. Colab → Dosya → Not defteri yükle → `notebooks/03_segmentasyon.ipynb`. Çalışma zamanı türü **Python 3 + T4 GPU**. Mac'te `caffeinate -dimsu`.
+2. **Tümünü çalıştır.** İlk hücre `ultralytics` ve `rfdetr[train]` kurar (Colab'daki torch'u değiştirip değiştirmediğine `env.json`'da bak).
+3. Eğitim sırası: seed 0'ın üç modeli → seed 1 → seed 2. Kota/bağlantı biterse **Oturumu yeniden başlat → Tümünü çalıştır**:
+   biten koşular atlanır, yarım kalan `last.pt` / `last.ckpt`'den sürer. **Arada ayar (özellikle çözünürlük) değiştirme.**
+4. İlk oturumdan sonra "Süre özeti" hücresinden epoch sürelerine bak → kullanıcıyla seed sayısını kesinleştir
+   (2 seed'e inmek için Colab'da ilk hücreden önce `os.environ["ODEV13_SEG_SEEDS"]="0,1"`; karar §3'e ve günlüğe yazılır).
+5. Değerlendirme hücresinde **çapraz kontrol tablosuna bak**: `val_mask_map50_95_bizim` ≈ `..._kutuphane` olmalı; çok farklıysa dur, incele.
+6. Bitince Drive'da `odev13/runs/seg` → İndir → `.venv/bin/python scripts/import_runs.py ~/Downloads/seg-*.zip`.
+   Şekiller Drive'daki `rapor/figures/seg_*`; ham tahminler (`preds/*.json.gz`) ve ağırlıklar yalnız Drive'da kalır.
+7. `ENV.md`'ye Colab sürümlerini (`runs/seg/env.json`) yaz; `docs/gunluk.md`'ye süreler + sonuçlar.
+- **Drive yeri:** RF-DETR koşusu eğitim sırasında ~800 MB tutar (`last.ckpt` ~535 MB), bitince ~134 MB'a iner; YOLO koşuları küçük.
+  Ücretsiz Drive 15 GB — eğitimden önce boş yer kontrol edilmeli.
 
-**03'ü yazmadan önce karar verilecekler (kullanıcıya sade dille sor / öner):**
-- Giriş çözünürlüğü: görüntüler 419×419. Plan YOLO için 640 diyor (büyütme); RF-DETR'in çözünürlüğü paketin kuralına bağlı.
-  İkisini mümkün olduğunca yakın tut, farkı raporla.
-- Seed sayısı ve epoch bütçesi: önce duman testiyle T4'te epoch süresi ölçülür; toplam GPU süresi kabaca 10–17 saat tahmin edilmişti
-  (ölçülmedi). Ücretsiz Colab'a göre birkaç güne yayılır; gerekirse 3 → 2 seed (§3). Eğitim parçaları 2–3 saatlik olmalı, kaldığı yerden devam etmeli.
-- Takvim: 2. rapor 8 Aralık; eğitimler en geç ~3 Aralık'ta bitmeli. Arada 24 Kasım'da 1. rapor teslimi var.
+**Kalanlar:** #11 Colab eğitimleri → #12 sonuçların yorumu (mAP/mIoU/Dice karşılaştırması, hız/bellek, en kötü 10 hata türleri,
+meyve/yaprak karışması SEG'de) → #13 panel Segmentasyon sayfası (`app/sayfalar/segmentasyon.py`, Sınıflandırma sayfası düzeninde;
+kaynak `runs/seg/`) → #14 rapor. Bağlam notu: Afzaal 2021'in Mask R-CNN sonuçlarıyla karşılaştırma (aynı bölme mi, kontrol et).
+Takvim: 2. rapor 8 Aralık; eğitimler en geç ~3 Aralık'ta bitmeli. Arada 24 Kasım'da 1. rapor var.
 
 ## 7. Durum ve eksikler
 Güncel ilerleme: panelin Genel Bakış sayfası (`docs/durum.yaml`) ve İlerleme Günlüğü (`docs/gunluk.md`). Açık işler GitHub issue:
@@ -233,21 +241,22 @@ Bir iş bitince: ilgili issue'yu kapat, `docs/durum.yaml` + `docs/gunluk.md` + b
 | 7 | CLS sonuç analizi + en kötü 10 yorumları | sayılar/şekiller hazır; yorum raporla birlikte en sona |
 | 8 | Panel CLS sayfası | ✅ kapandı (12 Kas, gerçek sonuçla kontrol edildi) |
 | 9 | 1. rapor — 24 Kasım | en sona (kullanıcı isteği) |
-| 10 | 03 segmentasyon notebook'u + yerel duman testi | **sıradaki** (Mac mini'de; plan §6a) |
-| 11 | Colab: SEG eğitimleri (YOLO26-seg n/s, RF-DETR) | 10'dan sonra |
+| 10 | 03 segmentasyon notebook'u + yerel duman testi | ✅ kapandı (12 Kas) |
+| 11 | Colab: SEG eğitimleri (YOLO26-seg n/s, RF-DETR Seg Small) | **sıradaki** — kullanıcı; akış §6a |
 | 12 | SEG sonuçları: karşılaştırma + hata analizi | 11'den sonra |
 | 13 | Panel: Segmentasyon sayfası | 11'den sonra |
 | 14 | 2. rapor + sunum — 8 Aralık | Aşama 3 sonrası |
-| 15 | Mac mini kurulumu | **şimdi** (12 Kas) — §5 |
+| 15 | Mac mini kurulumu | ✅ kapandı (12 Kas): klon `~/Desktop/derin-ogrenme-odev13` (§5'teki addan farklı), Python 3.13.18, veri hazır (temiz test 692), testler geçti, panel açıldı. Disk ~16 GB boş — dikkat |
 
 ## 8. Sık komutlar
 ```bash
 git pull                                          # başka Mac'te yapılanları al
 .venv/bin/python scripts/prepare_data.py          # Aşama 1'i baştan üret (data/processed, data/derived)
-.venv/bin/python -m pytest -q tests               # testler (13)
+.venv/bin/python -m pytest -q tests               # testler (18)
 .venv/bin/streamlit run app/Ana_Sayfa.py          # panel → http://localhost:8501
 .venv/bin/python scripts/import_runs.py ~/Downloads/cls-*.zip   # Colab sonuçlarını runs/'a al
 .venv/bin/python scripts/make_cls_figures.py      # CLS şekillerini runs/cls'ten yeniden çiz + tutarlılık denetimi
-.venv/bin/python scripts/build_notebook_02.py     # 02 notebook'unu yeniden üret (01 için build_notebook_01.py; 03 yazılınca _03)
+.venv/bin/python scripts/build_notebook_02.py     # 02 notebook'unu yeniden üret (01 için _01, 03 için _03)
 cd notebooks && ODEV13_SMOKE=1 ../.venv/bin/jupyter nbconvert --to notebook --execute --ExecutePreprocessor.kernel_name=odev13 02_siniflandirma.ipynb --output-dir /tmp   # 02 duman testi
+cd notebooks && ODEV13_SMOKE=1 ../.venv/bin/jupyter nbconvert --to notebook --execute --ExecutePreprocessor.kernel_name=odev13 --ExecutePreprocessor.timeout=1800 03_segmentasyon.ipynb --output-dir /tmp   # 03 duman testi (~1 dk; runs/seg_duman)
 ```

@@ -12,7 +12,20 @@ runs/cls/**
 !runs/cls/train/*/results.csv
 !runs/cls/train/*/args.yaml
 !runs/cls/train/*/DONE
+# SEG için aynısı: küçük sonuç tabloları git'te; ağırlıklar (*.pt, *.pth, *.ckpt) ve ham tahminler (*.json.gz) yalnız Drive'da
+!runs/seg/
+runs/seg/**
+!runs/seg/**/
+!runs/seg/*.csv
+!runs/seg/*.json
+!runs/seg/preds/*.csv
+!runs/seg/train/*/results.csv
+!runs/seg/train/*/args.yaml
+!runs/seg/train/*/metrics.csv
+!runs/seg/train/*/training_config.json
+!runs/seg/train/*/DONE
 *.pt
+*.ckpt
 *.pth
 *.onnx
 # Python / Jupyter
