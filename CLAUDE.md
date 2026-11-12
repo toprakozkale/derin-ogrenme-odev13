@@ -169,6 +169,8 @@ RF-DETR (`rfdetr[train]` 1.12.0) `requirements-local.txt`'te; ön-eğitimli ağ�
   ve eski `src` modüllerini hafızadan siler. Kod GitHub'da değiştiyse Colab'da **Çalışma zamanı → Oturumu yeniden başlat → Tümünü çalıştır**.
 - Notebook'u Colab'a almak: **Dosya → Not defteri yükle** → `notebooks/0X_....ipynb`. Çalışma zamanı türü **Python 3** olmalı.
 - 01 notebook'u GPU istemez → CPU çalışma zamanında çalıştır; T4 yalnız 02/03 eğitimleri için.
+- Drive'daki kod kopyasında git'te izlenmeyen bir dosya GitHub'daki aynı adlı dosyanın yolunu keserse `git pull` başarısız olur
+  (12 Kas: `rapor/figures/cls_*`). 03'ün kurulum hücresi bunları `_git_yedek/`'e taşıyıp yeniden dener, olmazsa durur; 01/02'nin eski hücresi yalnız uyarır.
 - Colab ortamı (11 Kas 2026): Tesla T4 15 GB, sürücü 580.82.07, CUDA 13.0, Python 3.13 (Eylül 2026 imajı).
 - Ücretsiz plan: sekme/Mac açık kalmalı, oturum ≤ ~12 saat, arada "Hâlâ orada mısınız?" çıkabilir. Pro 9,99 $/ay, Pro+ 49,99 $/ay.
 - Hocanın da çalıştırabileceği Colab linki kararı açık — issue #4 (öneri: teslim günü depoyu public yapmak).

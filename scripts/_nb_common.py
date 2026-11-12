@@ -26,8 +26,25 @@ if IN_COLAB:
         subprocess.run(git + ["clone", "-q", "https://github.com/{REPO}.git", str(ROOT)], check=True)
         print("Proje kodu GitHub'dan Drive'a klonlandı:", ROOT)
     else:
-        r = subprocess.run(git + ["-C", str(ROOT), "pull", "-q", "--ff-only"], capture_output=True, text=True)
-        print("Proje kodu güncellendi" if r.returncode == 0 else "UYARI: git pull başarısız: " + r.stderr[-300:])
+        pull = lambda: subprocess.run(git + ["-C", str(ROOT), "pull", "-q", "--ff-only"], capture_output=True, text=True,
+                                      env={{**os.environ, "LC_ALL": "C"}})   # git mesajları İngilizce (aşağıda metin aranıyor)
+        r = pull()
+        if r.returncode != 0 and "untracked working tree files would be overwritten" in r.stderr:
+            # Drive'da git'te olmayan bir dosya (ör. Colab'ın çizdiği bir şekil) GitHub'daki aynı adlı dosyanın yolunu
+            # kesiyor (12 Kas'ta oldu). Silmek yerine yedek klasörüne taşınır, sonra yeniden denenir.
+            import shutil, time as _t
+            yedek = ROOT / "_git_yedek" / _t.strftime("%Y%m%d-%H%M%S")
+            for line in r.stderr.splitlines():
+                f = line.strip()
+                if line[:1] in ("\\t", " ") and f and (ROOT / f).is_file():
+                    (yedek / f).parent.mkdir(parents=True, exist_ok=True)
+                    shutil.move(str(ROOT / f), str(yedek / f))
+            print("Çakışan dosyalar yedeğe taşındı:", yedek)
+            r = pull()
+        if r.returncode != 0:
+            # Eski kodla devam etmek yanıltıcı hatalara yol açar (ör. "cannot import name 'seg'") → burada dur
+            raise RuntimeError("git pull başarısız, proje kodu güncellenemedi:\\n" + r.stderr[-600:])
+        print("Proje kodu güncellendi")
     sürüm = subprocess.run(["git", "-C", str(ROOT), "log", "-1", "--format=%h · %ad · %s", "--date=format:%d.%m %H:%M"],
                            capture_output=True, text=True).stdout.strip()
     print("Kod sürümü:", sürüm)

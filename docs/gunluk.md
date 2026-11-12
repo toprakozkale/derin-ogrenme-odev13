@@ -50,6 +50,15 @@ Panelde **İlerleme Günlüğü** sayfasında gösterilir. Buradaki her sayı ge
   hücreler hatasız, ~50 sn. Çıktılar `runs/seg_duman/` (git dışı) — sayılar anlamsız, sonuç değildir.
 - `.gitignore`: `runs/seg/` için küçük sonuç dosyaları git'te; ağırlık (`*.pt`, `*.pth`, `*.ckpt`) ve ham tahmin (`*.json.gz`) Drive'da.
 
+### Colab'daki ilk deneme: kod güncellenemedi (düzeltildi)
+- Kullanıcı 03'ü Colab'da çalıştırdı; kurulum hücresi `ImportError: cannot import name 'seg'` verdi. Sebep: Drive'daki kod kopyası
+  güncellenememiş (`git pull` başarısız, kod sürümü 69a00da · 11.11). Drive'da Colab'ın 02'de çizdiği `rapor/figures/cls_*` şekilleri
+  git'te izlenmiyordu; sonradan aynı adlarla git'e eklendikleri için git üzerlerine yazmayı reddetti. Eski kurulum hücresi hatayı
+  yalnız uyarı olarak basıp eski kodla devam ediyordu.
+- Düzeltme (`scripts/_nb_common.py`): çakışan dosyalar silinmeden `_git_yedek/<tarih>/`'e taşınıp pull yeniden denenir; pull yine
+  başarısızsa hücre açık bir hatayla **durur** (eski kodla devam etmez). Git mesajları dil bağımsız okunsun diye `LC_ALL=C`.
+  Sahte depo ile yerelde sınandı. Yalnız 03 yeniden üretildi (01/02'nin Colab çıktıları korunsun diye onlara dokunulmadı).
+
 ### Sıradaki
 - #11: Colab'da 03 notebook'u (T4). İlk oturumdan sonra epoch süreleri ölçülüp seed sayısı ve takvim kesinleşecek.
 

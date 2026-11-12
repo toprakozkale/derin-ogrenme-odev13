@@ -47,3 +47,6 @@ kaggle.json
 # Ön-eğitimli model ağırlıkları ve Ultralytics önbellekleri
 weights/
 *.cache
+
+# Colab kurulum hücresinin çakışan dosyaları taşıdığı yedek klasörü (Drive kopyasında)
+_git_yedek/
