@@ -63,7 +63,7 @@ asamalar:
   - ad: "Aşama 3 — Segmentasyon"
     durum: bekliyor
     adimlar:
-      - ["03 notebook'u + yerel duman testi", bekliyor]
+      - ["03 notebook'u + yerel duman testi (sıradaki; Mac mini'de, plan CLAUDE.md §6a)", bekliyor]
       - ["Colab eğitimleri (YOLO-seg, RF-DETR)", bekliyor]
       - ["Ortak değerlendirme (mAP, mIoU, Dice, hız, bellek)", bekliyor]
       - ["2. rapor + sunum", bekliyor]

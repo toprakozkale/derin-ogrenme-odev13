@@ -1,0 +1,11 @@
+stem,gercek,tahmin,p_true,tahmin_guveni,gruplar_arasi
+anthracnose_fruit_rot100,Anthracnose Fruit Rot,Gray Mold,7.983603609318379e-07,0.9962504506111144,False
+anthracnose_fruit_rot94,Anthracnose Fruit Rot,Gray Mold,1.2514768741311857e-06,0.9796125888824464,False
+anthracnose_fruit_rot101,Anthracnose Fruit Rot,Gray Mold,3.459401341388002e-06,0.9991440773010254,False
+anthracnose_fruit_rot92,Anthracnose Fruit Rot,Powdery Mildew Fruit,0.000166833095136,0.5405194163322449,False
+powdery_mildew_fruit148,Powdery Mildew Fruit,Gray Mold,0.0002730150881689,0.9997231364250184,False
+angular_leafspot412,Angular Leafspot,Powdery Mildew Fruit,0.000770921644289,0.9989925026893616,True
+leaf_spot602,Leaf Spot,Angular Leafspot,0.0020699915476143,0.997568428516388,False
+powdery_mildew_fruit160,Powdery Mildew Fruit,Gray Mold,0.0022152129095047,0.969838798046112,False
+powdery_mildew_fruit164,Powdery Mildew Fruit,Gray Mold,0.0043140528723597,0.9892597198486328,False
+powdery_mildew_fruit137,Powdery Mildew Fruit,Gray Mold,0.0045095076784491,0.9892136454582214,False

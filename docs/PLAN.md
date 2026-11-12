@@ -139,7 +139,7 @@ Biçim: Word (.docx) — Claude, notebook çıktılarındaki sayı ve şekillerl
 düzenler, Word'den PDF olarak kaydeder.
 
 ## 7. Aşama 3 — Segmentasyon: `03_segmentasyon.ipynb` (25 Kasım – 3 Aralık)  ·  %25
-- **Modeller:** `yolo11n-seg`, `yolo11s-seg` (ana: s) ve RF-DETR segmentasyon (paketin güncel küçük/orta Seg modeli, ör. `RFDETRSegMedium`
+- **Modeller:** ~~`yolo11n-seg`, `yolo11s-seg`~~ → **`yolo26n-seg`, `yolo26s-seg`** (12 Kas 2026 güncellemesi: CLS'de YOLO26 kullanıldı, tutarlılık için) (ana: s) ve RF-DETR segmentasyon (paketin güncel küçük/orta Seg modeli, ör. `RFDETRSegMedium`
   ya da Preview; sürüm raporlanır). Hepsi COCO ön-eğitimli, aynı bölme, 7 sınıf, örnek (instance) düzeyinde.
 - **Eşleştirme:** benzer giriş çözünürlüğü (YOLO imgsz=640; RF-DETR kendi varsayılanı → farkı raporla), benzer epoch/süre bütçesi,
   val üzerinden en iyi checkpoint.

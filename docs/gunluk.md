@@ -6,6 +6,17 @@ Panelde **İlerleme Günlüğü** sayfasında gösterilir. Buradaki her sayı ge
 
 ---
 
+## 12 Kasım 2026 (öğleden sonra) — Mac mini'ye devir hazırlığı
+
+- Kullanıcı segmentasyon aşamasını **başka bilgisayardan (Mac mini)** yürütmeye karar verdi.
+- CLS sonuçlarının küçük metin dosyaları (~2 MB: `results.csv`, `per_class.csv`, `preds/`, `train/*/results.csv` vb.) artık **git'te**;
+  yeni bilgisayarda Drive'dan indirmeden panel ve şekiller çalışır. Ağırlıklar (`*.pt`) Drive'da kaldı.
+  `select_by_val` ağırlık yerine DONE işaretiyle de çalışacak şekilde güncellendi.
+- `CLAUDE.md`: §0 devir notu, yeni **§6a Aşama 3 planı** (hazır veri, yapılacaklar, karar bekleyenler), Colab'dan öğrenilenler,
+  çalışma kuralları (raporlar en sona). `docs/PLAN.md` ve #10: SEG modelleri yolo11 → **YOLO26** (CLS ile tutarlı).
+
+---
+
 ## 12 Kasım 2026 — Sınıflandırma eğitimleri bitti, sonuçlar panelde
 
 ### Yapılanlar

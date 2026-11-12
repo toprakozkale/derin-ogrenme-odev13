@@ -199,7 +199,8 @@ def load_preds(spec: RunSpec) -> pd.DataFrame:
 
 def select_by_val(specs: list[RunSpec]) -> RunSpec:
     """Doğrulama doğruluğu en yüksek koşu (seçim yalnız val ile yapılır; test bakılmaz)."""
-    done = [s for s in specs if (s.dir / "weights" / "best.pt").exists()]
+    # Ağırlıklar Drive'da kalabilir (git'te yalnız DONE + results.csv var); seçim yalnız val günlüğüne bakar.
+    done = [s for s in specs if (s.dir / "weights" / "best.pt").exists() or (s.dir / "DONE").exists()]
     return max(done, key=best_val_acc)
 
 

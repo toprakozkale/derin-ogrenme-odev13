@@ -1,6 +1,17 @@
 # Veri ve eğitim çıktıları Drive'da tutulur, git'e girmez
 data/
-runs/
+runs/*
+# İstisna: CLS sonuçlarının küçük metin dosyaları (~2 MB) git'te — başka Mac'te Drive'dan indirmeden panel/rapor çalışsın.
+# Ağırlıklar (*.pt) ve eğitim görselleri Drive'da kalır.
+!runs/cls/
+runs/cls/**
+!runs/cls/**/
+!runs/cls/*.csv
+!runs/cls/*.json
+!runs/cls/preds/*.csv
+!runs/cls/train/*/results.csv
+!runs/cls/train/*/args.yaml
+!runs/cls/train/*/DONE
 *.pt
 *.pth
 *.onnx
