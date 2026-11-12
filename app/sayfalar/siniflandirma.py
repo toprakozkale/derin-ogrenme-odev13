@@ -110,7 +110,7 @@ st.subheader("Hangi hastalık hangisiyle karıştı? (hocanın \"Dikkat\" maddes
 basitce("Satır = gerçek hastalık, sütun = modelin tahmini. Köşegen dışındaki koyu hücreler sık karışmalardır. Alttaki 3×3 tablo "
         "hastalıkları **yaprak / meyve / çiçek** gruplarına toplar: gruplar arası hücreler, modelin örneğin bir yaprak hastalığını "
         "meyve hastalığı sanması demektir.")
-size = st.segmented_control("Model", ["n", "s"], default="s", format_func=lambda x: f"yolo26{x}-cls")
+size = st.segmented_control("Model", ["n", "s"], default="n", format_func=lambda x: f"yolo26{x}-cls")
 runs = [s for s in cls.MAIN_RUNS if s.size == size and (OUT / "preds" / f"{s.name}_test.csv").exists()]
 if runs:
     p = pd.concat([cls.load_preds(s) for s in runs])

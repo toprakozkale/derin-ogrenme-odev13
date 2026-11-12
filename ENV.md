@@ -14,6 +14,7 @@ Bu dosya her aşamada gerçek çalıştırma çıktılarıyla doldurulur; değer
 - NVIDIA sürücüsü: 580.82.07 · CUDA (sürücü): 13.0
 - Python: 3.13.16 (Colab, Eylül 2026 imajı; Ubuntu 24.04)
 - PyTorch 2.14.1+cu130 · Ultralytics 8.4.210 · Python 3.13.16 (02 notebook, 11 Kas 2026; `runs/cls/env.json`)
+- CLS eğitimleri: 9 koşu, toplam ~2 saat (T4, 11 Kas 2026; süreler `docs/gunluk.md` 12 Kas)
 - ultralytics / rfdetr / pycocotools sürümleri: _(pip freeze)_
 
 ## Seed'ler

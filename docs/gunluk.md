@@ -6,6 +6,44 @@ Panelde **İlerleme Günlüğü** sayfasında gösterilir. Buradaki her sayı ge
 
 ---
 
+## 12 Kasım 2026 — Sınıflandırma eğitimleri bitti, sonuçlar panelde
+
+### Yapılanlar
+- **Colab'da 9 eğitimin hepsi hatasız bitti** (11 Kas, T4; toplam yaklaşık 2 saat). Hiçbiri 100 epoch'a ulaşmadı, hepsi erken durdurmayla durdu:
+
+| Koşu | Epoch (durduğu / en iyi) | Süre |
+|---|---|---|
+| nano 224 — seed 0 / 1 / 2 | 49/29 · 59/39 · 60/40 | 0,190 · 0,221 · 0,227 sa |
+| small 224 — seed 0 / 1 / 2 | 32/12 · 35/15 · 44/24 | 0,135 · 0,136 · 0,182 sa |
+| nano 384 (ablasyon) — seed 0 / 1 / 2 | 36/16 · 46/26 · 45/25 | 0,251 · 0,315 · 0,305 sa |
+
+- Sonuçlar Drive'dan indirilip `scripts/import_runs.py` ile `runs/cls/`'e alındı (171 dosya).
+- **Yeni betik `scripts/make_cls_figures.py`:** notebook şekilleri Drive'daki `rapor/figures`'a yazdığı için, aynı şekiller
+  kaydedilmiş test tahminlerinden yerelde yeniden çizildi (yeniden eğitim/tahmin yok). Betik önce **tutarlılık denetimi** yapar:
+  9 koşu × 2 alt küme doğruluğu tahmin dosyalarından yeniden hesaplandı → `results.csv` ile birebir aynı; val ile seçilen
+  koşu ve en kötü 10 listesi Colab'dakiyle aynı.
+- Panelin Sınıflandırma sayfası gerçek sonuçlarla kontrol edildi (#8); karmaşıklık matrisi varsayılanı val ile seçilen model ailesi (nano) yapıldı.
+
+### İlk sonuçlar (test; 3 seed ortalaması ± std — kaynak `runs/cls/results.csv`)
+| Model | Tüm test (743) doğruluk | Temiz test (692) doğruluk | Tüm test macro F1 |
+|---|---|---|---|
+| YOLO26n-cls, 224 | 0,915 ± 0,015 | 0,910 ± 0,016 | 0,867 ± 0,036 |
+| YOLO26s-cls, 224 | 0,904 ± 0,005 | 0,898 ± 0,005 | 0,855 ± 0,020 |
+| YOLO26n-cls, 384 (ablasyon) | 0,934 ± 0,008 | 0,930 ± 0,009 | 0,898 ± 0,005 |
+
+- Val ile seçilen koşu: `ana_yolo26n-cls_im224_s1` (val 0,990 — val sızıntısı nedeniyle iyimser). Bu koşunun testi 0,931 / temiz 0,928.
+- Temiz test tüm testten yalnız ~0,5 puan düşük → test sızıntısının nota etkisi küçük.
+- Small, nano'dan iyi değil: McNemar seed 0 ve 2'de p = 1,0; seed 1'de p = 0,003 (nano lehine). Parametre 5,45 M ↔ 1,54 M,
+  T4'te model süresi 4,6 ↔ 3,9 ms/görüntü (batch 1; ön/son işlem dahil 10,8 ↔ 9,1 ms).
+- En zor sınıflar meyve hastalıkları: **Powdery Mildew Fruit** (F1 nano 0,57; çoğu Gray Mold sanılıyor) ve **Anthracnose** (F1 0,77).
+  Blossom Blight ve PM Leaf neredeyse kusursuz. 384 çözünürlük en çok PM Fruit'e yarıyor (F1 0,70).
+- **Dikkat maddesi:** gruplar arası karışma küçük — nano %2,2, small %2,4; neredeyse tamamı **yaprak → meyve** (%3,3 / %3,7).
+  Karışmaların çoğu grup **içinde** (meyve ↔ meyve: PM Fruit/Anthracnose → Gray Mold; yaprak ↔ yaprak: Leaf Spot → Angular Leafspot).
+- **En kötü 10'da not:** `powdery_mildew_fruit137` ile `164` test içinde neredeyse aynı fotoğraf (pHash 0), `anthracnose_fruit_rot94`
+  ile `100` aynı fotoğrafın kırpılmış hâli (pHash 16) → 10 hata aslında 8 farklı sahne. Raporda belirtilecek (#7).
+
+---
+
 ## 11 Kasım 2026 — Aşama 2 başladı: sınıflandırma notebook'u, Colab doğrulaması
 
 ### Yapılanlar

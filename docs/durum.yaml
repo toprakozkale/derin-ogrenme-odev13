@@ -16,7 +16,7 @@ puanlama:
   - bilesen: "Sınıflandırma deneyi"
     agirlik: 20
     durum: devam
-    not: "02 notebook'u hazır (YOLO26n/s-cls × 3 seed + imgsz 384 ablasyonu), yerel duman testi geçti; eğitim Colab'da yapılacak."
+    not: "9 eğitim Colab T4'te bitti (~2 sa). Test doğruluğu (3 seed ort.): nano 0,915, small 0,904, nano-384 0,934; sonuçlar panelde. Kalan: sonuç yorumu ve rapor."
   - bilesen: "Segmentasyon karşılaştırması (YOLO-seg ve RF-DETR)"
     agirlik: 25
     durum: bekliyor
@@ -24,7 +24,7 @@ puanlama:
   - bilesen: "Hata analizi ve \"Dikkat\" maddesi"
     agirlik: 20
     durum: bekliyor
-    not: "Meyve/yaprak karışma matrisi CLS sonuçlarıyla gelecek. Veri tarafındaki karışık görüntüler tespit edildi."
+    not: "CLS karmaşıklık + yaprak/meyve/çiçek matrisi hazır (gruplar arası karışma nano %2,2). En kötü 10 tahmin seçildi; yorumları yazılacak."
   - bilesen: "Rapor ve sunum"
     agirlik: 15
     durum: bekliyor
@@ -55,9 +55,10 @@ asamalar:
     durum: devam
     adimlar:
       - ["02 notebook'u + yerel duman testi", tamam]
-      - ["Colab eğitimleri (n/s × 3 seed + ablasyon) — sıradaki adım", bekliyor]
-      - ["Panel: Sınıflandırma sayfası (sonuçlar gelince otomatik dolar; duman verisiyle denendi)", tamam]
-      - ["Metrikler, karmaşıklık matrisi, hata analizi", bekliyor]
+      - ["Colab eğitimleri (n/s × 3 seed + ablasyon; 9/9 bitti, ~2 sa)", tamam]
+      - ["Panel: Sınıflandırma sayfası (gerçek sonuçlarla kontrol edildi)", tamam]
+      - ["Metrikler, karmaşıklık matrisi, en kötü 10 (hesaplandı)", tamam]
+      - ["Sonuç yorumu ve en kötü 10 tahminin açıklaması", bekliyor]
       - ["1. rapor", bekliyor]
   - ad: "Aşama 3 — Segmentasyon"
     durum: bekliyor

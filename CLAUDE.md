@@ -7,14 +7,15 @@ başka bilgisayara taşınmaz; **bu proje hakkında bilinmesi gereken her şey b
 ---
 
 ## 0. Kaldığımız yer — yeni oturumda önce bunu oku
-**Son güncelleme: 11 Kasım 2026 (öğleden önce).** 1. rapora (CLS) son teslim **24 Kasım 23:59**.
+**Son güncelleme: 12 Kasım 2026.** 1. rapora (CLS) son teslim **24 Kasım 23:59**.
 
 - ✅ Aşama 0 (kurulum) ve Aşama 1 (veri hazırlama) **tamamen** bitti; 01 notebook'u hem Mac'te hem Colab'da çalıştı, sonuçlar birebir aynı.
 - ✅ Roboflow çapraz kontrolü bitti (#2): 5.571 örnek, ort. IoU 0,99995; Roboflow'un atladığı 41 görüntü = bölme içi bayt kopyaları (train 13, test 28).
-- ✅ Aşama 2 kodu hazır: `02_siniflandirma` notebook'u yazıldı, yerel duman testi hatasız. Panelin Sınıflandırma sayfası sonuç
-  dosyaları gelince kendiliğinden doluyor (duman verisiyle denendi).
-- ⏳ **Colab'da sınıflandırma eğitimi başladı (11 Kas ~09:20, issue #6)** — T4, torch 2.14.1+cu130, Ultralytics 8.4.210. Bitince §6 adım 5–6.
-  Süre henüz ölçülmedi; kullanıcı ilk epoch satırlarını gönderince hesaplanacak.
+- ✅ **Aşama 2 eğitimleri bitti (#6, 11 Kas):** 9 koşu Colab T4'te ~2 saatte hatasız. Sonuçlar `runs/cls/`'te (12 Kas'ta Drive'dan
+  alındı; başka Mac'te §5 adım 11), şekiller `scripts/make_cls_figures.py` ile yerelde çizildi, panel sayfası gerçek veriyle kontrol edildi (#8).
+  Test doğruluğu (3 seed ort.): nano 0,915 · small 0,904 · nano-384 0,934; temiz test ~0,5 puan düşük. Val ile seçilen: `ana_yolo26n-cls_im224_s1`.
+  Ayrıntı ve tablo: `docs/gunluk.md` (12 Kas).
+- ⏭️ **Sıradaki iş:** #7 sonuç yorumu + en kötü 10 açıklaması, sonra Aşama 3 (03 segmentasyon notebook'u). Raporlar en sona bırakıldı (kullanıcı isteği).
 - ✅ Sızıntı yaklaşımı **onaylandı** (11 Kas, #1): resmi bölme + tüm test ve temiz test ayrı raporlanır.
 - ⏳ Kullanıcının kararı bekleyen: hocanın çalıştırabileceği Colab linki (#4; öneri: teslim günü depoyu public yapmak).
 - Yeni bilgisayarda başlıyorsan: §5'teki kurulumu yap, sonra `git pull` ve paneli aç.
@@ -77,6 +78,7 @@ src/            config.py (yollar, sınıflar, eşikler; ODEV13_ROOT / ODEV13_DA
                 cls.py (Aşama 2: eğitim — kaldığı yerden devam —, tahmin, değerlendirme, verimlilik, en kötü 10)
 scripts/        prepare_data.py (Aşama 1'i koşar) · build_notebook_01.py / _02.py (notebook'ları üretir)
                 _nb_common.py (notebook'ların ortak Colab kurulum hücresi) · import_runs.py (Drive'dan inen sonuç zip'ini runs/'a alır)
+                make_cls_figures.py (runs/cls'ten rapor şekilleri + tutarlılık denetimi)
                 prepare_roboflow_upload.py (ham veriden data/roboflow_upload/{train,valid,test})
 notebooks/      01_veri_hazirlama.ipynb (çıktılı; Mac + Colab'da çalıştı) · 02_siniflandirma.ipynb (Colab'da eğitilecek) · 03 yazılacak
 app/            Streamlit paneli: Ana_Sayfa.py + sayfalar/ (klasör adı bilerek "pages" değil — Streamlit'in eski otomatik menüsü devreye girmesin)
@@ -150,6 +152,8 @@ Colab Secrets ve Roboflow hesaba bağlıdır; yeni Mac'te yeniden kurmak gerekme
 3. **Tümünü çalıştır.** Veri her oturumda ~1 dk'da yeniden üretilir; eğitim koşuları `MyDrive/odev13/runs/cls/train/` altına yazılır.
 4. Bağlantı koparsa: Oturumu yeniden başlat → Tümünü çalıştır. Biten koşular atlanır, yarım kalan `last.pt`'den devam eder.
 5. Bitince Drive'da `odev13/runs/cls` → sağ tık → İndir → yerelde `scripts/import_runs.py` → panelin Sınıflandırma sayfası dolar.
+   Şekiller Drive'daki `rapor/figures`'a yazılır; indirilmediyse `.venv/bin/python scripts/make_cls_figures.py` aynı şekilleri
+   kaydedilmiş tahminlerden yeniden çizer (ve `results.csv` ile tutarlılığı denetler).
 6. `ENV.md`'ye Colab'daki torch/ultralytics sürümlerini (`runs/cls/env.json`) yaz; `docs/gunluk.md`'ye kayıt ekle.
 
 **Roboflow**
@@ -174,10 +178,10 @@ Bir iş bitince: ilgili issue'yu kapat, `docs/durum.yaml` + `docs/gunluk.md` + b
 | 3 | 01 notebook'u Colab'da çalıştır | ✅ kapandı (11 Kas) |
 | 4 | [Karar] Hocanın çalıştırabileceği Colab linki (private depo) | açık — kullanıcı |
 | 5 | 02 notebook'u + yerel duman testi | ✅ kapandı (11 Kas) |
-| 6 | Colab: CLS eğitimleri | **sürüyor** (11 Kas'ta başlatıldı) |
-| 7 | CLS sonuç analizi + en kötü 10 yorumları | eğitimden sonra |
-| 8 | Panel CLS sayfası | kod hazır ve duman verisiyle denendi; gerçek sonuçla kontrol edilip kapanacak |
-| 9 | 1. rapor — 24 Kasım | eğitimden sonra |
+| 6 | Colab: CLS eğitimleri | ✅ kapandı (11 Kas bitti, 12 Kas içe alındı) |
+| 7 | CLS sonuç analizi + en kötü 10 yorumları | **sıradaki** (sayılar hazır) |
+| 8 | Panel CLS sayfası | ✅ kapandı (12 Kas, gerçek sonuçla kontrol edildi) |
+| 9 | 1. rapor — 24 Kasım | en sona (kullanıcı isteği) |
 | 10–13 | 03 notebook · Colab SEG eğitimleri · SEG analizi · panel SEG sayfası | Aşama 3 |
 | 14 | 2. rapor + sunum — 8 Aralık | Aşama 3 sonrası |
 | 15 | Mac mini kurulumu | açık |
@@ -189,6 +193,7 @@ git pull                                          # başka Mac'te yapılanları 
 .venv/bin/python -m pytest -q tests               # testler (13)
 .venv/bin/streamlit run app/Ana_Sayfa.py          # panel → http://localhost:8501
 .venv/bin/python scripts/import_runs.py ~/Downloads/cls-*.zip   # Colab sonuçlarını runs/'a al
+.venv/bin/python scripts/make_cls_figures.py      # CLS şekillerini runs/cls'ten yeniden çiz + tutarlılık denetimi
 .venv/bin/python scripts/build_notebook_02.py     # 02 notebook'unu yeniden üret (01 için build_notebook_01.py)
 cd notebooks && ODEV13_SMOKE=1 ../.venv/bin/jupyter nbconvert --to notebook --execute --ExecutePreprocessor.kernel_name=odev13 02_siniflandirma.ipynb --output-dir /tmp   # 02 duman testi
 ```
