@@ -6,6 +6,54 @@ Panelde **İlerleme Günlüğü** sayfasında gösterilir. Buradaki her sayı ge
 
 ---
 
+## 16–17 Kasım 2026 — Colab SEG eğitimleri: 9 koşudan 5'i bitti, oturum gece koptu (#11)
+
+Kaynak: Colab çıktısı (Claude in Chrome ile okundu) ve Drive'daki dosya saatleri. Saatler Türkiye saati (Colab günlüğü UTC yazar).
+
+| Koşu | Durum | Epoch | Süre (o oturum) | En iyi val maske mAP50-95 (kütüphanenin kendi ölçümü) |
+|---|---|---|---|---|
+| `ana_yolo26n-seg_im480_s0` | ✅ bitti | 100/100 (erken durmadı) | 64,5 dk | 0,7311 |
+| `ana_yolo26s-seg_im480_s0` | ✅ bitti | 100/100 (erken durmadı) | 74,9 dk | 0,7603 |
+| `ana_rfdetr-seg-small_im480_s0` | ✅ bitti (17 Kas 00:17) | 40'ta erken durdu (20 tur iyileşme yok) | 122,1 dk (16 Kas 22:15'te 12 Kas'ta yarıda kalan yerden devam etti) | 0,789 (EMA) |
+| `ana_yolo26n-seg_im480_s1` | ✅ bitti | — | ~64 dk (00:17–01:21) | — |
+| `ana_yolo26s-seg_im480_s1` | ✅ bitti | — | ~77 dk (01:21–02:38) | — |
+| `ana_rfdetr-seg-small_im480_s1` | ⏸ yarıda | ~13 (son `last.ckpt` 03:32) | 02:38–03:34 | (ara değer, sayılmaz) |
+| seed 2 (3 koşu) | bekliyor | | | |
+
+- **Süreler:** bir seed'in üç modeli ≈ 4,5–5 saat (YOLO n ~65 dk, s ~75 dk, RF-DETR ~4,5 dk/epoch → erken durursa ~2–3 sa).
+  Kalan iş ≈ 7–8 saat (RF-DETR s1'in kalanı + seed 2).
+- **Oturum koptu:** Colab çalışma zamanı ~03:34'te bağlantısını kaybetti (oturum 16 Kas 19:02'de başlamıştı, ~8,5 sa).
+  Sebep (boşta kalma mı, GPU kotası mı) görülemedi. Dosyalar sağlam; `Tümünü çalıştır` biten 5 koşuyu atlar, RF-DETR s1 `last.ckpt`'den sürer.
+- **Colab defterinde hücre karışıklığı:** Kullanıcının Colab kopyasında eğitim hücresi (`for spec in RUNS: seg.train(...)`) önce
+  silinmişti → `Tümünü çalıştır` eğitimi atlayıp değerlendirmeye geçti ve 8. bölümde (`select_by_val` → boş liste) durdu.
+  Hücre yeniden eklendi ama önce defterin sonuna, sonra **en üste (kurulum hücresinden önce)** düştü. Bu oturumda çalıştı (kurulum
+  zaten yapılmıştı) ama yeni oturumda `NameError` verir. **Çözüm:** yeni oturumda defteri GitHub'daki temiz hâliyle yeniden yüklemek
+  (`Dosya → Not defteri yükle → notebooks/03_segmentasyon.ipynb`) ya da hücreyi "3 · Eğitim" başlığının altına taşımak.
+- **Ara değerlendirme (sonuç değil):** Eğitimsiz koşulan `Tümünü çalıştır` YOLO s0 koşularını ortak kodla değerlendirdi. Çapraz kontrol
+  val mAP50-95 kütüphane ↔ bizim: nano 0,7311 ↔ 0,7019, small 0,7603 ↔ 0,7476 — yakın (iki kod farklı enterpolasyon/maske çözünürlüğü
+  kullanıyor; sınıf eşleme hatası olsaydı fark çok büyük olurdu). Drive'daki `runs/seg/results.csv` vb. bu ara hâli tutuyor;
+  tüm koşular bitince değerlendirme hücreleri yeniden çalışıp üzerine yazacak. Test sayıları rapora **girmez**.
+- **Not:** İki YOLO s0 koşusu da 100 epoch sınırına dayandı (erken durdurma tetiklenmedi) → eğitim eğrileri raporda yorumlanmalı
+  (val mAP hâlâ hafif yükseliyor olabilir; bütçe eşitliği için sınır değiştirilmedi).
+- **Açık karar:** 3 seed mi 2 seed mi — Claude 3 seed önerdi (8 Aralık'a zaman var, bir oturum daha yeter); kullanıcı henüz yanıtlamadı.
+- Çalışma başka bilgisayara (MacBook) devredilmek üzere CLAUDE.md §0 ve §6a güncellendi.
+
+## 12 Kasım 2026 (gece) — Colab SEG eğitimi başladı, panelin Segmentasyon sayfası yazıldı (#11, #13)
+
+- **Colab (#11):** Drive'daki kod kopyası, git'te izlenmeyen 6 eski CLS şekli (`rapor/figures/cls_*`) yüzünden güncellenemiyordu
+  (kullanıcı eski yüklenen defteri çalıştırdığı için yeni kurulum hücresi devreye girmedi). Kullanıcının onayıyla bu 6 dosya
+  Google Drive web arayüzünden `odev13/_git_yedek/`'e **taşındı** (silinmedi; aynıları git'te). Sonra kod güncellendi ve eğitim başladı.
+- İlk ölçüm (YOLO26n-seg, seed 0, T4): epoch ≈ 38 sn (eğitim ~34 + val ~4), GPU belleği 5–7 GB; val maske mAP50-95
+  epoch 1'de 0,238 → epoch 8'de 0,537. Veri sayıları Colab'da da aynı (örnek 3.540 / 751 / 1.416, görüntü 1.450 / 307 / 743).
+  Diğer modellerin süreleri henüz ölçülmedi.
+- **Panel Segmentasyon sayfası (#13):** koşu durumu, eğitim eğrileri (yarım koşular da), ana tablo + grafik (mAP50-95, mAP50,
+  mIoU, Dice; tüm/temiz test), çapraz kontrol tablosu, hastalık bazında AP/IoU/Dice, örnek karışma matrisi (kaçırılan/fazladan
+  dahil) + yaprak/meyve/çiçek, hız–doğruluk grafiği, en kötü 10 (gerçek | YOLO | RF-DETR maskeleri, `preds/*.json.gz`'den).
+  `ODEV13_SEG_DIR=runs/seg_duman` ile duman verisiyle tarayıcıda sınandı (kayıp grafiğindeki kesme işaretli alan adı hatası
+  düzeltildi). `src/seg.py`'ye `semantic_from_results`, `parse_run` eklendi. Issue #10 ve #15 kapatıldı.
+
+---
+
 ## 12 Kasım 2026 (akşam) — Mac mini kuruldu, 03 segmentasyon notebook'u yazıldı ve duman testinden geçti (#15, #10)
 
 ### Mac mini kurulumu (#15)

@@ -20,7 +20,7 @@ puanlama:
   - bilesen: "Segmentasyon karşılaştırması (YOLO-seg ve RF-DETR)"
     agirlik: 25
     durum: devam
-    not: "03 notebook'u ve ortak değerlendirme kodu yazıldı, yerel duman testi geçti (12 Kas). Kararlar: ortak çözünürlük 480, RF-DETR Seg Small. Sırada Colab eğitimleri."
+    not: "Colab T4 eğitimleri sürüyor: 9 koşudan 5'i bitti (17 Kas). RF-DETR seed 1 yarıda (oturum koptu), seed 2 bekliyor. Süreler: YOLO n ~65 dk, s ~75 dk, RF-DETR ~4,5 dk/epoch."
   - bilesen: "Hata analizi ve \"Dikkat\" maddesi"
     agirlik: 20
     durum: bekliyor
@@ -67,7 +67,7 @@ asamalar:
       - ["Kararlar: ortak çözünürlük 480, RF-DETR Seg Small (kullanıcı, 12 Kas)", tamam]
       - ["Ortak değerlendirme kodu + testler (mAP, mIoU, Dice, örnek karışma)", tamam]
       - ["03 notebook'u + yerel duman testi", tamam]
-      - ["Colab eğitimleri (YOLO26n/s-seg, RF-DETR Seg Small × 3 seed)", bekliyor]
+      - ["Colab eğitimleri (YOLO26n/s-seg, RF-DETR Seg Small × 3 seed) — 5/9 bitti (17 Kas)", devam]
       - ["Test değerlendirmesi, verimlilik, en kötü 10 (Colab'da)", bekliyor]
-      - ["Panel: Segmentasyon sayfası", bekliyor]
+      - ["Panel: Segmentasyon sayfası (yazıldı, duman verisiyle sınandı; gerçek sonuçlar bekleniyor)", devam]
       - ["2. rapor + sunum", bekliyor]

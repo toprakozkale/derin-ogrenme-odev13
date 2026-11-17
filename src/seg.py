@@ -496,13 +496,35 @@ def worst_images(specs: list[RunSpec], k: int = 10) -> pd.DataFrame:
     return w.sort_values("iou_ortalama").head(k).reset_index(drop=True)
 
 
+def semantic_from_results(preds: list[dict], shape: tuple[int, int], thr: float) -> np.ndarray:
+    """Bir görüntünün kayıtlı tahminlerinden (COCO results) piksel sınıf haritası; eşiğin altındakiler atılır."""
+    keep = [r for r in preds if r["score"] >= thr]
+    _, sems = _sems(([], np.zeros(0, int), []), keep, shape, [thr])
+    return sems[thr]
+
+
 def masks_for(spec: RunSpec, split: str, image_id: int, thr: float) -> np.ndarray:
     """Kayıtlı tahminlerden bir görüntünün piksel sınıf haritası (şekiller için)."""
     d = json.loads(gzip.decompress(preds_path(spec, split).read_bytes()))
     im = next(i for i in load_gt(split)["images"] if i["id"] == image_id)
-    preds = [r for r in d["results"] if r["image_id"] == image_id and r["score"] >= thr]
-    _, sems = _sems(([], np.zeros(0, int), []), preds, (im["height"], im["width"]), [thr])
-    return sems[thr]
+    preds = [r for r in d["results"] if r["image_id"] == image_id]
+    return semantic_from_results(preds, (im["height"], im["width"]), thr)
+
+
+def parse_run(name: str) -> RunSpec | None:
+    """Klasör adından RunSpec ('{tag}_{model}_im{imgsz}_s{seed}'); tanınmazsa None."""
+    import re
+    m = re.fullmatch(r"(?P<tag>[^_]+)_(?P<model>.+)_im(?P<imgsz>\d+)_s(?P<seed>\d+)", name)
+    if not m:
+        return None
+    model = m["model"]
+    if model.startswith(YOLO_FAMILY) and model.endswith("-seg"):
+        arch, size = "yolo", model[len(YOLO_FAMILY):-len("-seg")]
+    elif model.startswith("rfdetr-seg-"):
+        arch, size = "rfdetr", model[len("rfdetr-seg-"):]
+    else:
+        return None
+    return RunSpec(arch, size, int(m["seed"]), int(m["imgsz"]), m["tag"])
 
 
 def gt_semantic(split: str, image_id: int) -> np.ndarray:
