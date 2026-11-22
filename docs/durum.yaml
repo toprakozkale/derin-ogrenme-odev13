@@ -71,3 +71,48 @@ asamalar:
       - ["Test değerlendirmesi, verimlilik, en kötü 10 (Colab'da)", bekliyor]
       - ["Panel: Segmentasyon sayfası (yazıldı, duman verisiyle sınandı; gerçek sonuçlar bekleniyor)", devam]
       - ["2. rapor + sunum", bekliyor]
+
+# Colab SEG eğitim koşuları (#11) — Genel Bakış'ta tablo olarak gösterilir
+seg_kosulari:
+  - [ana_yolo26n-seg_im480_s0, tamam, "100 epoch (sınıra dayandı), 64,5 dk — 16 Kas"]
+  - [ana_yolo26s-seg_im480_s0, tamam, "100 epoch (sınıra dayandı), 74,9 dk — 16 Kas"]
+  - [ana_rfdetr-seg-small_im480_s0, tamam, "40. epoch'ta erken durdu — 17 Kas 00:17"]
+  - [ana_yolo26n-seg_im480_s1, tamam, "~64 dk — 17 Kas 01:21"]
+  - [ana_yolo26s-seg_im480_s1, tamam, "~77 dk — 17 Kas 02:38"]
+  - [ana_rfdetr-seg-small_im480_s1, tamam, "48. epoch'ta erken durdu — 19 Kas (3 oturumda)"]
+  - [ana_yolo26n-seg_im480_s2, tamam, "19 Kas ~23:07"]
+  - [ana_yolo26s-seg_im480_s2, tamam, "20 Kas ~00:23"]
+  - [ana_rfdetr-seg-small_im480_s2, devam, "kota iki kez kesti; 22 Kas ~13:00'te 40. epoch'tan sürdü"]
+
+# Raporlar ve teslim — "Raporlar ve Teslim" sayfası okur
+raporlar:
+  - ad: "1. rapor — Sınıflandırma (CLS)"
+    teslim: "2026-11-24 23:59"
+    pdf: rapor/rapor1_cls.pdf
+    docx: rapor/rapor1_cls.docx
+    uretici: scripts/build_rapor1.py
+    colab: "https://colab.research.google.com/github/toprakozkale/derin-ogrenme-odev13/blob/main/notebooks/02_siniflandirma.ipynb"
+    kontrol:
+      - ["Biçim: Türkçe, iki sütun IEEE, 4–6 sayfa", tamam]
+      - ["Tüm sayılar sonuç dosyalarından betikle aktarıldı", tamam]
+      - ["Zorunlu ölçütler: doğruluk, sınıf bazında P/R/F1, karmaşıklık matrisi", tamam]
+      - ["Meyve/yaprak karışması (\"Dikkat\" maddesi)", tamam]
+      - ["En kötü 10 tahmin ve yorumu", tamam]
+      - ["Yapay zekâ araçlarının kullanımı beyanı", tamam]
+      - ["Colab ve GitHub linkleri ekte", tamam]
+      - ["Defterler gizli anahtarsız çalışır (misafir kipi)", tamam]
+      - ["Kullanıcının okuması ve düzeltmeler", bekliyor]
+      - ["Teslim günü depoyu public yapmak, Colab linkini başka hesapla gizli pencerede denemek", bekliyor]
+      - ["PDF + Colab linkini tekinler.cs@gmail.com'a göndermek", bekliyor]
+      - ["Sunum (10 dk)", bekliyor]
+  - ad: "2. rapor — Bölütleme (SEG)"
+    teslim: "2026-12-08 23:59"
+    pdf: rapor/rapor2_seg.pdf
+    docx: rapor/rapor2_seg.docx
+    colab: "https://colab.research.google.com/github/toprakozkale/derin-ogrenme-odev13/blob/main/notebooks/03_segmentasyon.ipynb"
+    kontrol:
+      - ["Colab eğitimleri (9 koşu)", devam]
+      - ["Test değerlendirmesi, verimlilik, en kötü 10", bekliyor]
+      - ["Karşılaştırma ve hata analizi (YOLO-seg ↔ RF-DETR)", bekliyor]
+      - ["Rapor taslağı", bekliyor]
+      - ["Sunum (10 dk)", bekliyor]

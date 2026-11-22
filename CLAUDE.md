@@ -142,6 +142,7 @@ weights/        GIT'TE YOK — ön-eğitimli ağırlıklar (otomatik iner)
 |---|---|
 | Genel Bakış | `docs/durum.yaml` + `data/derived/summary.json` |
 | İlerleme Günlüğü | `docs/gunluk.md` + `git log` |
+| Raporlar ve Teslim | `docs/durum.yaml` → `raporlar` (kontrol listesi, dosya yolları, Colab linki) + `rapor/*.pdf|docx` (sayfa önizlemesi `pypdfium2` ile). Genel Bakış ayrıca `seg_kosulari` tablosunu gösterir |
 | Rapor Şekilleri | `rapor/figures/*.png` (adlar/açıklamalar `app/sayfalar/sekiller.py` içinde) |
 | Veri Seti · Etiket Denetimi · Sızıntı | `data/derived/` |
 | Sınıflandırma | `runs/cls/` (results.csv, per_class.csv, preds/, mcnemar.csv, efficiency.csv, bootstrap.csv, worst10.csv, train/*/results.csv). Geliştirmede başka klasör: `ODEV13_CLS_DIR=...` (adında "duman" varsa sayfada uyarı çıkar) |

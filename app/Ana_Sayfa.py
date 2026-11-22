@@ -10,6 +10,7 @@ pages = {
     "Proje": [
         st.Page("sayfalar/genel.py", title="Genel Bakış", icon="🏠", default=True),
         st.Page("sayfalar/gunluk.py", title="İlerleme Günlüğü", icon="📒"),
+        st.Page("sayfalar/raporlar.py", title="Raporlar ve Teslim", icon="📝"),
         st.Page("sayfalar/sekiller.py", title="Rapor Şekilleri", icon="📊"),
     ],
     "Aşama 1 · Veri": [

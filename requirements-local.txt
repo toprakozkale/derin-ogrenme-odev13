@@ -200,3 +200,4 @@ widgetsnbextension==4.0.16
 wrapt==2.6.0.dev1
 yarl==1.25.1
 python-docx==1.1.2
+pypdfium2==4.30.0

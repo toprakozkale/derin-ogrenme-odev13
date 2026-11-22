@@ -46,6 +46,26 @@ for a in d["asamalar"]:
         for ad, s in a["adimlar"]:
             st.markdown(f"{STATUS_ICON[s]} {ad}")
 
+# --- Colab SEG eğitim koşuları
+if d.get("seg_kosulari"):
+    kos = d["seg_kosulari"]
+    n_ok = sum(s == "tamam" for _, s, _ in kos)
+    st.subheader(f"Colab segmentasyon eğitimleri — {n_ok}/{len(kos)} koşu bitti")
+    st.progress(n_ok / len(kos))
+    st.dataframe(pd.DataFrame([{"Durum": STATUS_ICON[s], "Koşu": k, "Not": nt} for k, s, nt in kos]),
+                 hide_index=True, width="stretch")
+
+# --- raporlar
+if d.get("raporlar"):
+    st.subheader("Raporlar")
+    rc = st.columns(len(d["raporlar"]))
+    for col, r in zip(rc, d["raporlar"]):
+        ok = sum(s == "tamam" for _, s in r["kontrol"])
+        with col:
+            st.metric(r["ad"], f"{ok}/{len(r['kontrol'])} madde",
+                      help="Teslim kontrol listesi — ayrıntı ve PDF önizlemesi 'Raporlar ve Teslim' sayfasında")
+            st.page_link("sayfalar/raporlar.py", label="Raporlar ve Teslim sayfasına git", icon="📝")
+
 # --- veri özeti
 if data_ready():
     s = summary()
