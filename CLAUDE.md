@@ -9,12 +9,14 @@ başka bilgisayara taşınmaz; **bu proje hakkında bilinmesi gereken her şey b
 ## 0. Kaldığımız yer — yeni oturumda önce bunu oku
 **Son güncelleme: 22 Kasım 2026 (öğle).** Teslimler: 1. rapor (CLS) **24 Kasım 23:59** · 2. rapor (SEG) **8 Aralık 23:59**.
 
-> **SEG eğitimleri bitti (#11, 9/9, 22 Kas 13:35) ve sonuçlar `runs/seg`'e alındı** (zip 633 MB; ağırlıklar dahil indi, git'e girmez).
-> Test maske mAP50-95 (3 seed): YOLO26n 0,600 · YOLO26s 0,623 · RF-DETR 0,691; mIoU 0,682 · 0,710 · 0,770; uçtan uca 18,1 · 18,9 · 60,0 ms.
-> Çapraz kontrol tutarlı. Panel Segmentasyon sayfası gerçek veriyle denetlendi (#13). Ayrıntı `docs/gunluk.md` (22 Kas öğleden sonra).
-> **Sıradaki:** `rapor/figures/seg_*` Drive'da kaldı (indir ya da yerelde yeniden çiz) → #12 yorum → 2. rapor (8 Ara).
-> Kullanıcı ayrıca paneli **Vercel'de statik site** olarak yayınlamak istiyor (Streamlit Vercel'de çalışmaz; statik site önerildi,
-> erişim kararı açık: davetli mi herkese açık mı). **1. rapor taslağı hazır**, kullanıcının okuması bekleniyor; teslim günü depo public (#4).
+> **Durum (22 Kas akşam):** bütün deneyler bitti; **iki rapor taslağı hazır** (`rapor/rapor1_cls.pdf` 4 s., `rapor/rapor2_seg.pdf` 5 s.;
+> betikler `scripts/build_rapor1.py`, `build_rapor2.py`, ortak `_rapor_ortak.py`; SEG şekilleri `scripts/make_seg_figures.py`).
+> **Ödev metnine göre tek eksik: 10 dk'lık sunum** (iki teslim için). Kullanıcının raporları okuması bekleniyor.
+> **Statik site:** `scripts/build_site.py` → `site/` (git dışı) → Vercel, **herkese açık tam site** (kullanıcı kararı, 22 Kas).
+> **Yayında (22 Kas 15:46): https://cilek-hastaligi-odev13.vercel.app** (Vercel projesi `cilek-hastaligi-odev13`, hesap `toprakozkale-4237`;
+> CLI oturumu açık). Güncelleme: `.venv/bin/python scripts/build_site.py && cd site && vercel deploy --prod --yes` (`site/.vercel` korunur).
+> `vercel link` site/'a `.env.local` (OIDC belirteci) bıraktı — Vercel bunu yüklemiyor (canlıda 404 denetlendi); build_site onu siler.
+> Teslim günü: depo public (#4), Colab linkini başka hesapla dene, PDF + link → tekinler.cs@gmail.com.
 
 - 📝 **1. rapor taslağı (21 Kas akşamı):** `scripts/build_rapor1.py` → `rapor/rapor1_cls.docx` (Türkçe, iki sütun IEEE, A4;
   bütün sayılar betikte `runs/cls` + `data/derived` dosyalarından okunur, Türkçe sayı ekleri `ek()` ile). Metni değiştirmek için
@@ -122,7 +124,8 @@ src/            config.py (yollar, sınıflar, eşikler; ODEV13_ROOT / ODEV13_DA
                         en kötü 10, verimlilik; çıktılar runs/seg, duman testi runs/seg_duman)
 scripts/        prepare_data.py (Aşama 1'i koşar) · build_notebook_01.py / _02.py / _03.py (notebook'ları üretir)
                 _nb_common.py (notebook'ların ortak Colab kurulum hücresi) · import_runs.py (Drive'dan inen sonuç zip'ini runs/'a alır)
-                make_cls_figures.py (runs/cls'ten rapor şekilleri + tutarlılık denetimi)
+                make_cls_figures.py / make_seg_figures.py (runs/cls, runs/seg'den rapor şekilleri + tutarlılık denetimi)
+                build_rapor1.py / build_rapor2.py (+ _rapor_ortak.py): raporların .docx'i (sayılar betikle) · build_site.py (Vercel statik site)
                 prepare_roboflow_upload.py (ham veriden data/roboflow_upload/{train,valid,test})
 notebooks/      01_veri_hazirlama.ipynb (çıktılı; Mac + Colab'da çalıştı) · 02_siniflandirma.ipynb (Colab'da çalıştı, 11 Kas)
                 03_segmentasyon.ipynb (12 Kas; yerel duman testi geçti, Colab'da çalıştırılacak — #11)
@@ -283,9 +286,9 @@ Bir iş bitince: ilgili issue'yu kapat, `docs/durum.yaml` + `docs/gunluk.md` + b
 | 9 | 1. rapor — 24 Kasım | taslak hazır (22 Kas, 4 sayfa PDF) — kullanıcı okuyacak |
 | 10 | 03 segmentasyon notebook'u + yerel duman testi | ✅ kapandı (12 Kas) |
 | 11 | Colab: SEG eğitimleri (YOLO26-seg n/s, RF-DETR Seg Small) | ✅ 9/9 bitti, içe alındı (22 Kas) |
-| 12 | SEG sonuçları: karşılaştırma + hata analizi | sıradaki (sayılar hazır, yorum yazılacak) |
+| 12 | SEG sonuçları: karşılaştırma + hata analizi | ✅ 2. rapor taslağında (22 Kas) |
 | 13 | Panel: Segmentasyon sayfası | ✅ gerçek sonuçlarla denetlendi (22 Kas) |
-| 14 | 2. rapor + sunum — 8 Aralık | Aşama 3 sonrası |
+| 14 | 2. rapor + sunum — 8 Aralık | rapor taslağı hazır (22 Kas, 5 s.); sunum yok |
 | 15 | Mac mini kurulumu | ✅ kapandı (12 Kas): klon `~/Desktop/derin-ogrenme-odev13` (§5'teki addan farklı), Python 3.13.18, veri hazır (temiz test 692), testler geçti, panel açıldı. Disk ~16 GB boş — dikkat |
 
 ## 8. Sık komutlar

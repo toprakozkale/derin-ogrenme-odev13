@@ -6,6 +6,45 @@ Panelde **İlerleme Günlüğü** sayfasında gösterilir. Buradaki her sayı ge
 
 ---
 
+## 22 Kasım 2026 (akşam) — Ödev metnine göre eksik denetimi, SEG şekilleri, 2. rapor taslağı, statik site (#12, #14)
+
+**Ödev metnine (`docs/Derin_Ogrenme_Odev_Gorevleri.pdf`) göre denetim**
+| İstenen | Durum |
+|---|---|
+| Veri hazırlama defteri (indirme, temizlik, dönüşüm, bölme; tekrarlanabilir) | ✅ 01 defteri |
+| Sınıflandırma: en az iki model boyu | ✅ YOLO26n/s-cls × 3 tohum + 384 ablasyonu |
+| Segmentasyon: YOLO-seg ↔ RF-DETR, aynı bölme | ✅ 9 koşu |
+| Zorunlu ölçütler — CLS: doğruluk, sınıf P/R/F1, karmaşıklık; SEG: mIoU, Dice, mAP50, mAP50-95 (+ sınıf IoU) | ✅ |
+| Karşılaştırma: aynı testte skor, ms/görüntü, parametre (+ GPU bellek) | ✅ |
+| Hata analizi: en kötü 10 tahmin görselleri + yorum | ✅ CLS ve SEG (iki raporda) |
+| Dikkat: JSON → YOLO-seg/COCO (Roboflow), meyve/yaprak karışma matrisi | ✅ (dönüşüm Python, Roboflow bağımsız denetim — raporda açıkça yazılı) |
+| 4–6 sayfa rapor | ✅ 1. rapor 4, 2. rapor 5 sayfa (taslak) |
+| Çalıştırılabilir Colab linki | ⏳ defterler misafir kipine hazır; depo teslim günü public yapılınca denenecek |
+| **10 dakikalık sunum** | ❌ **eksik** — iki teslim için de henüz yok |
+
+**SEG şekilleri:** Drive'daki `rapor/figures/seg_*` indirilmek yerine yeni `scripts/make_seg_figures.py` ile kaydedilmiş tahminlerden
+yerelde çizildi (eğriler, sınıf bazında, 3 karışma matrisi, doğruluk–hız, en kötü 10). Betik önce **tutarlılık denetimi** yapar:
+9 koşunun test maske mAP50-95'i `preds/*_test.json.gz`'den yerelde yeniden hesaplandı → `results.csv` ile birebir aynı (yerel COCO verisi Colab'dakiyle aynı).
+
+**2. rapor taslağı (#14):** `scripts/build_rapor2.py` → `rapor/rapor2_seg.docx` + Word'den PDF (**5 sayfa**, 7 tablo, 4 şekil, 11 kaynak).
+Rapor betiklerinin ortak parçaları `scripts/_rapor_ortak.py`'ye taşındı (1. raporun metni birebir aynı kaldığı denetlendi).
+Yeni bulgular (hepsi `runs/seg`'den):
+- Aynı tohumlu YOLO26s ↔ RF-DETR görüntü IoU'su (Wilcoxon): RF-DETR üç tohumda da daha iyi (daha iyi olduğu görüntü 490/487/529,
+  YOLO'nun 242/244/199; p < 10⁻¹³).
+- Örnek düzeyi (3 tohum toplamı, 4.248 gerçek lezyon): kaçırılan YOLO26n 1.133, YOLO26s 1.075, RF-DETR 736; eşleşenlerde sınıf doğru %98–99.
+  RF-DETR'da en çok kaçırılan: meyve küllemesi (%32), antraknoz (%24), köşeli yaprak lekesi (%22).
+- En kötü 10 (SEG): dört hata türü — kaçırılan lezyon (397, 401, 528), doğru bölge yanlış yaprak lekesi (Leaf Spot 497/586 → Angular),
+  organ dışı/meyve içi yanlış sınıf (YOLO yaprağı Gray Mold boyadı: 355, 408; RF-DETR Anthracnose 101 → Gray Mold — bu görüntü CLS en kötü
+  10'unda da vardı), etiket tutarsızlığı (Gray Mold 517; tüm yaprak ↔ tek leke etiket stili).
+- Afzaal ve ark. makalesinin sayıları alınamadı (MDPI otomatik erişime 403) → raporda sayısal karşılaştırma yok, yalnız yöntem anılıyor.
+
+**Statik site (Vercel):** Kullanıcı paneli Vercel'de yayınlamak istedi; Streamlit Vercel'de çalışmadığı için `scripts/build_site.py`
+aynı kaynaklardan düz HTML üretir (`site/`, git dışı): Genel Bakış, Raporlar (PDF gömülü), Veri, Sınıflandırma, Segmentasyon, Günlük.
+Açık/koyu tema, telefonda yatay kaydırma yok (denetlendi). Erişim kararı (kullanıcı, 22 Kas): **herkese açık, tam site** (PDF ve fotoğraflar dahil).
+Kullanıcı `vercel login` ile girdi; site **https://cilek-hastaligi-odev13.vercel.app** adresinde yayında (Production, Ready). `vercel link` site klasörüne `.env.local` bıraktı; canlıda `/.env.local` 404 döndü (yüklenmedi).
+
+---
+
 ## 22 Kasım 2026 (öğleden sonra) — SEG eğitimleri bitti (9/9), sonuçlar içe alındı, panel gerçek veriyle denetlendi (#11, #13)
 
 Kaynak: `runs/seg/*` (Colab'dan Drive üzerinden indirildi, `scripts/import_runs.py`; zip 633 MB, 231 dosya), `DONE` işaretleri (UTC → TR +3).

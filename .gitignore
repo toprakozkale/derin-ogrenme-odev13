@@ -50,3 +50,7 @@ weights/
 
 # Colab kurulum hücresinin çakışan dosyaları taşıdığı yedek klasörü (Drive kopyasında)
 _git_yedek/
+
+# Vercel için üretilen statik site (scripts/build_site.py) — kaynaktan yeniden üretilir
+site/
+.vercel/

@@ -19,16 +19,16 @@ puanlama:
     not: "9 eğitim Colab T4'te bitti (~2 sa). Test doğruluğu (3 seed ort.): nano 0,915, small 0,904, nano-384 0,934; sonuç yorumu 1. rapor taslağında (22 Kas)."
   - bilesen: "Segmentasyon karşılaştırması (YOLO-seg ve RF-DETR)"
     agirlik: 25
-    durum: devam
-    not: "9/9 eğitim bitti, sonuçlar içe alındı (22 Kas). Test maske mAP50-95 (3 seed ort.): YOLO26n 0,600 · YOLO26s 0,623 · RF-DETR 0,691; hız 18–19 ↔ 60 ms. Kalan: yorum ve 2. rapor."
+    durum: tamam
+    not: "9/9 eğitim, ortak değerlendirme ve karşılaştırma bitti (22 Kas). Test maske mAP50-95 (3 seed ort.): YOLO26n 0,600 · YOLO26s 0,623 · RF-DETR 0,691; uçtan uca 18–19 ↔ 60 ms; Wilcoxon ile RF-DETR üstünlüğü anlamlı."
   - bilesen: "Hata analizi ve \"Dikkat\" maddesi"
     agirlik: 20
-    durum: devam
-    not: "CLS: karmaşıklık + yaprak/meyve/çiçek matrisi (gruplar arası karışma nano %2,1) ve en kötü 10 yorumu 1. rapor taslağında. SEG kısmı eğitimler bitince."
+    durum: tamam
+    not: "Meyve/yaprak karışması: CLS %2,1–2,4, SEG %0,03–0,28. En kötü 10 tahmin hem CLS hem SEG için görselli ve hata türlerine ayrılarak yorumlandı (iki rapor taslağında)."
   - bilesen: "Rapor ve sunum"
     agirlik: 15
     durum: devam
-    not: "1. rapor taslağı hazır (4 sayfa, iki sütun IEEE, Türkçe; 22 Kas). 2. rapor ve sunum SEG sonuçlarından sonra."
+    not: "İki rapor taslağı hazır (4 ve 5 sayfa, iki sütun IEEE, Türkçe; 22 Kas). Kalan: kullanıcının okuması ve 10 dk'lık sunum."
 
 asamalar:
   - ad: "Aşama 0 — Kurulum"
@@ -70,8 +70,9 @@ asamalar:
       - ["Colab eğitimleri (YOLO26n/s-seg, RF-DETR Seg Small × 3 seed) — 9/9 bitti (22 Kas)", tamam]
       - ["Test değerlendirmesi, verimlilik, en kötü 10 (Colab'da; çapraz kontrol tutarlı)", tamam]
       - ["Panel: Segmentasyon sayfası (gerçek sonuçlarla denetlendi, 22 Kas)", tamam]
-      - ["Sonuç yorumu ve hata analizi (#12)", bekliyor]
-      - ["2. rapor + sunum", bekliyor]
+      - ["Sonuç yorumu ve hata analizi (#12)", tamam]
+      - ["2. rapor taslağı (5 sayfa; 22 Kas)", tamam]
+      - ["Sunum (10 dk)", bekliyor]
 
 # Colab SEG eğitim koşuları (#11) — Genel Bakış'ta tablo olarak gösterilir
 seg_kosulari:
@@ -114,6 +115,9 @@ raporlar:
     kontrol:
       - ["Colab eğitimleri (9 koşu)", tamam]
       - ["Test değerlendirmesi, verimlilik, en kötü 10", tamam]
-      - ["Karşılaştırma ve hata analizi (YOLO-seg ↔ RF-DETR)", bekliyor]
-      - ["Rapor taslağı", bekliyor]
+      - ["Rapor şekilleri (yerelde yeniden çizildi, tutarlılık denetimi geçti)", tamam]
+      - ["Karşılaştırma ve hata analizi (YOLO-seg ↔ RF-DETR, en kötü 10 yorumu)", tamam]
+      - ["Rapor taslağı (5 sayfa, iki sütun IEEE)", tamam]
+      - ["Kullanıcının okuması ve düzeltmeler", bekliyor]
+      - ["Teslim günü PDF + Colab linkini e-postayla göndermek", bekliyor]
       - ["Sunum (10 dk)", bekliyor]
