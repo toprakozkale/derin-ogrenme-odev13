@@ -15,6 +15,9 @@ başka bilgisayara taşınmaz; **bu proje hakkında bilinmesi gereken her şey b
 > **Statik site:** `scripts/build_site.py` → `site/` (git dışı) → Vercel, **herkese açık tam site** (kullanıcı kararı, 22 Kas).
 > **Yayında (22 Kas 15:46): https://cilek-hastaligi-odev13.vercel.app** (Vercel projesi `cilek-hastaligi-odev13`, hesap `toprakozkale-4237`;
 > CLI oturumu açık). Güncelleme: `.venv/bin/python scripts/build_site.py && cd site && vercel deploy --prod --yes` (`site/.vercel` korunur).
+> **Dikkat (22 Kas akşam):** `vercel link` projeyi GitHub deposuna da bağlamıştı → `git push` deponun kökünü yayına aldı (site 404,
+> CLAUDE.md/src herkese açık). Düzeltildi: eski dağıtım `vercel promote` ile geri alındı, `vercel git disconnect` yapıldı.
+> **Vercel'i GitHub'a asla bağlama; yalnız CLI ile site/'dan yükle.** Push sonrası canlı adresi denetle.
 > `vercel link` site/'a `.env.local` (OIDC belirteci) bıraktı — Vercel bunu yüklemiyor (canlıda 404 denetlendi); build_site onu siler.
 > Teslim günü: depo public (#4), Colab linkini başka hesapla dene, PDF + link → tekinler.cs@gmail.com.
 
@@ -281,13 +284,13 @@ Bir iş bitince: ilgili issue'yu kapat, `docs/durum.yaml` + `docs/gunluk.md` + b
 | 4 | [Karar] Hocanın çalıştırabileceği Colab linki (private depo) | ✅ karar (22 Kas): teslim günü public; defterler misafir kipine hazır — public yapma işi teslim günü |
 | 5 | 02 notebook'u + yerel duman testi | ✅ kapandı (11 Kas) |
 | 6 | Colab: CLS eğitimleri | ✅ kapandı (11 Kas bitti, 12 Kas içe alındı) |
-| 7 | CLS sonuç analizi + en kötü 10 yorumları | 1. rapor taslağında yazıldı (22 Kas) |
+| 7 | CLS sonuç analizi + en kötü 10 yorumları | ✅ 1. rapor taslağında, kapandı (22 Kas) |
 | 8 | Panel CLS sayfası | ✅ kapandı (12 Kas, gerçek sonuçla kontrol edildi) |
 | 9 | 1. rapor — 24 Kasım | taslak hazır (22 Kas, 4 sayfa PDF) — kullanıcı okuyacak |
 | 10 | 03 segmentasyon notebook'u + yerel duman testi | ✅ kapandı (12 Kas) |
-| 11 | Colab: SEG eğitimleri (YOLO26-seg n/s, RF-DETR Seg Small) | ✅ 9/9 bitti, içe alındı (22 Kas) |
-| 12 | SEG sonuçları: karşılaştırma + hata analizi | ✅ 2. rapor taslağında (22 Kas) |
-| 13 | Panel: Segmentasyon sayfası | ✅ gerçek sonuçlarla denetlendi (22 Kas) |
+| 11 | Colab: SEG eğitimleri (YOLO26-seg n/s, RF-DETR Seg Small) | ✅ 9/9 bitti, içe alındı, kapandı (22 Kas) |
+| 12 | SEG sonuçları: karşılaştırma + hata analizi | ✅ 2. rapor taslağında, kapandı (22 Kas) |
+| 13 | Panel: Segmentasyon sayfası | ✅ gerçek sonuçlarla denetlendi, kapandı (22 Kas) |
 | 14 | 2. rapor + sunum — 8 Aralık | rapor taslağı hazır (22 Kas, 5 s.); sunum yok |
 | 15 | Mac mini kurulumu | ✅ kapandı (12 Kas): klon `~/Desktop/derin-ogrenme-odev13` (§5'teki addan farklı), Python 3.13.18, veri hazır (temiz test 692), testler geçti, panel açıldı. Disk ~16 GB boş — dikkat |
 
