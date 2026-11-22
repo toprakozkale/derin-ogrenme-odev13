@@ -9,11 +9,12 @@ başka bilgisayara taşınmaz; **bu proje hakkında bilinmesi gereken her şey b
 ## 0. Kaldığımız yer — yeni oturumda önce bunu oku
 **Son güncelleme: 22 Kasım 2026 (öğle).** Teslimler: 1. rapor (CLS) **24 Kasım 23:59** · 2. rapor (SEG) **8 Aralık 23:59**.
 
-> **Colab SEG eğitimleri (#11): 9 koşudan 8'i bitti**, son koşu `ana_rfdetr-seg-small_im480_s2` 22 Kas ~13:00'te 40. epoch'tan
-> sürdürüldü (13:20'de epoch 42; en iyi EMA dün ~epoch 24 → erken durdurma yakın). Colab Claude'un Chrome sekme grubundaki sekmede
-> çalışıyor — **kapatma**. Bitince değerlendirme hücreleri kendiliğinden çalışır → §6a adım 5–7 (çapraz kontrol, Drive'dan `runs/seg`
-> indir, `import_runs.py`) → #12 → 2. rapor. Seed sayısı fiilen **3** (hepsi koştu). Ayrıntı: `docs/gunluk.md` (18–22 Kas).
-> **1. rapor taslağı hazır** (aşağıda); kullanıcının okuması bekleniyor. Teslim günü depo public yapılacak (#4).
+> **SEG eğitimleri bitti (#11, 9/9, 22 Kas 13:35) ve sonuçlar `runs/seg`'e alındı** (zip 633 MB; ağırlıklar dahil indi, git'e girmez).
+> Test maske mAP50-95 (3 seed): YOLO26n 0,600 · YOLO26s 0,623 · RF-DETR 0,691; mIoU 0,682 · 0,710 · 0,770; uçtan uca 18,1 · 18,9 · 60,0 ms.
+> Çapraz kontrol tutarlı. Panel Segmentasyon sayfası gerçek veriyle denetlendi (#13). Ayrıntı `docs/gunluk.md` (22 Kas öğleden sonra).
+> **Sıradaki:** `rapor/figures/seg_*` Drive'da kaldı (indir ya da yerelde yeniden çiz) → #12 yorum → 2. rapor (8 Ara).
+> Kullanıcı ayrıca paneli **Vercel'de statik site** olarak yayınlamak istiyor (Streamlit Vercel'de çalışmaz; statik site önerildi,
+> erişim kararı açık: davetli mi herkese açık mı). **1. rapor taslağı hazır**, kullanıcının okuması bekleniyor; teslim günü depo public (#4).
 
 - 📝 **1. rapor taslağı (21 Kas akşamı):** `scripts/build_rapor1.py` → `rapor/rapor1_cls.docx` (Türkçe, iki sütun IEEE, A4;
   bütün sayılar betikte `runs/cls` + `data/derived` dosyalarından okunur, Türkçe sayı ekleri `ek()` ile). Metni değiştirmek için
@@ -32,7 +33,7 @@ başka bilgisayara taşınmaz; **bu proje hakkında bilinmesi gereken her şey b
 - ✅ **Aşama 3 hazırlığı (12 Kas, #10):** kararlar ortak çözünürlük **480** + **RF-DETR Seg Small** (kullanıcı); `src/seg.py`,
   ortak SEG metrikleri (`src/metrics.py`, 18 test), `notebooks/03_segmentasyon.ipynb`; duman testi hatasız (~50 sn, `runs/seg_duman/`).
   RF-DETR sınıf eşlemesi çapraz kontrolle doğrulandı. COCO örnek kimliği 0 hatası düzeltildi (ayrıntı `docs/gunluk.md`, 12 Kas akşam).
-- 🔄 **#11 Colab SEG eğitimleri (16–22 Kas):** 8/9 bitti (RF-DETR s2 sürüyor). Ölçülen süreler: YOLO n ~65 dk, s ~75 dk
+- ✅ **#11 Colab SEG eğitimleri (12–22 Kas):** 9/9 bitti. Ölçülen süreler: YOLO n ~65 dk, s ~75 dk
   (s0'lar 100 epoch sınırına dayandı), RF-DETR ~4,5 dk/epoch (s0 epoch 40'ta, s1 48'de erken durdu). Kütüphanenin val maske
   mAP50-95'i (son sonuç değil): n 0,731 · s 0,760 · RF-DETR 0,789 (s0) / 0,792 (s1). Çapraz kontrol (s0): n 0,702 ↔ 0,731, s 0,748 ↔ 0,760.
   Ücretsiz Colab GPU kotası son günlerde ~2–2,5 saatte bitiyor ("GPU arka ucuna bağlanılamıyor"); kalan yerden sürdürmek yetiyor.
@@ -221,7 +222,7 @@ RF-DETR (`rfdetr[train]` 1.12.0) `requirements-local.txt`'te; ön-eğitimli ağ�
 - E-posta: tekinler.cs@gmail.com · PDF rapor + Colab linki (gizli pencerede açılıyor mu kontrol et) + sunum.
 - Raporda kısa "Yapay zekâ araçlarının kullanımı" beyanı önerildi.
 
-## 6a. Aşama 3 — segmentasyon (durum: Colab eğitimleri sürüyor, 5/9 bitti — 17 Kas)
+## 6a. Aşama 3 — segmentasyon (durum: eğitimler bitti, sonuçlar içe alındı — 22 Kas)
 Ayrıntılı plan: `docs/PLAN.md` §7 · issue'lar #10–#13 · puan ağırlığı %25 (en büyük kalem) + hata analizi %20'nin bir kısmı.
 Kararlar ve değerlendirme kuralları: §3 ("SEG deney düzeni", "SEG değerlendirme", "RF-DETR ayrıntıları").
 
@@ -281,9 +282,9 @@ Bir iş bitince: ilgili issue'yu kapat, `docs/durum.yaml` + `docs/gunluk.md` + b
 | 8 | Panel CLS sayfası | ✅ kapandı (12 Kas, gerçek sonuçla kontrol edildi) |
 | 9 | 1. rapor — 24 Kasım | taslak hazır (22 Kas, 4 sayfa PDF) — kullanıcı okuyacak |
 | 10 | 03 segmentasyon notebook'u + yerel duman testi | ✅ kapandı (12 Kas) |
-| 11 | Colab: SEG eğitimleri (YOLO26-seg n/s, RF-DETR Seg Small) | **sürüyor** — 8/9 bitti (22 Kas); RF-DETR s2 son koşu |
-| 12 | SEG sonuçları: karşılaştırma + hata analizi | 11'den sonra |
-| 13 | Panel: Segmentasyon sayfası | sayfa hazır (12 Kas; duman verisiyle sınandı) — gerçek sonuçlarla kontrol #11'den sonra |
+| 11 | Colab: SEG eğitimleri (YOLO26-seg n/s, RF-DETR Seg Small) | ✅ 9/9 bitti, içe alındı (22 Kas) |
+| 12 | SEG sonuçları: karşılaştırma + hata analizi | sıradaki (sayılar hazır, yorum yazılacak) |
+| 13 | Panel: Segmentasyon sayfası | ✅ gerçek sonuçlarla denetlendi (22 Kas) |
 | 14 | 2. rapor + sunum — 8 Aralık | Aşama 3 sonrası |
 | 15 | Mac mini kurulumu | ✅ kapandı (12 Kas): klon `~/Desktop/derin-ogrenme-odev13` (§5'teki addan farklı), Python 3.13.18, veri hazır (temiz test 692), testler geçti, panel açıldı. Disk ~16 GB boş — dikkat |
 

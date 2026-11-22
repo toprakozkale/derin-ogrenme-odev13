@@ -17,7 +17,8 @@ Bu dosya her aşamada gerçek çalıştırma çıktılarıyla doldurulur; değer
 - Python: 3.13.16 (Colab, Eylül 2026 imajı; Ubuntu 24.04)
 - PyTorch 2.14.1+cu130 · Ultralytics 8.4.210 · Python 3.13.16 (02 notebook, 11 Kas 2026; `runs/cls/env.json`)
 - CLS eğitimleri: 9 koşu, toplam ~2 saat (T4, 11 Kas 2026; süreler `docs/gunluk.md` 12 Kas)
-- ultralytics / rfdetr / pycocotools sürümleri: _(pip freeze)_
+- SEG eğitimleri (03 notebook, `runs/seg/env.json`, 22 Kas 2026): Python 3.13.16 · torch 2.14.1+cu130 · **ultralytics 8.4.216** · rfdetr 1.12.1 · supervision 0.32.0 · pycocotools 2.0.11 · CUDA 13.0 · Tesla T4. Colab her oturumda paketleri yeniden kurduğu için koşular arasında küçük sürüm farkı var: ultralytics 8.4.215 (16 Kas oturumu), supervision 0.31.7 (16 Kas) → 0.32.0 (19 Kas'tan itibaren).
+- SEG eğitimleri: 9 koşu, 12–22 Kas 2026 arasında birkaç oturumda (ücretsiz GPU kotası); süreler `docs/gunluk.md`.
 
 ## Seed'ler
 - Bölme: 42 (resmi bölme yoksa)

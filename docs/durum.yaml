@@ -20,7 +20,7 @@ puanlama:
   - bilesen: "Segmentasyon karşılaştırması (YOLO-seg ve RF-DETR)"
     agirlik: 25
     durum: devam
-    not: "Colab T4 eğitimleri: 9 koşudan 8'i bitti (22 Kas); son koşu RF-DETR seed 2 sürüyor. Süreler: YOLO n ~65 dk, s ~75 dk, RF-DETR ~4,5 dk/epoch."
+    not: "9/9 eğitim bitti, sonuçlar içe alındı (22 Kas). Test maske mAP50-95 (3 seed ort.): YOLO26n 0,600 · YOLO26s 0,623 · RF-DETR 0,691; hız 18–19 ↔ 60 ms. Kalan: yorum ve 2. rapor."
   - bilesen: "Hata analizi ve \"Dikkat\" maddesi"
     agirlik: 20
     durum: devam
@@ -67,22 +67,23 @@ asamalar:
       - ["Kararlar: ortak çözünürlük 480, RF-DETR Seg Small (kullanıcı, 12 Kas)", tamam]
       - ["Ortak değerlendirme kodu + testler (mAP, mIoU, Dice, örnek karışma)", tamam]
       - ["03 notebook'u + yerel duman testi", tamam]
-      - ["Colab eğitimleri (YOLO26n/s-seg, RF-DETR Seg Small × 3 seed) — 8/9 bitti (22 Kas)", devam]
-      - ["Test değerlendirmesi, verimlilik, en kötü 10 (Colab'da)", bekliyor]
-      - ["Panel: Segmentasyon sayfası (yazıldı, duman verisiyle sınandı; gerçek sonuçlar bekleniyor)", devam]
+      - ["Colab eğitimleri (YOLO26n/s-seg, RF-DETR Seg Small × 3 seed) — 9/9 bitti (22 Kas)", tamam]
+      - ["Test değerlendirmesi, verimlilik, en kötü 10 (Colab'da; çapraz kontrol tutarlı)", tamam]
+      - ["Panel: Segmentasyon sayfası (gerçek sonuçlarla denetlendi, 22 Kas)", tamam]
+      - ["Sonuç yorumu ve hata analizi (#12)", bekliyor]
       - ["2. rapor + sunum", bekliyor]
 
 # Colab SEG eğitim koşuları (#11) — Genel Bakış'ta tablo olarak gösterilir
 seg_kosulari:
-  - [ana_yolo26n-seg_im480_s0, tamam, "100 epoch (sınıra dayandı), 64,5 dk — 16 Kas"]
-  - [ana_yolo26s-seg_im480_s0, tamam, "100 epoch (sınıra dayandı), 74,9 dk — 16 Kas"]
+  - [ana_yolo26n-seg_im480_s0, tamam, "100 epoch (sınıra dayandı), 64,5 dk — 12 Kas"]
+  - [ana_yolo26s-seg_im480_s0, tamam, "100 epoch (sınıra dayandı), 74,9 dk — 12 Kas"]
   - [ana_rfdetr-seg-small_im480_s0, tamam, "40. epoch'ta erken durdu — 17 Kas 00:17"]
-  - [ana_yolo26n-seg_im480_s1, tamam, "~64 dk — 17 Kas 01:21"]
-  - [ana_yolo26s-seg_im480_s1, tamam, "~77 dk — 17 Kas 02:38"]
-  - [ana_rfdetr-seg-small_im480_s1, tamam, "48. epoch'ta erken durdu — 19 Kas (3 oturumda)"]
-  - [ana_yolo26n-seg_im480_s2, tamam, "19 Kas ~23:07"]
-  - [ana_yolo26s-seg_im480_s2, tamam, "20 Kas ~00:23"]
-  - [ana_rfdetr-seg-small_im480_s2, devam, "kota iki kez kesti; 22 Kas ~13:00'te 40. epoch'tan sürdü"]
+  - [ana_yolo26n-seg_im480_s1, tamam, "93 epoch, ~64 dk — 17 Kas 01:21"]
+  - [ana_yolo26s-seg_im480_s1, tamam, "100 epoch, ~77 dk — 17 Kas 02:38"]
+  - [ana_rfdetr-seg-small_im480_s1, tamam, "48. epoch'ta erken durdu — 19 Kas 13:05 (3 oturumda)"]
+  - [ana_yolo26n-seg_im480_s2, tamam, "100 epoch — 19 Kas 23:07"]
+  - [ana_yolo26s-seg_im480_s2, tamam, "98 epoch — 20 Kas 00:23"]
+  - [ana_rfdetr-seg-small_im480_s2, tamam, "46. epoch'ta erken durdu — 22 Kas 13:35 (kota iki kez kesti, 3 oturumda)"]
 
 # Raporlar ve teslim — "Raporlar ve Teslim" sayfası okur
 raporlar:
@@ -111,8 +112,8 @@ raporlar:
     docx: rapor/rapor2_seg.docx
     colab: "https://colab.research.google.com/github/toprakozkale/derin-ogrenme-odev13/blob/main/notebooks/03_segmentasyon.ipynb"
     kontrol:
-      - ["Colab eğitimleri (9 koşu)", devam]
-      - ["Test değerlendirmesi, verimlilik, en kötü 10", bekliyor]
+      - ["Colab eğitimleri (9 koşu)", tamam]
+      - ["Test değerlendirmesi, verimlilik, en kötü 10", tamam]
       - ["Karşılaştırma ve hata analizi (YOLO-seg ↔ RF-DETR)", bekliyor]
       - ["Rapor taslağı", bekliyor]
       - ["Sunum (10 dk)", bekliyor]

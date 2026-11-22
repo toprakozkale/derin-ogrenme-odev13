@@ -1,0 +1,11 @@
+stem,image_id,gercek_siniflar,iou_yolo,tahmin_yolo,iou_rfdetr,tahmin_rfdetr,iou_ortalama
+gray_mold528,326,Gray Mold,0.0,,0.0,,0.0
+gray_mold517,315,Gray Mold,0.0,Gray Mold,0.0,Gray Mold,0.0
+angular_leafspot355,4,Angular Leafspot,0.0,Gray Mold,0.0,,0.0
+leaf_spot497,420,Leaf Spot,0.0,Angular Leafspot,0.0,Angular Leafspot,0.0
+angular_leafspot397,43,Angular Leafspot,0.0,,0.0,,0.0
+angular_leafspot396,42,Angular Leafspot,0.0,,0.0,Leaf Spot,0.0
+anthracnose_fruit_rot101,148,Anthracnose Fruit Rot,0.0,,0.0,Gray Mold,0.0
+leaf_spot586,478,Leaf Spot,0.0,,0.0,Angular Leafspot,0.0
+angular_leafspot401,47,Angular Leafspot,0.0,,0.0,,0.0
+angular_leafspot408,54,Angular Leafspot,0.0,Gray Mold,0.0,,0.0

@@ -1,0 +1,56 @@
+{
+  "duman_testi": false,
+  "secilen_yolo_val": "ana_yolo26s-seg_im480_s1",
+  "secilen_rfdetr_val": "ana_rfdetr-seg-small_im480_s1",
+  "env": {
+    "python": "3.13.16",
+    "torch": "2.14.1+cu130",
+    "ultralytics": "8.4.216",
+    "rfdetr": "1.12.1",
+    "supervision": "0.32.0",
+    "pycocotools": "2.0.11",
+    "cuda": "13.0",
+    "cihaz": "Tesla T4",
+    "tarih": "2026-11-22 10:10:03",
+    "imgsz": 480,
+    "seedler": [
+      0,
+      1,
+      2
+    ],
+    "yolo_egitim": {
+      "epochs": 100,
+      "patience": 20,
+      "batch": 16,
+      "optimizer": "auto",
+      "pretrained": true,
+      "deterministic": true,
+      "workers": 2,
+      "plots": true,
+      "exist_ok": true,
+      "save_period": -1
+    },
+    "rfdetr_model": "RFDETRSegSmall",
+    "rfdetr_egitim": {
+      "epochs": 100,
+      "early_stopping": true,
+      "early_stopping_patience": 20,
+      "batch_size": 4,
+      "grad_accum_steps": 4,
+      "num_workers": 2,
+      "checkpoint_interval": 1000,
+      "tensorboard": false
+    },
+    "conf_min": 0.001,
+    "max_det": 100
+  },
+  "dosyalar": [
+    "runs/seg/efficiency.csv",
+    "runs/seg/esikler.csv",
+    "runs/seg/grup_karisma.csv",
+    "runs/seg/ozet.csv",
+    "runs/seg/per_class.csv",
+    "runs/seg/results.csv",
+    "runs/seg/worst10.csv"
+  ]
+}

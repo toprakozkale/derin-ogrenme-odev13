@@ -6,6 +6,41 @@ Panelde **İlerleme Günlüğü** sayfasında gösterilir. Buradaki her sayı ge
 
 ---
 
+## 22 Kasım 2026 (öğleden sonra) — SEG eğitimleri bitti (9/9), sonuçlar içe alındı, panel gerçek veriyle denetlendi (#11, #13)
+
+Kaynak: `runs/seg/*` (Colab'dan Drive üzerinden indirildi, `scripts/import_runs.py`; zip 633 MB, 231 dosya), `DONE` işaretleri (UTC → TR +3).
+
+- **Son koşu** `ana_rfdetr-seg-small_im480_s2` 13:35'te erken durdurmayla bitti (toplam 46 epoch); değerlendirme hücreleri 13:47'de
+  hatasız tamamlandı. Kullanıcı tarafında elektrik kesintisi oldu, Colab sunucudaki çalışma etkilenmedi.
+- **Koşu özeti** (epoch / kütüphanenin en iyi val maske mAP50-95): YOLO26n s0/s1/s2 100 · 93 · 100 (0,731 · 0,748 · 0,745) ·
+  YOLO26s 100 · 100 · 98 (0,760 · 0,767 · 0,748) · RF-DETR 40 · 48 · 46 (0,789 · 0,792 · 0,786). YOLO koşularının çoğu 100 epoch
+  sınırına dayandı.
+- **Çapraz kontrol (val maske mAP50-95, kütüphane ↔ bizim kod):** RF-DETR 0,789↔0,796 · 0,792↔0,800 · 0,786↔0,793;
+  YOLO26n 0,731↔0,702 · 0,748↔0,701 · 0,745↔0,731; YOLO26s 0,760↔0,748 · 0,767↔0,752 · 0,748↔0,731. Fark RF-DETR'da ≤ 0,008,
+  YOLO'da 0,01–0,05 (bizim kod hep biraz düşük) → sınıf eşlemesi doğru; YOLO farkı muhtemelen maske çözünürlüğü / iç
+  değerlendirme ayrıntılarından (raporda not edilecek).
+- **Test sonuçları (3 seed ort. ± std, tüm test 743; `runs/seg/ozet.csv`):**
+
+| Model | mask mAP50 | mask mAP50-95 | mIoU | Dice | Param. | uçtan uca ms (T4, batch 1) | GPU bellek |
+|---|---|---|---|---|---|---|---|
+| YOLO26n-seg | 0,802 ± 0,020 | 0,600 ± 0,010 | 0,682 ± 0,020 | 0,805 ± 0,016 | 3,09 M | 18,1 | 39 MB |
+| YOLO26s-seg | 0,829 ± 0,014 | 0,623 ± 0,010 | 0,710 ± 0,018 | 0,828 ± 0,013 | 11,44 M | 18,9 | 92 MB |
+| RF-DETR Seg Small | 0,872 ± 0,002 | 0,691 ± 0,003 | 0,770 ± 0,012 | 0,869 ± 0,008 | 33,63 M | 60,0 | 246 MB |
+
+  Temiz testte (692) skorlar aynı ya da biraz yüksek (ör. RF-DETR mAP50-95 0,696). Hız/bellek her modelin seed 0 koşusundan.
+- **Meyve/yaprak karışması (SEG, IoU ≥ 0,5 eşleşen örnekler):** gruplar arası toplam YOLO26n %0,19, YOLO26s %0,28, RF-DETR %0,03 —
+  CLS'dekinden (%2,1–2,4) çok düşük. Asıl hata türü sınıf karışması değil **kaçırılan lekeler** (ör. YOLO26n s0 358, RF-DETR s2 193 kaçırılan örnek).
+- **Val ile seçilen:** `ana_yolo26s-seg_im480_s1` ve `ana_rfdetr-seg-small_im480_s1`. En kötü 10 test görüntüsünün hepsinde iki
+  modelin de görüntü IoU'su 0 (çoğu Angular Leafspot / Leaf Spot ve Gray Mold) — yorum #12'de.
+- **Ortam (SEG, 22 Kas `env.json`):** Python 3.13.16, torch 2.14.1+cu130, **ultralytics 8.4.216** (16 Kas'taki oturumlarda 8.4.215),
+  rfdetr 1.12.1, supervision 0.32.0, pycocotools 2.0.11, T4. Colab her oturumda en güncel paketi kurduğundan sürümler koşular
+  arasında küçükçe değişti → raporda sınırlılık notu.
+- **Panel (#13):** Segmentasyon sayfası gerçek sonuçlarla açıldı — 9/9 koşu, eğrileri, ana sonuç grafiği, sınıf bazında, karışma
+  matrisi, hız–doğruluk grafiği ve en kötü 10 (tahmin maskeleri `preds/*.json.gz`'den) hatasız.
+- **Eksik:** Colab'ın çizdiği `rapor/figures/seg_*` şekilleri Drive'daki `rapor/figures`'ta kaldı (indirilen yalnız `runs/seg`).
+
+---
+
 ## 18–22 Kasım 2026 — SEG eğitimleri 8/9, 1. rapor taslağı, hocanın Colab linki kararı (#11, #9, #7, #4)
 
 Kaynak: Colab çıktısı ve Drive dosya/etkinlik saatleri (Claude in Chrome ile okundu), `runs/cls/*`, `data/derived/summary.json`.

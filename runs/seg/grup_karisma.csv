@@ -1,0 +1,8 @@
+,yolo26n-seg,yolo26s-seg,rfdetr-seg-small
+yaprak->meyve,0.0027,0.0041,0.0004
+yaprak->çiçek,0.0,0.0,0.0
+meyve->yaprak,0.0,0.0,0.0
+meyve->çiçek,0.0,0.0,0.0
+çiçek->yaprak,0.0,0.0,0.0
+çiçek->meyve,0.0,0.0,0.0
+gruplar_arasi_toplam,0.0019,0.0028,0.0003

@@ -1,0 +1,744 @@
+stem,image_id,temiz,iou_goruntu,fg_iou,n_gercek,n_tahmin,gercek_siniflar,tahmin_siniflar
+angular_leafspot351,0,True,0.9883241986381,0.9883241986381,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot352,1,True,0.7916591905262348,0.7916591905262348,2,2,Angular Leafspot,Angular Leafspot
+angular_leafspot353,2,True,0.9166673291095973,0.9166673291095973,3,4,Angular Leafspot,Angular Leafspot;Leaf Spot
+angular_leafspot354,3,True,0.9846361698371964,0.9846361698371964,3,2,Angular Leafspot,Angular Leafspot
+angular_leafspot355,4,True,0.9261593426223651,0.9261593426223651,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot357,5,False,0.9641823216589571,0.9641823216589571,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot358,6,True,0.931827830903908,0.931827830903908,4,3,Angular Leafspot,Angular Leafspot;Leaf Spot
+angular_leafspot359,7,True,0.7527759187150158,0.7527759187150158,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot360,8,True,0.986195637896633,0.986195637896633,2,1,Angular Leafspot,Angular Leafspot
+angular_leafspot362,9,True,0.749937280958499,0.749937280958499,3,2,Angular Leafspot,Angular Leafspot
+angular_leafspot363,10,True,0.9744062037410847,0.9744062037410847,1,2,Angular Leafspot,Angular Leafspot
+angular_leafspot364,11,True,0.8151442307692308,0.8151442307692308,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot365,12,True,0.6743913262044697,0.6743913262044697,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot366,13,True,0.0,0.5095177585143993,1,1,Angular Leafspot,Leaf Spot
+angular_leafspot367,14,True,0.9285813065048661,0.9285813065048661,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot368,15,False,0.7946367020543224,0.7946367020543224,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot369,16,True,0.42214965879983574,0.42214965879983574,2,3,Angular Leafspot,Angular Leafspot
+angular_leafspot370,17,True,0.9246604342946241,0.9246604342946241,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot371,18,True,0.0,0.9822695697639677,1,1,Angular Leafspot,Leaf Spot
+angular_leafspot372,19,True,0.9878470361239147,0.9878470361239147,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot373,20,True,0.0,0.41851732213518533,1,2,Angular Leafspot,Angular Leafspot;Leaf Spot
+angular_leafspot374,21,True,0.4625507253136807,0.4625507253136807,2,1,Angular Leafspot,Angular Leafspot
+angular_leafspot375,22,True,0.9716885743174924,0.9716885743174924,3,5,Angular Leafspot,Angular Leafspot
+angular_leafspot377,23,True,0.36379291704634964,0.36379291704634964,1,2,Angular Leafspot,Angular Leafspot;Leaf Spot
+angular_leafspot378,24,True,0.8703786975307435,0.8703786975307435,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot379,25,True,0.8179044449067332,0.8179044449067332,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot380,26,True,0.9063442244962484,0.9063442244962484,1,2,Angular Leafspot,Angular Leafspot
+angular_leafspot381,27,True,0.6320954787474055,0.6320954787474055,2,1,Angular Leafspot,Angular Leafspot
+angular_leafspot382,28,True,0.8889481205907039,0.8889481205907039,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot383,29,True,0.9866895319298976,0.9866895319298976,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot384,30,True,0.9853899970885863,0.9853899970885863,3,3,Angular Leafspot,Angular Leafspot
+angular_leafspot385,31,True,0.33741882767814907,0.9637373295225343,3,5,Angular Leafspot,Angular Leafspot;Leaf Spot
+angular_leafspot386,32,True,0.8782849774339136,0.8782849774339136,2,2,Angular Leafspot,Angular Leafspot
+angular_leafspot387,33,True,0.9642974822165797,0.9642974822165797,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot388,34,True,0.5290602305163132,0.5290602305163132,2,1,Angular Leafspot,Angular Leafspot
+angular_leafspot389,35,True,0.8206809537404566,0.8206809537404566,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot390,36,True,0.9839487335978029,0.9839487335978029,3,3,Angular Leafspot,Angular Leafspot
+angular_leafspot391,37,False,0.8438253853597373,0.8438253853597373,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot392,38,True,0.9697308033951836,0.9697308033951836,3,1,Angular Leafspot,Angular Leafspot
+angular_leafspot393,39,True,0.9858638826149448,0.9858638826149448,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot394,40,True,0.8634258614769237,0.8634258614769237,2,1,Angular Leafspot,Angular Leafspot
+angular_leafspot395,41,True,0.9673957960274387,0.9673957960274387,2,1,Angular Leafspot,Angular Leafspot
+angular_leafspot396,42,True,0.0,0.43194215222803434,1,1,Angular Leafspot,Leaf Spot
+angular_leafspot397,43,True,0.0,0.0,1,0,Angular Leafspot,
+angular_leafspot398,44,True,0.9783862567876218,0.9783862567876218,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot399,45,True,0.8557636086193865,0.8557636086193865,3,3,Angular Leafspot,Angular Leafspot;Leaf Spot
+angular_leafspot400,46,True,0.0,0.7470505617977528,2,1,Angular Leafspot,Gray Mold
+angular_leafspot401,47,True,0.0,0.39861527809831526,1,1,Angular Leafspot,Leaf Spot
+angular_leafspot402,48,False,0.9718183221165783,0.9718183221165783,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot403,49,True,0.9813839222364127,0.9813839222364127,3,3,Angular Leafspot,Angular Leafspot
+angular_leafspot404,50,True,0.9596015895880535,0.9596015895880535,1,2,Angular Leafspot,Angular Leafspot
+angular_leafspot405,51,True,0.9205382424143919,0.9205382424143919,3,3,Angular Leafspot,Angular Leafspot
+angular_leafspot406,52,True,0.9266071972917903,0.9266071972917903,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot407,53,True,0.9904543079540735,0.9904543079540735,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot408,54,True,0.3635163001923121,0.3635163001923121,1,2,Angular Leafspot,Angular Leafspot;Leaf Spot
+angular_leafspot409,55,True,0.8171593854475789,0.8171593854475789,1,2,Angular Leafspot,Angular Leafspot
+angular_leafspot410,56,True,0.9185528399923023,0.9185528399923023,1,2,Angular Leafspot,Angular Leafspot
+angular_leafspot411,57,True,0.9515031076910068,0.9515031076910068,3,3,Angular Leafspot,Angular Leafspot
+angular_leafspot412,58,True,0.7599943891148828,0.7599943891148828,2,1,Angular Leafspot,Angular Leafspot
+angular_leafspot413,59,False,0.9813222344523941,0.9813222344523941,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot414,60,True,0.8608733097924383,0.8608733097924383,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot415,61,True,0.976061776061776,0.976061776061776,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot416,62,True,0.9873052454222386,0.9873052454222386,2,2,Angular Leafspot,Angular Leafspot
+angular_leafspot417,63,True,0.8443811175814645,0.8443811175814645,1,2,Angular Leafspot,Angular Leafspot
+angular_leafspot418,64,True,0.6560089098228477,0.6560089098228477,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot419,65,False,0.8834678435292874,0.8834678435292874,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot420,66,False,0.9805412722435819,0.9805412722435819,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot421,67,False,0.9073767417179767,0.9073767417179767,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot422,68,False,0.7608262463082234,0.7608262463082234,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot423,69,False,0.8160854073671802,0.8160854073671802,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot424,70,False,0.7593836497946087,0.7593836497946087,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot425,71,False,0.805177602009173,0.805177602009173,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot426,72,False,0.8629428662623684,0.8629428662623684,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot427,73,False,0.8314693056779412,0.8314693056779412,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot428,74,True,0.8646086533787068,0.8646086533787068,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot429,75,True,0.8461071231363887,0.8461071231363887,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot430,76,False,0.7792279922243821,0.7792279922243821,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot431,77,False,0.9700746216166098,0.9700746216166098,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot432,78,False,0.9384579894396883,0.9384579894396883,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot433,79,False,0.9208024239891338,0.9208024239891338,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot434,80,False,0.8697353923068067,0.8697353923068067,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot435,81,False,0.8451219512195122,0.8451219512195122,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot436,82,False,0.19408943215225127,0.19408943215225127,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot437,83,True,0.8001669777035655,0.8001669777035655,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot438,84,True,0.891223183596065,0.891223183596065,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot439,85,True,0.8743454853855798,0.8743454853855798,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot440,86,True,0.9059166976095057,0.9059166976095057,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot441,87,True,0.930465891173058,0.930465891173058,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot442,88,True,0.9027345744927805,0.9027345744927805,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot443,89,True,0.8444609004739336,0.8444609004739336,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot444,90,True,0.7383001778740979,0.7383001778740979,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot445,91,True,0.8825192715521595,0.8825192715521595,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot446,92,True,0.8752776235424764,0.8752776235424764,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot447,93,False,0.6590743715419362,0.6590743715419362,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot448,94,True,0.7884816860435547,0.7884816860435547,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot449,95,True,0.8413773863138178,0.8413773863138178,1,2,Angular Leafspot,Angular Leafspot
+angular_leafspot450,96,True,0.9885152441543419,0.9885152441543419,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot451,97,True,0.9884991571182858,0.9884991571182858,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot452,98,True,0.9894941051855946,0.9894941051855946,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot453,99,True,0.9907407407407407,0.9907407407407407,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot454,100,True,0.9940589229402234,0.9940589229402234,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot455,101,True,0.8686731100838997,0.8686731100838997,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot456,102,True,0.8856958423984508,0.8856958423984508,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot457,103,True,0.9523784690533927,0.9523784690533927,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot458,104,False,0.7958444114335456,0.7958444114335456,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot459,105,False,0.5317837741562027,0.5317837741562027,1,3,Angular Leafspot,Angular Leafspot
+angular_leafspot460,106,False,0.5844468487963214,0.5844468487963214,2,3,Angular Leafspot,Angular Leafspot
+angular_leafspot461,107,True,0.8909776694014343,0.8909776694014343,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot462,108,True,0.8230284122989177,0.8230284122989177,1,2,Angular Leafspot,Angular Leafspot
+angular_leafspot463,109,True,0.8318926475800418,0.8318926475800418,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot464,110,True,0.7589656368539427,0.7589656368539427,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot465,111,True,0.8753494361905958,0.8753494361905958,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot466,112,True,0.8403766013273654,0.8403766013273654,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot467,113,True,0.9665304868128491,0.9665304868128491,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot468,114,True,0.910606153015082,0.910606153015082,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot469,115,False,0.7949497535684568,0.7949497535684568,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot470,116,False,0.7378223229545962,0.7378223229545962,1,2,Angular Leafspot,Angular Leafspot
+angular_leafspot471,117,False,0.7144642643801752,0.7144642643801752,1,2,Angular Leafspot,Angular Leafspot
+angular_leafspot472,118,True,0.9857236670474888,0.9857236670474888,2,2,Angular Leafspot,Angular Leafspot
+angular_leafspot473,119,True,0.9852542298007686,0.9852542298007686,2,2,Angular Leafspot,Angular Leafspot
+angular_leafspot474,120,True,0.8343993521735048,0.8343993521735048,2,1,Angular Leafspot,Angular Leafspot
+angular_leafspot475,121,True,0.8151687159320747,0.8151687159320747,2,1,Angular Leafspot,Angular Leafspot
+angular_leafspot476,122,True,0.9189669586437001,0.9189669586437001,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot477,123,True,0.8852389305267634,0.8852389305267634,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot478,124,True,0.9684814459136687,0.9684814459136687,1,2,Angular Leafspot,Angular Leafspot
+angular_leafspot479,125,True,0.9896879957694341,0.9896879957694341,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot480,126,False,0.8001732244493938,0.8001732244493938,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot481,127,True,0.9915112549422005,0.9915112549422005,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot482,128,True,0.735276782618745,0.735276782618745,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot483,129,True,0.7952410770194114,0.7952410770194114,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot484,130,True,0.8831367668957417,0.8831367668957417,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot485,131,False,0.9902963489295121,0.9902963489295121,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot486,132,False,0.8780383821281312,0.8780383821281312,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot487,133,True,0.8539354750184381,0.8539354750184381,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot488,134,False,0.7726607766853842,0.7726607766853842,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot489,135,False,0.7477695815784883,0.7477695815784883,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot490,136,True,0.9909658344283837,0.9909658344283837,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot491,137,False,0.8913364909906524,0.8913364909906524,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot492,138,True,0.9885216016519859,0.9885216016519859,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot493,139,True,0.988137346904401,0.988137346904401,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot494,140,True,0.984918045597515,0.984918045597515,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot495,141,True,0.9936817164670264,0.9936817164670264,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot496,142,False,0.9850085443529595,0.9850085443529595,3,3,Angular Leafspot,Angular Leafspot
+angular_leafspot497,143,True,0.9937131274014461,0.9937131274014461,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot498,144,True,0.9553229925870553,0.9553229925870553,1,1,Angular Leafspot,Angular Leafspot
+angular_leafspot499,145,True,0.951547276867371,0.951547276867371,1,2,Angular Leafspot,Angular Leafspot
+angular_leafspot500,146,True,0.9887849850741346,0.9887849850741346,1,1,Angular Leafspot,Angular Leafspot
+anthracnose_fruit_rot100,147,True,0.4421364985163205,0.4421364985163205,1,1,Anthracnose Fruit Rot,Anthracnose Fruit Rot
+anthracnose_fruit_rot101,148,True,0.0,0.7597609561752988,1,1,Anthracnose Fruit Rot,Gray Mold
+anthracnose_fruit_rot102,149,False,0.8653446017108068,0.8653446017108068,1,1,Anthracnose Fruit Rot,Anthracnose Fruit Rot
+anthracnose_fruit_rot103,150,True,0.4242072170585019,0.4242072170585019,5,5,Anthracnose Fruit Rot,Anthracnose Fruit Rot
+anthracnose_fruit_rot104,151,True,0.7880143112701252,0.7880143112701252,3,3,Anthracnose Fruit Rot,Anthracnose Fruit Rot
+anthracnose_fruit_rot105,152,True,0.7653400904257962,0.7653400904257962,1,1,Anthracnose Fruit Rot,Anthracnose Fruit Rot
+anthracnose_fruit_rot106,153,False,0.7900905512505957,0.7900905512505957,1,1,Anthracnose Fruit Rot,Anthracnose Fruit Rot
+anthracnose_fruit_rot107,154,True,0.7676823005819925,0.7676823005819925,2,2,Anthracnose Fruit Rot,Anthracnose Fruit Rot
+anthracnose_fruit_rot108,155,True,0.7287438601835281,0.7287438601835281,1,1,Anthracnose Fruit Rot,Anthracnose Fruit Rot
+anthracnose_fruit_rot109,156,True,0.8412447424180134,0.8412447424180134,1,1,Anthracnose Fruit Rot,Anthracnose Fruit Rot
+anthracnose_fruit_rot110,157,True,0.8918199003265166,0.8918199003265166,1,1,Anthracnose Fruit Rot,Anthracnose Fruit Rot
+anthracnose_fruit_rot111,158,True,0.8560307590069778,0.8560307590069778,1,1,Anthracnose Fruit Rot,Anthracnose Fruit Rot
+anthracnose_fruit_rot79,159,True,0.8398576512455516,0.8398576512455516,1,1,Anthracnose Fruit Rot,Anthracnose Fruit Rot
+anthracnose_fruit_rot80,160,True,0.7292307692307692,0.7292307692307692,1,1,Anthracnose Fruit Rot,Anthracnose Fruit Rot
+anthracnose_fruit_rot81,161,True,0.9259090316694905,0.9259090316694905,1,1,Anthracnose Fruit Rot,Anthracnose Fruit Rot
+anthracnose_fruit_rot82,162,True,0.7530013167066842,0.7530013167066842,3,4,Anthracnose Fruit Rot,Anthracnose Fruit Rot
+anthracnose_fruit_rot83,163,False,0.8922570958747408,0.8922570958747408,1,1,Anthracnose Fruit Rot,Anthracnose Fruit Rot
+anthracnose_fruit_rot84,164,True,0.6776075135936728,0.6776075135936728,1,1,Anthracnose Fruit Rot,Anthracnose Fruit Rot
+anthracnose_fruit_rot85,165,True,0.9022007683409263,0.9022007683409263,1,1,Anthracnose Fruit Rot,Anthracnose Fruit Rot
+anthracnose_fruit_rot86,166,True,0.80688,0.80688,2,2,Anthracnose Fruit Rot,Anthracnose Fruit Rot
+anthracnose_fruit_rot87,167,True,0.7236433432210784,0.7236433432210784,2,2,Anthracnose Fruit Rot,Anthracnose Fruit Rot
+anthracnose_fruit_rot88,168,True,0.6628051303268515,0.6628051303268515,2,2,Anthracnose Fruit Rot,Anthracnose Fruit Rot
+anthracnose_fruit_rot89,169,True,0.5868240140276657,0.5868240140276657,7,7,Anthracnose Fruit Rot,Anthracnose Fruit Rot
+anthracnose_fruit_rot90,170,True,0.8388594454907801,0.8388594454907801,1,2,Anthracnose Fruit Rot,Anthracnose Fruit Rot
+anthracnose_fruit_rot91,171,True,0.8309116868937135,0.8309116868937135,3,3,Anthracnose Fruit Rot,Anthracnose Fruit Rot
+anthracnose_fruit_rot92,172,True,0.5765483893905995,0.5765483893905995,1,1,Anthracnose Fruit Rot,Anthracnose Fruit Rot
+anthracnose_fruit_rot93,173,True,0.5998429035127236,0.5998429035127236,1,1,Anthracnose Fruit Rot,Anthracnose Fruit Rot
+anthracnose_fruit_rot94,174,True,0.5006167763157895,0.5006167763157895,1,1,Anthracnose Fruit Rot,Anthracnose Fruit Rot
+anthracnose_fruit_rot95,175,True,0.6425178147268409,0.6425178147268409,1,1,Anthracnose Fruit Rot,Anthracnose Fruit Rot
+anthracnose_fruit_rot96,176,True,0.869225640537194,0.869225640537194,1,1,Anthracnose Fruit Rot,Anthracnose Fruit Rot
+anthracnose_fruit_rot97,177,True,0.3166159052453469,0.3166159052453469,1,1,Anthracnose Fruit Rot,Anthracnose Fruit Rot
+anthracnose_fruit_rot98,178,True,0.5325819316802497,0.5325819316802497,1,1,Anthracnose Fruit Rot,Anthracnose Fruit Rot
+anthracnose_fruit_rot99,179,True,0.5799863985232683,0.5799863985232683,1,2,Anthracnose Fruit Rot,Anthracnose Fruit Rot
+blossom_blight147,180,False,0.46767422334172964,0.46767422334172964,1,2,Blossom Blight,Blossom Blight
+blossom_blight148,181,False,0.4716397387418357,0.4716397387418357,1,2,Blossom Blight,Blossom Blight
+blossom_blight149,182,False,0.4781849912739965,0.4781849912739965,1,2,Blossom Blight,Blossom Blight
+blossom_blight150,183,False,0.46873926485743733,0.46873926485743733,1,2,Blossom Blight,Blossom Blight
+blossom_blight151,184,False,0.4613393165343459,0.4613393165343459,1,2,Blossom Blight,Blossom Blight
+blossom_blight152,185,False,0.4757927037163314,0.4757927037163314,1,2,Blossom Blight,Blossom Blight
+blossom_blight153,186,False,0.4757815183785641,0.4757815183785641,1,2,Blossom Blight,Blossom Blight
+blossom_blight154,187,True,0.4774379371828281,0.4774379371828281,1,2,Blossom Blight,Blossom Blight
+blossom_blight155,188,True,0.4851334531876642,0.4851334531876642,1,2,Blossom Blight,Blossom Blight
+blossom_blight156,189,True,0.48951825628210466,0.48951825628210466,1,2,Blossom Blight,Blossom Blight
+blossom_blight157,190,True,0.4837953385739898,0.4837953385739898,1,2,Blossom Blight,Blossom Blight
+blossom_blight158,191,True,0.47499649810897887,0.47499649810897887,1,2,Blossom Blight,Blossom Blight
+blossom_blight159,192,True,0.4820359281437126,0.4820359281437126,1,2,Blossom Blight,Blossom Blight
+blossom_blight160,193,True,0.48944384123537216,0.48944384123537216,1,2,Blossom Blight,Blossom Blight
+blossom_blight161,194,True,0.48413499271218746,0.48413499271218746,1,2,Blossom Blight,Blossom Blight
+blossom_blight162,195,True,0.9393103448275862,0.9393103448275862,1,1,Blossom Blight,Blossom Blight
+blossom_blight163,196,True,0.6920377867746289,0.6920377867746289,1,2,Blossom Blight,Blossom Blight
+blossom_blight164,197,True,0.9350192061459667,0.9350192061459667,1,1,Blossom Blight,Blossom Blight
+blossom_blight165,198,True,0.9362073987765802,0.9362073987765802,1,1,Blossom Blight,Blossom Blight
+blossom_blight166,199,True,0.9124208207105481,0.9124208207105481,1,1,Blossom Blight,Blossom Blight
+blossom_blight167,200,True,0.935782389231632,0.935782389231632,1,1,Blossom Blight,Blossom Blight
+blossom_blight168,201,True,0.9295472810072328,0.9295472810072328,1,1,Blossom Blight,Blossom Blight
+blossom_blight169,202,True,0.9436081242532856,0.9436081242532856,1,1,Blossom Blight,Blossom Blight
+blossom_blight170,203,True,0.9340182648401827,0.9340182648401827,1,1,Blossom Blight,Blossom Blight
+blossom_blight171,204,True,0.9216581099068264,0.9216581099068264,1,1,Blossom Blight,Blossom Blight
+blossom_blight172,205,True,0.6452428476380572,0.6452428476380572,1,2,Blossom Blight,Blossom Blight
+blossom_blight173,206,True,0.9036445332001997,0.9036445332001997,1,1,Blossom Blight,Blossom Blight
+blossom_blight174,207,True,0.9341114457831325,0.9341114457831325,1,1,Blossom Blight,Blossom Blight
+blossom_blight175,208,True,0.9383177570093458,0.9383177570093458,1,1,Blossom Blight,Blossom Blight
+blossom_blight176,209,True,0.9400456174649723,0.9400456174649723,1,1,Blossom Blight,Blossom Blight
+blossom_blight177,210,True,0.9463327370304114,0.9463327370304114,1,1,Blossom Blight,Blossom Blight
+blossom_blight178,211,True,0.9074212893553223,0.9074212893553223,1,1,Blossom Blight,Blossom Blight
+blossom_blight179,212,True,0.9098989898989899,0.9098989898989899,1,1,Blossom Blight,Blossom Blight
+blossom_blight180,213,True,0.9221135029354207,0.9221135029354207,1,1,Blossom Blight,Blossom Blight
+blossom_blight181,214,True,0.907909820405044,0.907909820405044,1,1,Blossom Blight,Blossom Blight
+blossom_blight182,215,True,0.9162878787878788,0.9162878787878788,1,1,Blossom Blight,Blossom Blight
+blossom_blight183,216,True,0.9306746179649646,0.9306746179649646,1,1,Blossom Blight,Blossom Blight
+blossom_blight184,217,True,0.9239956568946797,0.9239956568946797,1,1,Blossom Blight,Blossom Blight
+blossom_blight185,218,True,0.9196919691969196,0.9196919691969196,1,1,Blossom Blight,Blossom Blight
+blossom_blight186,219,True,0.9233152594887684,0.9233152594887684,1,1,Blossom Blight,Blossom Blight
+blossom_blight187,220,True,0.9202247191011236,0.9202247191011236,1,1,Blossom Blight,Blossom Blight
+blossom_blight188,221,True,0.6722708974662562,0.6722708974662562,2,3,Blossom Blight,Blossom Blight
+blossom_blight189,222,True,0.6631070951843105,0.6631070951843105,2,3,Blossom Blight,Blossom Blight
+blossom_blight190,223,True,0.6443060666100575,0.6443060666100575,2,3,Blossom Blight,Blossom Blight
+blossom_blight191,224,True,0.6644348168570303,0.6644348168570303,2,3,Blossom Blight,Blossom Blight
+blossom_blight192,225,True,0.6405060970019254,0.6405060970019254,2,3,Blossom Blight,Blossom Blight
+blossom_blight193,226,True,0.6423227978305592,0.6423227978305592,2,3,Blossom Blight,Blossom Blight
+blossom_blight194,227,True,0.6252492296537974,0.6252492296537974,2,3,Blossom Blight,Blossom Blight
+blossom_blight195,228,True,0.6497713058900402,0.6497713058900402,2,3,Blossom Blight,Blossom Blight
+blossom_blight196,229,True,0.7866954474097331,0.7866954474097331,1,1,Blossom Blight,Blossom Blight
+blossom_blight197,230,True,0.7711805555555555,0.7711805555555555,1,1,Blossom Blight,Blossom Blight
+blossom_blight198,231,True,0.8200196270853778,0.8200196270853778,1,1,Blossom Blight,Blossom Blight
+blossom_blight199,232,True,0.8367976949989709,0.8367976949989709,1,1,Blossom Blight,Blossom Blight
+blossom_blight200,233,True,0.8276002442499492,0.8276002442499492,1,1,Blossom Blight,Blossom Blight
+blossom_blight201,234,True,0.8432329232074671,0.8432329232074671,1,1,Blossom Blight,Blossom Blight
+blossom_blight202,235,True,0.8534653465346534,0.8534653465346534,1,1,Blossom Blight,Blossom Blight
+blossom_blight203,236,True,0.9011257953989231,0.9011257953989231,1,1,Blossom Blight,Blossom Blight
+blossom_blight204,237,True,0.9088222878851836,0.9088222878851836,1,1,Blossom Blight,Blossom Blight
+blossom_blight205,238,True,0.9195088676671214,0.9195088676671214,1,1,Blossom Blight,Blossom Blight
+blossom_blight206,239,True,0.926805622879302,0.926805622879302,1,1,Blossom Blight,Blossom Blight
+blossom_blight207,240,True,0.9097421203438395,0.9097421203438395,1,1,Blossom Blight,Blossom Blight
+blossom_blight208,241,True,0.9290816326530612,0.9290816326530612,1,1,Blossom Blight,Blossom Blight
+gray_mold393,242,True,0.9090229312063809,0.9090229312063809,1,1,Gray Mold,Gray Mold
+gray_mold394,243,True,0.89625,0.89625,1,1,Gray Mold,Gray Mold
+gray_mold395,244,True,0.8511673151750972,0.8511673151750972,1,1,Gray Mold,Gray Mold
+gray_mold396,245,True,0.9233201581027668,0.9233201581027668,1,1,Gray Mold,Gray Mold
+gray_mold397,246,True,0.9289784457841275,0.9289784457841275,1,1,Gray Mold,Gray Mold
+gray_mold398,247,True,0.8822737975109317,0.8822737975109317,1,1,Gray Mold,Gray Mold
+gray_mold399,248,True,0.6340233545647559,0.6340233545647559,1,1,Gray Mold,Gray Mold
+gray_mold400,249,True,0.7281409046720421,0.7281409046720421,2,3,Gray Mold,Gray Mold
+gray_mold402,250,True,0.9310056449926825,0.9310056449926825,1,1,Gray Mold,Gray Mold
+gray_mold403,251,True,0.9152414831030237,0.9152414831030237,1,1,Gray Mold,Gray Mold
+gray_mold405,252,True,0.7575269861531204,0.7575269861531204,1,1,Gray Mold,Gray Mold
+gray_mold406,253,True,0.9167465425167739,0.9167465425167739,1,2,Gray Mold,Gray Mold
+gray_mold407,254,True,0.9144781144781144,0.9144781144781144,1,1,Gray Mold,Gray Mold
+gray_mold408,255,True,0.8532608695652174,0.8532608695652174,1,1,Gray Mold,Gray Mold
+gray_mold409,256,True,0.9227053140096618,0.9227053140096618,1,1,Gray Mold,Gray Mold
+gray_mold410,257,True,0.9060980172091283,0.9060980172091283,1,1,Gray Mold,Gray Mold
+gray_mold411,258,True,0.9519498134961004,0.9519498134961004,1,2,Gray Mold,Gray Mold
+gray_mold412,259,True,0.8709094404922131,0.8709094404922131,1,1,Gray Mold,Gray Mold
+gray_mold413,260,True,0.8991310918020401,0.8991310918020401,1,1,Gray Mold,Gray Mold
+gray_mold414,261,True,0.9031073446327683,0.9031073446327683,1,1,Gray Mold,Gray Mold
+gray_mold416,262,True,0.8916385451818523,0.8916385451818523,1,1,Gray Mold,Gray Mold
+gray_mold417,263,True,0.9148686679174484,0.9148686679174484,1,1,Gray Mold,Gray Mold
+gray_mold418,264,True,0.9546210501306723,0.9546210501306723,1,1,Gray Mold,Gray Mold
+gray_mold419,265,True,0.9652009378470651,0.9652009378470651,1,1,Gray Mold,Gray Mold
+gray_mold423,266,True,0.8915075964160498,0.8915075964160498,1,1,Gray Mold,Gray Mold
+gray_mold425,267,True,0.8986657659179192,0.8986657659179192,1,1,Gray Mold,Gray Mold
+gray_mold426,268,True,0.8366909047562284,0.8366909047562284,1,1,Gray Mold,Gray Mold
+gray_mold427,269,True,0.9065512708150745,0.9065512708150745,1,1,Gray Mold,Gray Mold
+gray_mold428,270,True,0.5597062175509687,0.5597062175509687,1,1,Gray Mold,Gray Mold
+gray_mold429,271,True,0.7519878560069394,0.7519878560069394,1,1,Gray Mold,Gray Mold
+gray_mold430,272,True,0.34668075493696715,0.34668075493696715,1,3,Gray Mold,Gray Mold
+gray_mold431,273,True,0.8819266460450729,0.8819266460450729,1,1,Gray Mold,Gray Mold
+gray_mold432,274,True,0.9232814280288644,0.9232814280288644,1,1,Gray Mold,Gray Mold
+gray_mold437,275,True,0.9200622083981338,0.9200622083981338,1,1,Gray Mold,Gray Mold
+gray_mold439,276,True,0.1618990743505524,0.1618990743505524,1,2,Gray Mold,Gray Mold
+gray_mold446,277,True,0.8039457459926017,0.8039457459926017,1,1,Gray Mold,Gray Mold
+gray_mold448,278,True,0.8568795039383275,0.8568795039383275,1,1,Gray Mold,Gray Mold
+gray_mold456,279,True,0.8942973415781407,0.8942973415781407,1,1,Gray Mold,Gray Mold
+gray_mold457,280,True,0.7922967189728959,0.7922967189728959,1,1,Gray Mold,Gray Mold
+gray_mold467,281,True,0.8731195004257735,0.8731195004257735,1,1,Gray Mold,Gray Mold
+gray_mold470,282,True,0.7661550888529887,0.7661550888529887,1,1,Gray Mold,Gray Mold
+gray_mold471,283,True,0.7965902410346855,0.7965902410346855,1,1,Gray Mold,Gray Mold
+gray_mold475,284,True,0.8198466780238501,0.8198466780238501,1,1,Gray Mold,Gray Mold
+gray_mold481,285,True,0.8954277450216932,0.8954277450216932,1,1,Gray Mold,Gray Mold
+gray_mold482,286,True,0.8497514973875366,0.8497514973875366,1,1,Gray Mold,Gray Mold
+gray_mold483,287,True,0.8562289562289562,0.8562289562289562,1,1,Gray Mold,Gray Mold
+gray_mold484,288,True,0.45508210797466997,0.45508210797466997,2,1,Gray Mold,Gray Mold
+gray_mold485,289,True,0.9106908326766483,0.9106908326766483,1,1,Gray Mold,Gray Mold
+gray_mold487,290,True,0.9372544048675371,0.9372544048675371,1,1,Gray Mold,Gray Mold
+gray_mold488,291,True,0.9145135566188197,0.9145135566188197,1,1,Gray Mold,Gray Mold
+gray_mold489,292,True,0.9041253745102559,0.9041253745102559,1,1,Gray Mold,Gray Mold
+gray_mold490,293,True,0.9256511988959807,0.9256511988959807,2,2,Gray Mold,Gray Mold
+gray_mold491,294,True,0.9412684234033051,0.9412684234033051,1,1,Gray Mold,Gray Mold
+gray_mold492,295,True,0.957391842229742,0.957391842229742,1,1,Gray Mold,Gray Mold
+gray_mold493,296,True,0.8453625995265763,0.8453625995265763,1,1,Gray Mold,Gray Mold
+gray_mold494,297,True,0.9470839260312944,0.9470839260312944,1,1,Gray Mold,Gray Mold
+gray_mold495,298,True,0.30469177361666316,0.30469177361666316,1,2,Gray Mold,Gray Mold
+gray_mold496,299,True,0.9158527422990232,0.9158527422990232,1,1,Gray Mold,Gray Mold
+gray_mold497,300,True,0.9016872160934458,0.9016872160934458,1,1,Gray Mold,Gray Mold
+gray_mold500,301,True,0.93319774718398,0.93319774718398,1,1,Gray Mold,Gray Mold
+gray_mold501,302,True,0.4621876014281078,0.4621876014281078,2,3,Gray Mold,Gray Mold
+gray_mold502,303,True,0.883878573533746,0.883878573533746,1,1,Gray Mold,Gray Mold
+gray_mold504,304,True,0.9183694011071968,0.9183694011071968,2,2,Gray Mold,Gray Mold
+gray_mold506,305,True,0.8894308943089431,0.8894308943089431,1,1,Gray Mold,Gray Mold
+gray_mold507,306,True,0.9011021745606196,0.9011021745606196,1,1,Gray Mold,Gray Mold
+gray_mold508,307,True,0.9089765100671141,0.9089765100671141,1,1,Gray Mold,Gray Mold
+gray_mold509,308,True,0.8206220707285897,0.8206220707285897,1,2,Gray Mold,Blossom Blight;Gray Mold
+gray_mold510,309,True,0.5073972602739726,0.5073972602739726,2,1,Gray Mold,Gray Mold
+gray_mold511,310,True,0.8604580845113009,0.8604580845113009,1,1,Gray Mold,Gray Mold
+gray_mold512,311,True,0.9198657608250798,0.9198657608250798,1,1,Gray Mold,Gray Mold
+gray_mold513,312,True,0.9486248362900346,0.9486248362900346,1,2,Gray Mold,Gray Mold
+gray_mold514,313,True,0.8743001119820829,0.8743001119820829,2,2,Gray Mold,Gray Mold
+gray_mold515,314,True,0.9310449115378799,0.9310449115378799,2,2,Gray Mold,Gray Mold
+gray_mold517,315,True,0.3050137741046832,0.3050137741046832,1,3,Gray Mold,Gray Mold
+gray_mold518,316,True,0.6263891504991523,0.6263891504991523,1,1,Gray Mold,Gray Mold
+gray_mold519,317,True,0.9353884093711468,0.9353884093711468,1,1,Gray Mold,Gray Mold
+gray_mold520,318,True,0.9242283592480854,0.9242283592480854,1,1,Gray Mold,Gray Mold
+gray_mold521,319,True,0.8676282051282052,0.8676282051282052,1,1,Gray Mold,Gray Mold
+gray_mold522,320,True,0.8644712890948204,0.8644712890948204,1,1,Gray Mold,Gray Mold
+gray_mold523,321,True,0.8421761214123983,0.8421761214123983,1,1,Gray Mold,Gray Mold
+gray_mold524,322,True,0.7971999594197018,0.7971999594197018,1,1,Gray Mold,Gray Mold
+gray_mold525,323,True,0.9290292177191329,0.9290292177191329,2,2,Gray Mold,Gray Mold
+gray_mold526,324,True,0.8290355853532749,0.8290355853532749,1,1,Gray Mold,Gray Mold
+gray_mold527,325,True,0.7945584169940346,0.7945584169940346,1,1,Gray Mold,Gray Mold
+gray_mold528,326,True,0.7597295266716755,0.7597295266716755,1,1,Gray Mold,Gray Mold
+gray_mold529,327,True,0.9380298315269878,0.9380298315269878,1,1,Gray Mold,Gray Mold
+gray_mold530,328,True,0.9082905355832722,0.9082905355832722,2,2,Gray Mold,Gray Mold
+gray_mold531,329,True,0.7058504875406284,0.7058504875406284,1,1,Gray Mold,Gray Mold
+gray_mold532,330,True,0.8905937291527685,0.8905937291527685,2,2,Gray Mold,Gray Mold
+gray_mold533,331,True,0.8875128998968008,0.8875128998968008,1,1,Gray Mold,Gray Mold
+gray_mold534,332,True,0.3440341227971714,0.3440341227971714,1,2,Gray Mold,Gray Mold
+gray_mold536,333,True,0.804399243140965,0.804399243140965,1,1,Gray Mold,Gray Mold
+gray_mold537,334,True,0.8409461663947798,0.8409461663947798,1,1,Gray Mold,Gray Mold
+gray_mold538,335,True,0.8994194484760523,0.8994194484760523,1,1,Gray Mold,Gray Mold
+gray_mold539,336,True,0.8514812634883264,0.8514812634883264,1,1,Gray Mold,Gray Mold
+gray_mold540,337,True,0.786254295532646,0.786254295532646,1,1,Gray Mold,Gray Mold
+gray_mold541,338,True,0.7027758970886933,0.7027758970886933,1,1,Gray Mold,Gray Mold
+gray_mold542,339,True,0.3680470290583026,0.3680470290583026,1,2,Gray Mold,Gray Mold
+gray_mold543,340,True,0.8284116040067646,0.8284116040067646,1,1,Gray Mold,Gray Mold
+gray_mold544,341,True,0.8758141554494138,0.8758141554494138,1,1,Gray Mold,Gray Mold
+gray_mold545,342,True,0.891673018292683,0.891673018292683,1,1,Gray Mold,Gray Mold
+gray_mold546,343,True,0.43371757925072046,0.43371757925072046,1,2,Gray Mold,Gray Mold
+gray_mold547,344,True,0.9403534609720177,0.9403534609720177,1,1,Gray Mold,Gray Mold
+gray_mold548,345,True,0.8968208092485549,0.8968208092485549,1,1,Gray Mold,Gray Mold
+gray_mold549,346,True,0.8161206968408768,0.8161206968408768,1,1,Gray Mold,Gray Mold
+gray_mold550,347,True,0.9122431506849316,0.9122431506849316,1,1,Gray Mold,Gray Mold
+gray_mold551,348,True,0.8009001539737061,0.8009001539737061,1,2,Gray Mold,Gray Mold
+gray_mold552,349,True,0.8975647899910635,0.8975647899910635,1,1,Gray Mold,Gray Mold
+gray_mold553,350,True,0.9264968279143537,0.9264968279143537,1,1,Gray Mold,Gray Mold
+gray_mold554,351,True,0.9080770050436883,0.9080770050436883,1,1,Gray Mold,Gray Mold
+gray_mold555,352,True,0.8902569593147751,0.8902569593147751,1,1,Gray Mold,Gray Mold
+gray_mold556,353,True,0.9038084570148418,0.9038084570148418,1,1,Gray Mold,Gray Mold
+gray_mold557,354,True,0.9052738336713996,0.9052738336713996,1,1,Gray Mold,Gray Mold
+gray_mold558,355,True,0.867798353909465,0.867798353909465,1,1,Gray Mold,Gray Mold
+gray_mold559,356,True,0.9035255534298989,0.9035255534298989,1,1,Gray Mold,Gray Mold
+gray_mold560,357,True,0.6488903610467042,0.6488903610467042,1,1,Gray Mold,Gray Mold
+gray_mold561,358,True,0.6564227642276422,0.6564227642276422,1,2,Gray Mold,Gray Mold
+gray_mold562,359,True,0.0,0.0,2,0,Gray Mold,
+gray_mold563,360,True,0.4634515843959096,0.4634515843959096,2,1,Gray Mold,Gray Mold
+gray_mold566,361,True,0.7193259610321222,0.7193259610321222,1,1,Gray Mold,Gray Mold
+gray_mold567,362,True,0.9228033952741455,0.9228033952741455,1,1,Gray Mold,Gray Mold
+gray_mold568,363,True,0.875942278699117,0.875942278699117,1,1,Gray Mold,Gray Mold
+gray_mold569,364,True,0.9054617240622944,0.9054617240622944,1,1,Gray Mold,Gray Mold
+gray_mold570,365,True,0.8979702790866256,0.8979702790866256,1,1,Gray Mold,Gray Mold
+gray_mold571,366,True,0.7841784989858012,0.7841784989858012,1,1,Gray Mold,Gray Mold
+gray_mold572,367,True,0.9062078272604588,0.9062078272604588,1,1,Gray Mold,Gray Mold
+gray_mold573,368,True,0.9287049399198932,0.9287049399198932,1,1,Gray Mold,Gray Mold
+gray_mold574,369,True,0.8727388806128964,0.8727388806128964,1,1,Gray Mold,Gray Mold
+gray_mold575,370,True,0.945643202452541,0.945643202452541,1,1,Gray Mold,Gray Mold
+gray_mold576,371,True,0.8230515359228231,0.8230515359228231,1,1,Gray Mold,Gray Mold
+gray_mold577,372,True,0.9348623853211009,0.9348623853211009,1,1,Gray Mold,Gray Mold
+gray_mold578,373,True,0.8967692809746546,0.8967692809746546,1,1,Gray Mold,Gray Mold
+gray_mold579,374,True,0.7197191339964891,0.7197191339964891,1,1,Gray Mold,Gray Mold
+gray_mold580,375,True,0.7955396386130555,0.7955396386130555,1,1,Gray Mold,Gray Mold
+gray_mold581,376,True,0.9219769192172604,0.9219769192172604,1,1,Gray Mold,Gray Mold
+gray_mold582,377,True,0.9137254901960784,0.9137254901960784,1,1,Gray Mold,Gray Mold
+gray_mold583,378,True,0.9212244897959184,0.9212244897959184,1,1,Gray Mold,Gray Mold
+gray_mold584,379,True,0.9072315558802045,0.9072315558802045,1,1,Gray Mold,Gray Mold
+gray_mold585,380,True,0.9285180340123341,0.9285180340123341,1,1,Gray Mold,Gray Mold
+gray_mold586,381,True,0.8742757821552724,0.8742757821552724,1,1,Gray Mold,Gray Mold
+gray_mold587,382,True,0.949923412277601,0.949923412277601,1,1,Gray Mold,Gray Mold
+gray_mold588,383,True,0.9396315170521364,0.9396315170521364,1,1,Gray Mold,Gray Mold
+gray_mold589,384,True,0.853790041230574,0.853790041230574,1,1,Gray Mold,Gray Mold
+gray_mold590,385,True,0.8291146905655807,0.8291146905655807,1,1,Gray Mold,Gray Mold
+gray_mold591,386,True,0.8371052460929901,0.8371052460929901,1,1,Gray Mold,Gray Mold
+leaf_spot1,387,True,0.9480091243760869,0.9480091243760869,4,4,Leaf Spot,Leaf Spot
+leaf_spot10,388,True,0.7439493110450675,0.7439493110450675,1,3,Leaf Spot,Leaf Spot
+leaf_spot11,389,True,0.8029546983628616,0.8029546983628616,1,2,Leaf Spot,Leaf Spot
+leaf_spot154,390,True,0.7931049634420697,0.7931049634420697,2,3,Leaf Spot,Leaf Spot
+leaf_spot155,391,True,0.7806708581585964,0.7806708581585964,2,4,Leaf Spot,Leaf Spot
+leaf_spot2,392,True,0.9705448677015244,0.9705448677015244,4,4,Leaf Spot,Leaf Spot
+leaf_spot22,393,False,0.9869944164510418,0.9869944164510418,1,1,Leaf Spot,Leaf Spot
+leaf_spot263,394,True,0.9871910847640311,0.9871910847640311,1,1,Leaf Spot,Leaf Spot
+leaf_spot264,395,True,0.968096089956555,0.968096089956555,1,2,Leaf Spot,Leaf Spot
+leaf_spot274,396,True,0.9253981202943626,0.9253981202943626,7,6,Leaf Spot,Leaf Spot
+leaf_spot283,397,True,0.9849210972251642,0.9849210972251642,1,1,Leaf Spot,Leaf Spot
+leaf_spot284,398,True,0.9818720438975947,0.9818720438975947,1,1,Leaf Spot,Leaf Spot
+leaf_spot285,399,True,0.9801618563345986,0.9801618563345986,1,1,Leaf Spot,Leaf Spot
+leaf_spot288,400,False,0.9869542673441875,0.9869542673441875,3,3,Leaf Spot,Leaf Spot
+leaf_spot290,401,True,0.9885376311731298,0.9885376311731298,3,3,Leaf Spot,Leaf Spot
+leaf_spot291,402,True,0.9889442006146475,0.9889442006146475,3,3,Leaf Spot,Leaf Spot
+leaf_spot3,403,True,0.8152485453852115,0.8152485453852115,1,2,Leaf Spot,Leaf Spot
+leaf_spot315,404,True,0.9826401770522841,0.9826401770522841,3,3,Leaf Spot,Leaf Spot
+leaf_spot316,405,True,0.8805105602500398,0.8805105602500398,3,5,Leaf Spot,Leaf Spot
+leaf_spot317,406,True,0.9840523367611403,0.9840523367611403,3,3,Leaf Spot,Leaf Spot
+leaf_spot318,407,True,0.9184701492537314,0.9184701492537314,3,4,Leaf Spot,Leaf Spot
+leaf_spot319,408,True,0.8580428463040161,0.8580428463040161,4,4,Leaf Spot,Leaf Spot
+leaf_spot320,409,True,0.8821053812917344,0.8821053812917344,4,3,Leaf Spot,Leaf Spot
+leaf_spot321,410,True,0.8885605344386078,0.8885605344386078,3,4,Leaf Spot,Leaf Spot
+leaf_spot322,411,True,0.9876649154296645,0.9876649154296645,3,3,Leaf Spot,Leaf Spot
+leaf_spot323,412,True,0.8807058088694566,0.8807058088694566,3,4,Leaf Spot,Leaf Spot
+leaf_spot339,413,False,0.840617748868348,0.840617748868348,3,6,Leaf Spot,Leaf Spot
+leaf_spot4,414,True,0.9725436745606333,0.9725436745606333,3,3,Leaf Spot,Leaf Spot
+leaf_spot480,415,True,0.0,0.0,1,0,Leaf Spot,
+leaf_spot482,416,True,0.9875208994644891,0.9875208994644891,1,2,Leaf Spot,Leaf Spot
+leaf_spot483,417,True,0.9453667123820441,0.9453667123820441,2,2,Leaf Spot,Leaf Spot
+leaf_spot486,418,True,0.9892861651098207,0.9892861651098207,1,2,Leaf Spot,Angular Leafspot;Leaf Spot
+leaf_spot487,419,True,0.9164223275696709,0.9164223275696709,3,4,Leaf Spot,Leaf Spot
+leaf_spot497,420,True,0.0,0.9671086649277827,1,1,Leaf Spot,Angular Leafspot
+leaf_spot498,421,True,0.9777628808748207,0.9777628808748207,3,3,Leaf Spot,Leaf Spot
+leaf_spot499,422,True,0.9332977364574827,0.9332977364574827,1,2,Leaf Spot,Leaf Spot
+leaf_spot5,423,True,0.9362976940230843,0.9362976940230843,3,4,Leaf Spot,Leaf Spot
+leaf_spot500,424,True,0.9230035491083872,0.9230035491083872,2,1,Leaf Spot,Leaf Spot
+leaf_spot501,425,True,0.9475919980242035,0.9475919980242035,1,1,Leaf Spot,Leaf Spot
+leaf_spot502,426,True,0.9438184138069975,0.9438184138069975,3,3,Leaf Spot,Leaf Spot
+leaf_spot504,427,True,0.9365721227141913,0.9365721227141913,1,2,Leaf Spot,Leaf Spot
+leaf_spot505,428,True,0.9232327981000705,0.9232327981000705,2,1,Leaf Spot,Leaf Spot
+leaf_spot506,429,True,0.9414853554266074,0.9414853554266074,1,2,Leaf Spot,Leaf Spot
+leaf_spot507,430,True,0.9490208941922068,0.9490208941922068,2,1,Leaf Spot,Leaf Spot
+leaf_spot508,431,True,0.02001345442314161,0.9145128311163186,6,4,Anthracnose Fruit Rot;Leaf Spot,Angular Leafspot;Anthracnose Fruit Rot
+leaf_spot509,432,True,0.8358142893749855,0.8358142893749855,2,1,Leaf Spot,Leaf Spot
+leaf_spot514,433,True,0.9649549747419284,0.9649549747419284,4,3,Leaf Spot,Leaf Spot
+leaf_spot515,434,True,0.9571472576056823,0.9571472576056823,2,1,Leaf Spot,Leaf Spot
+leaf_spot519,435,True,0.9684897930289972,0.9684897930289972,4,3,Leaf Spot,Leaf Spot
+leaf_spot522,436,True,0.0,0.0,1,0,Leaf Spot,
+leaf_spot526,437,True,0.9826042636174268,0.9826042636174268,6,6,Leaf Spot,Leaf Spot
+leaf_spot527,438,True,0.9810206523666016,0.9810206523666016,3,3,Leaf Spot,Leaf Spot
+leaf_spot528,439,True,0.9897691519586116,0.9897691519586116,1,2,Leaf Spot,Angular Leafspot;Leaf Spot
+leaf_spot530,440,True,0.0,0.9840034223278843,4,4,Leaf Spot,Angular Leafspot
+leaf_spot531,441,True,0.973931957992047,0.973931957992047,3,3,Leaf Spot,Leaf Spot
+leaf_spot532,442,True,0.0,0.9142910793714132,3,3,Leaf Spot,Angular Leafspot
+leaf_spot533,443,True,0.0,0.980412212243068,4,5,Leaf Spot,Angular Leafspot;Leaf Spot
+leaf_spot534,444,True,0.9559513137025033,0.9559513137025033,5,6,Leaf Spot,Leaf Spot
+leaf_spot537,445,True,0.9540924939707057,0.9540924939707057,6,7,Leaf Spot,Leaf Spot
+leaf_spot538,446,True,0.97202482471101,0.97202482471101,1,1,Leaf Spot,Leaf Spot
+leaf_spot539,447,True,0.9690655358787648,0.9690655358787648,4,5,Leaf Spot,Leaf Spot
+leaf_spot540,448,True,0.9695467230214853,0.9695467230214853,3,3,Leaf Spot,Leaf Spot
+leaf_spot541,449,True,0.9666528938753457,0.9666528938753457,11,11,Leaf Spot,Leaf Spot
+leaf_spot542,450,True,0.06778365153567216,0.9723079598313263,4,6,Leaf Spot,Angular Leafspot;Leaf Spot
+leaf_spot544,451,True,0.80283402580363,0.80283402580363,10,7,Leaf Spot,Leaf Spot
+leaf_spot547,452,True,0.967236416616325,0.967236416616325,3,3,Leaf Spot,Leaf Spot
+leaf_spot552,453,True,0.9821592100182049,0.9821592100182049,3,3,Leaf Spot,Leaf Spot
+leaf_spot553,454,True,0.9656855614281789,0.9656855614281789,6,6,Leaf Spot,Leaf Spot
+leaf_spot556,455,True,0.9823284263576744,0.9823284263576744,1,1,Leaf Spot,Leaf Spot
+leaf_spot557,456,True,0.9023319319476641,0.9023319319476641,5,5,Leaf Spot,Leaf Spot
+leaf_spot558,457,True,0.9204122044857547,0.9204122044857547,2,1,Leaf Spot,Leaf Spot
+leaf_spot559,458,True,0.4889937905013282,0.9277860708495851,2,1,Anthracnose Fruit Rot;Leaf Spot,Leaf Spot
+leaf_spot563,459,True,0.9478837114142856,0.9478837114142856,6,5,Leaf Spot,Leaf Spot
+leaf_spot564,460,True,0.9733117670845127,0.9733117670845127,3,3,Leaf Spot,Leaf Spot
+leaf_spot568,461,True,0.9699423535075483,0.9699423535075483,3,3,Leaf Spot,Leaf Spot
+leaf_spot569,462,True,0.9791704332435699,0.9791704332435699,3,3,Leaf Spot,Leaf Spot
+leaf_spot570,463,True,0.9861027429056823,0.9861027429056823,1,1,Leaf Spot,Leaf Spot
+leaf_spot571,464,True,0.5187240887157065,0.5187240887157065,2,1,Leaf Spot,Leaf Spot
+leaf_spot572,465,True,0.3939269795490299,0.3939269795490299,3,2,Leaf Spot,Leaf Spot
+leaf_spot573,466,True,0.7344501278772378,0.7344501278772378,1,2,Leaf Spot,Leaf Spot
+leaf_spot574,467,True,0.9885125652859561,0.9885125652859561,1,2,Leaf Spot,Angular Leafspot;Leaf Spot
+leaf_spot575,468,True,0.8332339075776976,0.8332339075776976,2,2,Leaf Spot,Leaf Spot
+leaf_spot576,469,True,0.9755681202355576,0.9755681202355576,2,2,Leaf Spot,Leaf Spot
+leaf_spot577,470,True,0.9703064092808001,0.9703064092808001,4,4,Leaf Spot,Leaf Spot
+leaf_spot578,471,True,0.9532095335575377,0.9532095335575377,1,1,Leaf Spot,Leaf Spot
+leaf_spot579,472,True,0.9787595041409953,0.9787595041409953,3,3,Leaf Spot,Leaf Spot
+leaf_spot580,473,True,0.9392687005079345,0.9392687005079345,2,1,Leaf Spot,Leaf Spot
+leaf_spot581,474,True,0.922003471728884,0.922003471728884,2,1,Leaf Spot,Leaf Spot
+leaf_spot582,475,True,0.912916556369305,0.912916556369305,2,3,Leaf Spot,Leaf Spot
+leaf_spot583,476,True,0.9881792588970988,0.9881792588970988,1,1,Leaf Spot,Leaf Spot
+leaf_spot584,477,True,0.9775150619529385,0.9775150619529385,1,1,Leaf Spot,Leaf Spot
+leaf_spot586,478,True,0.0,0.9829346371918201,1,1,Leaf Spot,Angular Leafspot
+leaf_spot587,479,True,0.9646362938546982,0.9646362938546982,1,1,Leaf Spot,Leaf Spot
+leaf_spot588,480,True,0.9745434666981857,0.9745434666981857,3,3,Leaf Spot,Leaf Spot
+leaf_spot589,481,True,0.9740941763238962,0.9740941763238962,3,3,Leaf Spot,Leaf Spot
+leaf_spot590,482,True,0.2767952559562475,0.2767952559562475,1,2,Leaf Spot,Leaf Spot
+leaf_spot597,483,True,0.9761243905556671,0.9761243905556671,1,1,Leaf Spot,Leaf Spot
+leaf_spot599,484,True,0.8209833262077811,0.8209833262077811,8,5,Leaf Spot,Leaf Spot
+leaf_spot6,485,True,0.9314538077094364,0.9314538077094364,3,4,Leaf Spot,Leaf Spot
+leaf_spot601,486,True,0.9681267818441617,0.9681267818441617,3,4,Leaf Spot,Leaf Spot
+leaf_spot602,487,True,0.9891549476540584,0.9891549476540584,1,1,Leaf Spot,Leaf Spot
+leaf_spot603,488,True,0.98883089877809,0.98883089877809,1,1,Leaf Spot,Leaf Spot
+leaf_spot604,489,True,0.9847732247883461,0.9847732247883461,1,1,Leaf Spot,Leaf Spot
+leaf_spot605,490,True,0.8108774183190174,0.8108774183190174,11,9,Leaf Spot,Leaf Spot
+leaf_spot606,491,True,0.824621699139551,0.824621699139551,3,2,Leaf Spot,Leaf Spot
+leaf_spot607,492,True,0.9775138328410368,0.9775138328410368,3,3,Leaf Spot,Leaf Spot
+leaf_spot608,493,True,0.0,0.9818647347555219,1,2,Leaf Spot,Angular Leafspot;Leaf Spot
+leaf_spot609,494,True,0.939226923800958,0.939226923800958,1,2,Leaf Spot,Leaf Spot
+leaf_spot611,495,True,0.9638984276161214,0.9638984276161214,1,1,Leaf Spot,Leaf Spot
+leaf_spot612,496,True,0.9459058676355867,0.9459058676355867,1,1,Leaf Spot,Leaf Spot
+leaf_spot614,497,True,0.8313780983247364,0.8313780983247364,2,1,Leaf Spot,Leaf Spot
+leaf_spot615,498,True,0.9363432440148456,0.9363432440148456,1,2,Leaf Spot,Leaf Spot
+leaf_spot616,499,True,0.9237752917895077,0.9237752917895077,2,1,Leaf Spot,Leaf Spot
+leaf_spot617,500,True,0.9828220469777373,0.9828220469777373,2,2,Leaf Spot,Leaf Spot
+leaf_spot618,501,True,0.9223228826731232,0.9223228826731232,2,1,Leaf Spot,Leaf Spot
+leaf_spot619,502,True,0.6608063777559248,0.6608063777559248,3,2,Leaf Spot,Leaf Spot
+leaf_spot620,503,True,0.8277300244928139,0.8277300244928139,2,1,Leaf Spot,Leaf Spot
+leaf_spot621,504,True,0.9172155337986603,0.9172155337986603,2,1,Leaf Spot,Leaf Spot
+leaf_spot622,505,True,0.0,0.9896040848693499,1,2,Leaf Spot,Leaf Spot;Powdery Mildew Leaf
+leaf_spot623,506,True,0.989684750530932,0.989684750530932,1,1,Leaf Spot,Leaf Spot
+leaf_spot625,507,True,0.85984214885428,0.85984214885428,3,1,Leaf Spot,Leaf Spot
+leaf_spot626,508,True,0.9701569870852988,0.9701569870852988,4,4,Leaf Spot,Leaf Spot
+leaf_spot627,509,True,0.9749596962920589,0.9749596962920589,3,3,Leaf Spot,Leaf Spot
+leaf_spot628,510,True,0.9740386474319435,0.9740386474319435,1,2,Leaf Spot,Leaf Spot
+leaf_spot629,511,True,0.9789466404528794,0.9789466404528794,1,1,Leaf Spot,Leaf Spot
+leaf_spot630,512,True,0.0,0.9307772130613605,3,3,Leaf Spot,Angular Leafspot
+leaf_spot631,513,True,0.9171440586888463,0.9171440586888463,2,1,Leaf Spot,Leaf Spot
+leaf_spot635,514,True,0.8893674433085984,0.8893674433085984,3,4,Leaf Spot,Leaf Spot
+leaf_spot637,515,True,0.9829772489346957,0.9829772489346957,6,6,Leaf Spot,Leaf Spot
+leaf_spot640,516,True,0.9726527813683725,0.9726527813683725,3,3,Leaf Spot,Leaf Spot
+leaf_spot641,517,True,0.5977338077320159,0.5977338077320159,12,7,Leaf Spot,Leaf Spot
+leaf_spot642,518,True,0.0,0.8533320705874925,4,4,Leaf Spot,Angular Leafspot;Gray Mold
+leaf_spot643,519,True,0.892994229313001,0.892994229313001,3,4,Leaf Spot,Leaf Spot
+leaf_spot644,520,True,0.9750296191819464,0.9750296191819464,3,3,Leaf Spot,Leaf Spot
+leaf_spot645,521,True,0.9092531385401622,0.9092531385401622,5,6,Leaf Spot,Leaf Spot
+leaf_spot647,522,True,0.5667779075588186,0.5667779075588186,17,9,Leaf Spot,Anthracnose Fruit Rot;Leaf Spot
+leaf_spot650,523,True,0.9281553889789304,0.9281553889789304,5,3,Leaf Spot,Leaf Spot
+leaf_spot651,524,True,0.0,0.9809868084599596,4,5,Leaf Spot,Angular Leafspot;Leaf Spot
+leaf_spot652,525,True,0.9827334293179758,0.9827334293179758,1,2,Leaf Spot,Angular Leafspot;Leaf Spot
+leaf_spot653,526,True,0.9438890984534138,0.9438890984534138,5,6,Leaf Spot,Leaf Spot
+leaf_spot656,527,True,0.9677031135634255,0.9677031135634255,7,7,Leaf Spot,Leaf Spot
+leaf_spot658,528,True,0.9695815702867889,0.9695815702867889,1,1,Leaf Spot,Leaf Spot
+leaf_spot659,529,True,0.9342589802818787,0.9342589802818787,5,5,Leaf Spot,Leaf Spot
+leaf_spot660,530,True,0.9710734483660602,0.9710734483660602,3,3,Leaf Spot,Leaf Spot
+leaf_spot661,531,True,0.06895121373098535,0.9385525622173515,4,6,Leaf Spot,Angular Leafspot;Leaf Spot
+leaf_spot663,532,True,0.0,0.8033730264207113,2,1,Leaf Spot,Angular Leafspot
+leaf_spot664,533,True,0.7419171158241227,0.7419171158241227,14,7,Leaf Spot,Leaf Spot
+leaf_spot667,534,True,0.9683237855381941,0.9683237855381941,3,3,Leaf Spot,Leaf Spot
+leaf_spot672,535,True,0.9617001806520831,0.9617001806520831,7,6,Leaf Spot,Leaf Spot
+leaf_spot674,536,True,0.8722392961523396,0.8722392961523396,7,6,Leaf Spot,Leaf Spot
+leaf_spot675,537,True,0.9563157499505062,0.9563157499505062,1,1,Leaf Spot,Leaf Spot
+leaf_spot677,538,True,0.9451169978799707,0.9451169978799707,5,5,Leaf Spot,Leaf Spot
+leaf_spot678,539,True,0.9218673099731328,0.9218673099731328,2,1,Leaf Spot,Leaf Spot
+leaf_spot679,540,True,0.49214780600461894,0.9330576502067623,2,1,Anthracnose Fruit Rot;Leaf Spot,Leaf Spot
+leaf_spot680,541,True,0.989659620505992,0.989659620505992,1,1,Leaf Spot,Leaf Spot
+leaf_spot681,542,True,0.9894403716648197,0.9894403716648197,1,1,Leaf Spot,Leaf Spot
+leaf_spot682,543,True,0.9836635329664738,0.9836635329664738,1,1,Leaf Spot,Leaf Spot
+leaf_spot683,544,True,0.9745799370647757,0.9745799370647757,1,1,Leaf Spot,Leaf Spot
+leaf_spot684,545,True,0.8061730923758055,0.8061730923758055,4,4,Leaf Spot,Leaf Spot
+leaf_spot7,546,True,0.8507239293787037,0.8507239293787037,2,3,Leaf Spot,Leaf Spot
+leaf_spot8,547,True,0.8707148616224513,0.8707148616224513,2,3,Leaf Spot,Leaf Spot
+leaf_spot9,548,True,0.8946987405365803,0.8946987405365803,2,3,Leaf Spot,Leaf Spot
+powdery_mildew_fruit123,549,True,0.9856712729127233,0.9856712729127233,2,2,Powdery Mildew Fruit,Powdery Mildew Fruit
+powdery_mildew_fruit124,550,True,0.9698890649762282,0.9698890649762282,1,1,Powdery Mildew Fruit,Powdery Mildew Fruit
+powdery_mildew_fruit125,551,True,0.7391634865370289,0.7391634865370289,1,1,Powdery Mildew Fruit,Powdery Mildew Fruit
+powdery_mildew_fruit126,552,True,0.4652476366014626,0.4652476366014626,6,4,Powdery Mildew Fruit,Powdery Mildew Fruit
+powdery_mildew_fruit127,553,True,0.0,0.6619695285424704,1,1,Powdery Mildew Fruit,Gray Mold
+powdery_mildew_fruit128,554,True,0.8369816170064471,0.8369816170064471,1,1,Powdery Mildew Fruit,Powdery Mildew Fruit
+powdery_mildew_fruit129,555,True,0.8456883509833586,0.8456883509833586,1,1,Powdery Mildew Fruit,Powdery Mildew Fruit
+powdery_mildew_fruit130,556,False,0.8025283461488336,0.8025283461488336,5,4,Powdery Mildew Fruit,Powdery Mildew Fruit
+powdery_mildew_fruit131,557,True,0.5908542073719567,0.5908542073719567,1,1,Powdery Mildew Fruit,Powdery Mildew Fruit
+powdery_mildew_fruit132,558,True,0.483511969227322,0.483511969227322,2,3,Powdery Mildew Fruit,Powdery Mildew Fruit
+powdery_mildew_fruit133,559,True,0.5119421128798842,0.5119421128798842,8,6,Powdery Mildew Fruit,Powdery Mildew Fruit
+powdery_mildew_fruit134,560,True,0.8595034595034595,0.8595034595034595,1,1,Powdery Mildew Fruit,Powdery Mildew Fruit
+powdery_mildew_fruit136,561,True,0.9266045340583313,0.9266045340583313,2,2,Powdery Mildew Fruit,Powdery Mildew Fruit
+powdery_mildew_fruit137,562,True,0.3991701244813278,0.3991701244813278,6,5,Powdery Mildew Fruit,Powdery Mildew Fruit
+powdery_mildew_fruit138,563,True,0.9370932943591885,0.9370932943591885,3,4,Powdery Mildew Fruit,Powdery Mildew Fruit
+powdery_mildew_fruit139,564,True,0.9540223124129953,0.9540223124129953,1,2,Powdery Mildew Fruit,Gray Mold;Powdery Mildew Fruit
+powdery_mildew_fruit140,565,True,0.9227604244189755,0.9227604244189755,1,2,Powdery Mildew Fruit,Powdery Mildew Fruit
+powdery_mildew_fruit141,566,True,0.9478148361127084,0.9478148361127084,1,1,Powdery Mildew Fruit,Powdery Mildew Fruit
+powdery_mildew_fruit145,567,True,0.778072155169594,0.778072155169594,1,1,Powdery Mildew Fruit,Powdery Mildew Fruit
+powdery_mildew_fruit146,568,True,0.9118977907905244,0.9118977907905244,1,1,Powdery Mildew Fruit,Powdery Mildew Fruit
+powdery_mildew_fruit147,569,True,0.9602668767306407,0.9602668767306407,5,5,Powdery Mildew Fruit,Powdery Mildew Fruit
+powdery_mildew_fruit148,570,False,0.0,0.6605903581012307,1,1,Powdery Mildew Fruit,Gray Mold
+powdery_mildew_fruit149,571,True,0.9732492661252555,0.9732492661252555,2,2,Powdery Mildew Fruit,Powdery Mildew Fruit
+powdery_mildew_fruit150,572,True,0.9779925117698667,0.9779925117698667,2,2,Powdery Mildew Fruit,Powdery Mildew Fruit
+powdery_mildew_fruit151,573,True,0.8179527390191269,0.8179527390191269,1,1,Powdery Mildew Fruit,Powdery Mildew Fruit
+powdery_mildew_fruit153,574,True,0.7110041354355131,0.7110041354355131,1,1,Powdery Mildew Fruit,Powdery Mildew Fruit
+powdery_mildew_fruit154,575,True,0.6690826529275641,0.6690826529275641,2,3,Powdery Mildew Fruit,Powdery Mildew Fruit
+powdery_mildew_fruit157,576,True,0.966528718904907,0.966528718904907,3,3,Powdery Mildew Fruit,Powdery Mildew Fruit
+powdery_mildew_fruit158,577,True,0.951626416056533,0.951626416056533,3,3,Powdery Mildew Fruit,Powdery Mildew Fruit
+powdery_mildew_fruit159,578,True,0.9146956891834377,0.9146956891834377,2,2,Powdery Mildew Fruit,Powdery Mildew Fruit
+powdery_mildew_fruit160,579,True,0.5121770626963639,0.5121770626963639,4,2,Powdery Mildew Fruit,Powdery Mildew Fruit
+powdery_mildew_fruit161,580,True,0.6541315671017941,0.6541315671017941,4,4,Powdery Mildew Fruit,Powdery Mildew Fruit
+powdery_mildew_fruit162,581,False,0.8430586307292666,0.8430586307292666,4,4,Powdery Mildew Fruit,Powdery Mildew Fruit
+powdery_mildew_fruit163,582,True,0.45051105093037475,0.45051105093037475,6,4,Powdery Mildew Fruit,Powdery Mildew Fruit
+powdery_mildew_fruit164,583,True,0.3944771539928684,0.3944771539928684,6,5,Powdery Mildew Fruit,Powdery Mildew Fruit
+powdery_mildew_fruit165,584,True,0.45557760784542645,0.45557760784542645,6,4,Powdery Mildew Fruit,Powdery Mildew Fruit
+powdery_mildew_fruit166,585,True,0.7652813828118314,0.7652813828118314,2,3,Powdery Mildew Fruit,Powdery Mildew Fruit
+powdery_mildew_fruit167,586,True,0.666411284870882,0.666411284870882,2,3,Powdery Mildew Fruit,Powdery Mildew Fruit
+powdery_mildew_fruit168,587,True,0.5571867531580744,0.5571867531580744,3,4,Powdery Mildew Fruit,Powdery Mildew Fruit
+powdery_mildew_fruit169,588,True,0.1992565388749552,0.1992565388749552,1,4,Powdery Mildew Fruit,Powdery Mildew Fruit
+powdery_mildew_fruit170,589,True,0.6744524623370047,0.6744524623370047,2,1,Powdery Mildew Fruit,Powdery Mildew Fruit
+powdery_mildew_fruit171,590,True,0.8968422259155252,0.8968422259155252,2,2,Powdery Mildew Fruit,Powdery Mildew Fruit
+powdery_mildew_fruit172,591,True,0.8341041746612001,0.8341041746612001,6,6,Powdery Mildew Fruit,Powdery Mildew Fruit
+powdery_mildew_leaf375,592,True,0.9650527848562068,0.9650527848562068,3,3,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf376,593,True,0.8588243221995103,0.8588243221995103,3,4,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf377,594,True,0.869297826606162,0.869297826606162,9,10,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf378,595,True,0.4512047279890893,0.4512047279890893,1,2,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf379,596,True,0.6893422758270867,0.6893422758270867,1,2,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf380,597,True,0.9569991617770327,0.9569991617770327,2,2,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf381,598,True,0.9629969418960245,0.9629969418960245,4,4,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf382,599,True,0.5365348705041812,0.5365348705041812,6,7,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf383,600,True,0.973928922601489,0.973928922601489,1,1,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf387,601,True,0.9430287586457954,0.9430287586457954,2,2,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf388,602,True,0.727365070765897,0.727365070765897,3,2,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf389,603,True,0.9893030519700448,0.9893030519700448,1,1,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf390,604,True,0.8485560215698023,0.8485560215698023,6,4,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf391,605,True,0.8148952781832377,0.8148952781832377,5,5,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf392,606,True,0.6815757078375051,0.6815757078375051,2,3,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf393,607,True,0.6420979154107307,0.6420979154107307,2,1,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf394,608,True,0.7028438249333303,0.7028438249333303,4,3,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf395,609,True,0.8538802625514534,0.8538802625514534,5,4,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf396,610,True,0.6903943070966626,0.6903943070966626,3,2,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf397,611,True,0.5861969326517004,0.5861969326517004,2,3,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf398,612,True,0.5481430953463695,0.5481430953463695,2,3,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf399,613,True,0.7462745252231353,0.7462745252231353,1,2,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf400,614,True,0.42307881894809485,0.42307881894809485,4,2,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf401,615,True,0.9032411328471979,0.9032411328471979,2,2,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf402,616,True,0.887431330765772,0.887431330765772,3,3,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf403,617,True,0.9632856056766346,0.9632856056766346,2,2,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf404,618,True,0.5404706417325073,0.5404706417325073,2,2,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf405,619,True,0.9585904837746366,0.9585904837746366,1,1,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf406,620,True,0.8423834694858241,0.8423834694858241,1,1,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf407,621,True,0.6318111973523501,0.6318111973523501,2,1,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf408,622,True,0.9763030599489103,0.9763030599489103,2,2,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf409,623,True,0.7338817399124489,0.7338817399124489,2,1,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf410,624,True,0.5298797016459083,0.5298797016459083,2,1,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf411,625,True,0.9821310903523393,0.9821310903523393,1,1,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf412,626,True,0.9886135017324242,0.9886135017324242,1,1,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf413,627,True,0.8811985000246706,0.8811985000246706,2,2,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf414,628,True,0.7550381263616558,0.7550381263616558,1,1,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf415,629,True,0.9855123839731331,0.9855123839731331,1,1,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf416,630,True,0.974948636936517,0.974948636936517,1,1,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf417,631,True,0.9513610349255671,0.9513610349255671,1,1,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf418,632,True,0.9483721104492151,0.9483721104492151,1,1,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf419,633,True,0.6293711485633677,0.6293711485633677,1,1,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf420,634,True,0.9574477990642241,0.9574477990642241,1,1,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf421,635,True,0.9917678420972665,0.9917678420972665,1,1,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf422,636,True,0.9672594888446117,0.9672594888446117,1,1,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf423,637,True,0.8913443504724159,0.8913443504724159,1,1,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf424,638,True,0.9324360176161588,0.9324360176161588,1,1,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf425,639,True,0.9564918708495534,0.9564918708495534,1,1,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf426,640,True,0.946223974374769,0.946223974374769,1,1,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf427,641,True,0.9759463127733373,0.9759463127733373,1,1,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf428,642,True,0.9536426621876968,0.9536426621876968,2,2,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf429,643,True,0.8910855165227747,0.8910855165227747,1,1,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf430,644,True,0.968772134494396,0.968772134494396,1,1,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf431,645,True,0.9500558520541145,0.9500558520541145,1,1,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf432,646,True,0.9552943938260193,0.9552943938260193,1,1,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf433,647,True,0.9844018167853519,0.9844018167853519,3,3,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf434,648,True,0.8464617513342558,0.8464617513342558,1,1,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf435,649,True,0.7233237363094002,0.7233237363094002,2,3,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf438,650,True,0.9715933908695193,0.9715933908695193,4,4,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf439,651,True,0.6499225311913888,0.6499225311913888,1,1,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf440,652,True,0.3243361992350938,0.3243361992350938,1,3,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf441,653,True,0.8068543582264748,0.8068543582264748,3,1,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf442,654,True,0.9446739233973277,0.9446739233973277,3,3,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf443,655,True,0.9773674939237853,0.9773674939237853,3,3,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf444,656,True,0.637288181254883,0.637288181254883,3,2,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf445,657,True,0.9566432880474766,0.9566432880474766,1,1,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf446,658,True,0.9791482517279854,0.9791482517279854,4,4,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf447,659,True,0.751915026275942,0.751915026275942,3,4,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf448,660,True,0.6185090900898871,0.6185090900898871,1,2,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf449,661,True,0.9675533998132136,0.9675533998132136,1,1,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf450,662,True,0.9565783103364802,0.9565783103364802,5,5,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf451,663,True,0.7570342389461959,0.7570342389461959,4,5,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf452,664,True,0.971964498913966,0.971964498913966,1,1,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf453,665,True,0.9654190623617869,0.9654190623617869,2,2,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf454,666,True,0.8843452170843629,0.8843452170843629,3,2,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf455,667,True,0.9827529233688295,0.9827529233688295,1,1,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf456,668,True,0.9726085586264542,0.9726085586264542,4,4,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf457,669,True,0.9815540496655047,0.9815540496655047,3,3,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf458,670,True,0.9578836760195388,0.9578836760195388,2,2,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf459,671,True,0.41738360945872865,0.41738360945872865,3,1,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf460,672,True,0.9724884229482892,0.9724884229482892,3,3,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf461,673,True,0.9832422132388297,0.9832422132388297,2,2,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf462,674,True,0.9409502883823125,0.9409502883823125,5,4,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf463,675,True,0.981909246385181,0.981909246385181,3,2,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf464,676,True,0.9270456874696585,0.9270456874696585,3,4,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf465,677,True,0.8252842487315285,0.8252842487315285,2,3,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf466,678,True,0.9771243530054361,0.9771243530054361,2,2,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf467,679,True,0.9056781392785801,0.9056781392785801,4,4,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf468,680,True,0.970601965182343,0.970601965182343,4,4,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf469,681,True,0.9789522837723319,0.9789522837723319,2,2,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf470,682,True,0.9846061324141893,0.9846061324141893,3,3,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf471,683,True,0.9239769324609072,0.9239769324609072,1,1,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf472,684,True,0.9730529536420519,0.9730529536420519,3,3,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf473,685,True,0.9785946213030282,0.9785946213030282,3,3,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf474,686,True,0.9681217958676402,0.9681217958676402,3,3,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf475,687,True,0.8835628541472782,0.8835628541472782,2,1,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf476,688,True,0.9690381899249495,0.9690381899249495,2,2,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf477,689,True,0.8398842065944514,0.8398842065944514,2,3,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf478,690,True,0.9762286472441816,0.9762286472441816,1,1,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf479,691,True,0.9800564111524349,0.9800564111524349,3,3,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf480,692,True,0.8727176781002639,0.8727176781002639,2,3,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf481,693,True,0.9740132486889318,0.9740132486889318,3,3,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf482,694,True,0.9732273582932441,0.9732273582932441,3,3,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf483,695,True,0.9734279187206926,0.9734279187206926,3,3,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf484,696,True,0.9856863846750675,0.9856863846750675,2,2,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf485,697,True,0.9697889563457647,0.9697889563457647,1,1,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf486,698,True,0.9732486044849632,0.9732486044849632,5,5,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf487,699,True,0.9740170280770396,0.9740170280770396,4,4,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf488,700,True,0.8983128984796469,0.8983128984796469,4,3,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf489,701,True,0.9763297350343474,0.9763297350343474,3,3,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf490,702,True,0.979803299833396,0.979803299833396,4,4,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf491,703,True,0.6645956894850128,0.6645956894850128,2,2,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf492,704,True,0.9678806954436451,0.9678806954436451,3,3,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf493,705,True,0.9745068614511201,0.9745068614511201,3,3,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf494,706,True,0.9788914991734099,0.9788914991734099,3,3,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf495,707,True,0.9717358679339669,0.9717358679339669,4,4,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf496,708,True,0.9450727542040603,0.9450727542040603,1,1,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf497,709,True,0.9762790624656588,0.9762790624656588,1,1,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf498,710,True,0.533807254220858,0.533807254220858,4,2,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf499,711,True,0.8821715175470116,0.8821715175470116,1,1,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf500,712,True,0.6928875234114792,0.6928875234114792,3,2,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf501,713,True,0.9557775611324965,0.9557775611324965,2,1,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf502,714,True,0.9723391897778423,0.9723391897778423,3,3,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf503,715,True,0.9739362968661281,0.9739362968661281,2,2,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf504,716,True,0.9697783945787135,0.9697783945787135,2,2,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf505,717,True,0.6484153500774671,0.6484153500774671,3,2,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf506,718,True,0.9799258256313652,0.9799258256313652,3,3,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf507,719,True,0.6814237129119268,0.6814237129119268,1,2,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf508,720,True,0.9845164565530079,0.9845164565530079,1,1,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf509,721,True,0.9681598028257816,0.9681598028257816,1,1,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf510,722,True,0.6480859154205848,0.6480859154205848,2,4,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf511,723,True,0.9815356594000797,0.9815356594000797,1,1,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf512,724,True,0.9717876319200148,0.9717876319200148,2,2,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf513,725,True,0.595366059216071,0.595366059216071,4,3,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf518,726,True,0.9868511550754542,0.9868511550754542,1,1,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf519,727,True,0.7111508589126442,0.7111508589126442,2,1,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf520,728,True,0.9661337564071272,0.9661337564071272,1,1,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf521,729,True,0.9652300691422386,0.9652300691422386,1,1,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf522,730,True,0.8478607366440066,0.8478607366440066,1,2,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf523,731,True,0.864351532099119,0.864351532099119,1,2,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf524,732,True,0.945339184198034,0.945339184198034,3,3,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf525,733,True,0.7668232081501598,0.7668232081501598,3,2,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf526,734,True,0.9791461864129082,0.9791461864129082,2,2,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf527,735,True,0.9838344972328756,0.9838344972328756,2,2,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf528,736,True,0.8756582321229784,0.8756582321229784,1,2,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf529,737,True,0.9706937275828886,0.9706937275828886,1,2,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf530,738,True,0.9845463319340922,0.9845463319340922,1,1,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf531,739,True,0.9766803452667328,0.9766803452667328,1,1,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf532,740,True,0.8750654212239757,0.8750654212239757,2,3,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf533,741,True,0.7555750873822129,0.7555750873822129,2,3,Powdery Mildew Leaf,Powdery Mildew Leaf
+powdery_mildew_leaf534,742,True,0.6599025439539937,0.6599025439539937,2,2,Powdery Mildew Leaf,Powdery Mildew Leaf
