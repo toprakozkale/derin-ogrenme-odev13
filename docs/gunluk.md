@@ -6,6 +6,42 @@ Panelde **İlerleme Günlüğü** sayfasında gösterilir. Buradaki her sayı ge
 
 ---
 
+## 18–22 Kasım 2026 — SEG eğitimleri 8/9, 1. rapor taslağı, hocanın Colab linki kararı (#11, #9, #7, #4)
+
+Kaynak: Colab çıktısı ve Drive dosya/etkinlik saatleri (Claude in Chrome ile okundu), `runs/cls/*`, `data/derived/summary.json`.
+Saatler Türkiye saati.
+
+**Colab SEG eğitimleri (#11)**
+| Tarih | Olan |
+|---|---|
+| 18 Kas | RF-DETR s1 bir epoch ilerledi, oturum ~13:50'de durdu; ardından ücretsiz GPU kotası doldu ("GPU arka ucuna bağlanılamıyor"). |
+| 19 Kas | İlk `Tümünü çalıştır` Drive izni geç onaylandığı için `mount failed` verdi; yeniden çalıştırınca bağlandı. **RF-DETR s1 48. epoch'ta erken durdu** (kütüphanenin en iyi val maske mAP50-95'i 0,792, EMA; o oturumda 131,7 dk). **YOLO n s2** ~23:07'de bitti. |
+| 20 Kas | **YOLO s s2** ~00:23'te bitti. RF-DETR s2 başladı, ~00:58'de (yaklaşık 8. epoch) kota yüzünden durdu. |
+| 21 Kas | 19:10'da RF-DETR s2 kaldığı yerden sürdü; 21:17'de durdu (40 epoch tamam). Durma nedeni ekranda görülmedi (büyük ihtimalle kota). |
+| 22 Kas | ~13:00'te yeniden başlatıldı (T4 hemen bağlandı). Kullanıcı tarafında elektrik kesildi ama Colab sunucudaki çalışma durmadı; 13:20'de epoch 42. |
+
+- Colab ortamında 19 Kas'ta **supervision 0.32.0** kuruldu (16 Kas'ta 0.31.7) — ENV.md'ye SEG sürümleri yazılırken not edilecek.
+- Seed sayısı kararı fiilen **3 seed** oldu (hepsi koştu).
+- Not: Colab'ın "Bağlanıyor" göstergesi bazen yalnız görüntü hatası; asıl kontrol Drive'daki `metrics.csv` / `results.csv` saatleri.
+
+**1. rapor taslağı (#9, #7)** — kullanıcı istedi (21 Kas), biçim kararları CLAUDE.md §3'te
+- `scripts/build_rapor1.py` → `rapor/rapor1_cls.docx` + Word'den `rapor1_cls.pdf` (**4 sayfa**, iki sütun IEEE, Türkçe, 5 tablo,
+  2 şekil, 12 kaynak, yapay zekâ beyanı, ek). Bütün sayılar betikte `runs/cls` ve `data/derived` dosyalarından okunur
+  (elle sayı yok); Türkçe sayı ekleri (0,867'den, %46'sı) `ek()` ile üretilir.
+- En kötü 10 tahmin (#7) dört türe ayrılarak yorumlandı: meyve hastalıklarının görsel benzerliği (8/10 meyve, 7'si Gray Mold
+  tahmini), olgunlaşmamış meyvede antraknoz, yaprak lekeleri arası karışma, alışılmadık kadraj (tek gruplar arası hata).
+- PDF düzeni Word çıktısından görüntüye çevrilerek denetlendi; tablo sütunları sabit genişliğe alındı, dar sütunu bozan uzun
+  dosya adları okunur adlarla değiştirildi.
+
+**Hocanın Colab linki (#4) — karar (kullanıcı, 22 Kas): teslim günü depo herkese açık yapılacak**
+- Defterlerin kurulum hücresi artık gizli anahtar yoksa **misafir kipinde** çalışıyor: Drive'a dokunmaz, depoyu `/content/odev13`'e
+  klonlar, veriyi Kaggle'dan anahtarsız indirir. Anahtarsız indirme yerelde denendi (534 MB, 30 sn). Sahip kipi (Secrets varken) değişmedi.
+  01'in çıktıları korunarak yalnız ilgili hücreleri güncellendi; 02/03 betikle yeniden üretildi. Testler 18/18.
+- Misafir kipi gerçek Colab'da henüz denenmedi (depo private) → public yapılınca başka hesapla gizli pencerede denenecek.
+- Public öncesi git geçmişi gizli anahtar desenleri için tarandı: temiz. Depoda veri yok; yalnız rapor şekillerinde birkaç örnek görüntü var.
+
+---
+
 ## 16–17 Kasım 2026 — Colab SEG eğitimleri: 9 koşudan 5'i bitti, oturum gece koptu (#11)
 
 Kaynak: Colab çıktısı (Claude in Chrome ile okundu) ve Drive'daki dosya saatleri. Saatler Türkiye saati (Colab günlüğü UTC yazar).

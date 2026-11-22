@@ -7,15 +7,20 @@ başka bilgisayara taşınmaz; **bu proje hakkında bilinmesi gereken her şey b
 ---
 
 ## 0. Kaldığımız yer — yeni oturumda önce bunu oku
-**Son güncelleme: 17 Kasım 2026 (sabah, Mac mini → başka bilgisayara devir).** Teslimler: 1. rapor (CLS) **24 Kasım 23:59** · 2. rapor (SEG) **8 Aralık 23:59**.
+**Son güncelleme: 22 Kasım 2026 (öğle).** Teslimler: 1. rapor (CLS) **24 Kasım 23:59** · 2. rapor (SEG) **8 Aralık 23:59**.
 
-> **Colab SEG eğitimleri sürüyor (#11): 9 koşudan 5'i bitti** (seed 0'ın üçü + seed 1'in iki YOLO'su). RF-DETR seed 1 ~13. epoch'ta
-> Colab oturumu koptuğu için (17 Kas ~03:34) **yarıda**; seed 2 başlamadı. Hiçbir dosya kaybolmadı (hepsi Drive'da `MyDrive/odev13/runs/seg`).
-> **Sıradaki adım (kullanıcı, herhangi bir bilgisayardan):** §6a "Kaldığı yerden devam" — Colab'da defteri temiz hâliyle yeniden yükle
-> (Colab kopyasında eğitim hücresi en üste kaymış!), T4'e bağlan, **Tümünü çalıştır**. Kalan iş ≈ 7–8 saat (büyük ihtimalle 2 oturum).
-> Süreler, tablo ve olanlar: `docs/gunluk.md` (16–17 Kas). **Açık karar:** 3 seed mi 2 mi — Claude 3 önerdi, kullanıcı yanıtlamadı; sor.
-> Kullanıcı #13'ten sonra "rapor kısmını konuşuruz" dedi → 1. rapor (24 Kas) konuşmasını aç (taslağa izinsiz başlama).
+> **Colab SEG eğitimleri (#11): 9 koşudan 8'i bitti**, son koşu `ana_rfdetr-seg-small_im480_s2` 22 Kas ~13:00'te 40. epoch'tan
+> sürdürüldü (13:20'de epoch 42; en iyi EMA dün ~epoch 24 → erken durdurma yakın). Colab Claude'un Chrome sekme grubundaki sekmede
+> çalışıyor — **kapatma**. Bitince değerlendirme hücreleri kendiliğinden çalışır → §6a adım 5–7 (çapraz kontrol, Drive'dan `runs/seg`
+> indir, `import_runs.py`) → #12 → 2. rapor. Seed sayısı fiilen **3** (hepsi koştu). Ayrıntı: `docs/gunluk.md` (18–22 Kas).
+> **1. rapor taslağı hazır** (aşağıda); kullanıcının okuması bekleniyor. Teslim günü depo public yapılacak (#4).
 
+- 📝 **1. rapor taslağı (21 Kas akşamı):** `scripts/build_rapor1.py` → `rapor/rapor1_cls.docx` (Türkçe, iki sütun IEEE, A4;
+  bütün sayılar betikte `runs/cls` + `data/derived` dosyalarından okunur, Türkçe sayı ekleri `ek()` ile). Metni değiştirmek için
+  betiği düzenle ve yeniden çalıştır (Word'de elle düzeltilen sürüm betikle ezilir — kullanıcı elle düzeltmeye başlarsa betiği bırak).
+  Ekte Colab (02, 01) ve depo linkleri var (yer tutucu kalmadı). PDF (22 Kas): Word ile 4 sayfa, düzen denetlendi.
+  **Word'le PDF alma:** önce eski PDF'i sil (yoksa "üzerine yaz?" penceresinde takılır), dosyayı `open -a "Microsoft Word" x.docx`
+  ile aç (AppleScript `open` dosya erişim izni penceresinde takılıyor), sonra AppleScript `save as active document file name … file format format PDF`.
 - ✅ Aşama 0 (kurulum) ve Aşama 1 (veri hazırlama) **tamamen** bitti; 01 notebook'u hem Mac'te hem Colab'da çalıştı, sonuçlar birebir aynı.
 - ✅ Roboflow çapraz kontrolü bitti (#2): 5.571 örnek, ort. IoU 0,99995; Roboflow'un atladığı 41 görüntü = bölme içi bayt kopyaları (train 13, test 28).
 - ✅ Sızıntı yaklaşımı **onaylandı** (11 Kas, #1): resmi bölme + tüm test ve temiz test ayrı raporlanır.
@@ -27,14 +32,15 @@ başka bilgisayara taşınmaz; **bu proje hakkında bilinmesi gereken her şey b
 - ✅ **Aşama 3 hazırlığı (12 Kas, #10):** kararlar ortak çözünürlük **480** + **RF-DETR Seg Small** (kullanıcı); `src/seg.py`,
   ortak SEG metrikleri (`src/metrics.py`, 18 test), `notebooks/03_segmentasyon.ipynb`; duman testi hatasız (~50 sn, `runs/seg_duman/`).
   RF-DETR sınıf eşlemesi çapraz kontrolle doğrulandı. COCO örnek kimliği 0 hatası düzeltildi (ayrıntı `docs/gunluk.md`, 12 Kas akşam).
-- 🔄 **#11 Colab SEG eğitimleri (16–17 Kas):** 5/9 bitti. Ölçülen süreler: YOLO n ~65 dk, s ~75 dk (s0'lar 100 epoch sınırına dayandı),
-  RF-DETR ~4,5 dk/epoch (s0 epoch 40'ta erken durdu). Kütüphanenin val maske mAP50-95'i (son sonuç değil): n 0,731 · s 0,760 · RF-DETR 0,789.
-  Çapraz kontrol (ortak kodumuz ↔ kütüphane, s0): n 0,702 ↔ 0,731, s 0,748 ↔ 0,760 — yakın, eşleme doğru.
+- 🔄 **#11 Colab SEG eğitimleri (16–22 Kas):** 8/9 bitti (RF-DETR s2 sürüyor). Ölçülen süreler: YOLO n ~65 dk, s ~75 dk
+  (s0'lar 100 epoch sınırına dayandı), RF-DETR ~4,5 dk/epoch (s0 epoch 40'ta, s1 48'de erken durdu). Kütüphanenin val maske
+  mAP50-95'i (son sonuç değil): n 0,731 · s 0,760 · RF-DETR 0,789 (s0) / 0,792 (s1). Çapraz kontrol (s0): n 0,702 ↔ 0,731, s 0,748 ↔ 0,760.
+  Ücretsiz Colab GPU kotası son günlerde ~2–2,5 saatte bitiyor ("GPU arka ucuna bağlanılamıyor"); kalan yerden sürdürmek yetiyor.
+  Kullanıcı tarafında elektrik kesildiğinde (22 Kas) Colab sunucudaki çalışma durmadı.
 - ✅ #13 panel Segmentasyon sayfası yazıldı (duman verisiyle sınandı); gerçek sonuçlar içe alınınca kontrol edilecek.
 - ⏭️ **Sıradaki iş: #11'i bitir → sonuçları içe al (§6a adım 6) → #12 karşılaştırma/hata analizi → #13 gerçek veriyle kontrol.**
-- ⏸️ #7 (CLS sonuç yorumu, en kötü 10 açıklaması) ve raporlar (#9, #14) + sunum: **kullanıcı "hepsini en son yaparız" dedi** —
-  kendiliğinden başlama; ama 1. rapor 24 Kas'ta teslim, takvimi kullanıcıya hatırlat.
-- ⏳ Kullanıcının kararı bekleyen: hocanın çalıştırabileceği Colab linki (#4; öneri: teslim günü depoyu public yapmak).
+- 📝 #7 en kötü 10 yorumu 1. rapora yazıldı (dört hata türü). Raporlara 21 Kas'ta kullanıcı isteğiyle başlandı; sunum henüz yok.
+- ✅ #4 kararı (22 Kas): teslim günü depo public; defterler gizli anahtarsız (misafir kipi) çalışacak şekilde güncellendi.
 
 ## 1. Ödev özeti
 - Yüksek lisans Derin Öğrenme dersi; vize+final yerine geçen ödev. Kullanıcıya **Görev 13 — Çilek bitkisinde hastalık** atandı.
@@ -100,6 +106,8 @@ başka bilgisayara taşınmaz; **bu proje hakkında bilinmesi gereken her şey b
 | RF-DETR ayrıntıları (12 Kas) | Roboflow yükleyicisi kategori 1..7 → 0..6; `__background__` yuvası atılır. Bizim val mAP ↔ kütüphanenin val mAP'si çapraz kontrolü notebook'ta (yakın olmalı). Kaldığı yerden devam ayar değişmezse çalışır. Ara arşiv kapalı (`checkpoint_interval=1000`); bitince yalnız `checkpoint_best_total.pth` kalır (`last.ckpt` ~535 MB silinir). |
 | COCO örnek kimliği (12 Kas) | 1'den başlar (`convert.py`). pycocotools COCOeval kimliği 0 olan örneği hiç eşleştiremiyor; `coco_mask_map` ayrıca kendi içinde yeniden numaralar. |
 | Sonuçlar git'te mi? (12 Kas) | Eğitim sonuçlarının **küçük metin dosyaları git'te** (`.gitignore` istisnaları: `runs/cls/*.csv|json`, `preds/*.csv`, `train/*/{results.csv,args.yaml,DONE}`), ağırlık ve eğitim görselleri yalnız Drive'da. İki Mac arasında Drive indirmesi gerekmesin diye. SEG için aynı istisnalar `runs/seg/` için eklendi (+ RF-DETR `metrics.csv`, `training_config.json`; `*.pth`, `*.ckpt`, `*.json.gz` git dışı). |
+| Hocanın Colab linki (#4, 22 Kas, kullanıcı) | **Depo teslim günü herkese açık (public) yapılacak.** Rapordaki linkler: `https://colab.research.google.com/github/toprakozkale/derin-ogrenme-odev13/blob/main/notebooks/02_siniflandirma.ipynb` (+ 01) ve depo adresi. Defterlerin kurulum hücresi gizli anahtar yoksa **misafir kipinde** çalışır (Drive'a dokunmaz, `/content/odev13`'e klonlar, Kaggle verisi anahtarsız iner — 22 Kas'ta yerelde anahtarsız indirme denendi: 534 MB, 30 sn). Public yapmadan önce git geçmişi gizli anahtar için tarandı (temiz). Public yapınca misafir kipini gizli pencerede başka hesapla dene. |
+| 1. rapor biçimi (21 Kas, kullanıcı) | **Türkçe**, **iki sütun IEEE düzeni**, Word (.docx) → PDF, 4–6 sayfa; sonunda kısa **"Yapay zekâ araçlarının kullanımı" beyanı**. Kimlik (kullanıcı verdi, 21 Kas): Toprak Özkale · öğrenci no **250401006** · **Iğdır Üniversitesi, Lisansüstü Eğitim Enstitüsü** · ders **"Derin Öğrenme-Sinir Ağları"** · hoca **Gültekin Işık** (unvanı bilinmiyor → raporda unvansız; kullanıcı ekleyebilir, tahmin etme). Bölümler: Özet · Giriş · Veri ve ön işleme · Yöntem · Sonuçlar · Hata analizi + Dikkat · Sınırlılıklar/Sonuç · Kaynakça · Ek. |
 
 ## 4. Depo yapısı
 ```
@@ -265,14 +273,14 @@ Bir iş bitince: ilgili issue'yu kapat, `docs/durum.yaml` + `docs/gunluk.md` + b
 | 1 | [Karar] Sızıntı: resmi bölme + temiz test onayı | ✅ onaylandı, kapandı (11 Kas) |
 | 2 | Roboflow çapraz kontrolü | ✅ kapandı (11 Kas) |
 | 3 | 01 notebook'u Colab'da çalıştır | ✅ kapandı (11 Kas) |
-| 4 | [Karar] Hocanın çalıştırabileceği Colab linki (private depo) | açık — kullanıcı |
+| 4 | [Karar] Hocanın çalıştırabileceği Colab linki (private depo) | ✅ karar (22 Kas): teslim günü public; defterler misafir kipine hazır — public yapma işi teslim günü |
 | 5 | 02 notebook'u + yerel duman testi | ✅ kapandı (11 Kas) |
 | 6 | Colab: CLS eğitimleri | ✅ kapandı (11 Kas bitti, 12 Kas içe alındı) |
-| 7 | CLS sonuç analizi + en kötü 10 yorumları | sayılar/şekiller hazır; yorum raporla birlikte en sona |
+| 7 | CLS sonuç analizi + en kötü 10 yorumları | 1. rapor taslağında yazıldı (22 Kas) |
 | 8 | Panel CLS sayfası | ✅ kapandı (12 Kas, gerçek sonuçla kontrol edildi) |
-| 9 | 1. rapor — 24 Kasım | en sona (kullanıcı isteği) |
+| 9 | 1. rapor — 24 Kasım | taslak hazır (22 Kas, 4 sayfa PDF) — kullanıcı okuyacak |
 | 10 | 03 segmentasyon notebook'u + yerel duman testi | ✅ kapandı (12 Kas) |
-| 11 | Colab: SEG eğitimleri (YOLO26-seg n/s, RF-DETR Seg Small) | **sürüyor** — 5/9 bitti (17 Kas); RF-DETR s1 yarıda, seed 2 bekliyor; §6a "Kaldığı yerden devam" |
+| 11 | Colab: SEG eğitimleri (YOLO26-seg n/s, RF-DETR Seg Small) | **sürüyor** — 8/9 bitti (22 Kas); RF-DETR s2 son koşu |
 | 12 | SEG sonuçları: karşılaştırma + hata analizi | 11'den sonra |
 | 13 | Panel: Segmentasyon sayfası | sayfa hazır (12 Kas; duman verisiyle sınandı) — gerçek sonuçlarla kontrol #11'den sonra |
 | 14 | 2. rapor + sunum — 8 Aralık | Aşama 3 sonrası |

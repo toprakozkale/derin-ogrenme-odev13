@@ -43,7 +43,8 @@ print("numpy", np.__version__, "| pandas", pd.__version__, "| shapely", shapely.
     md("""## 1 · İndirme
 
 Veri Kaggle'dan `kagglehub` ile iner (`usmanafzaal/strawberry-disease-detection-dataset`, sürüm 1).
-Colab'da sol menüdeki 🔑 **Secrets** bölümüne `KAGGLE_USERNAME`, `KAGGLE_KEY` ve (proje kodunu GitHub'dan çekmek için) `GITHUB_TOKEN` eklenir.
+Veri seti herkese açıktır; Kaggle anahtarı **gerekmez** (anahtarsız da iner). Proje sahibi Colab 🔑 **Secrets**'ta
+`KAGGLE_USERNAME`, `KAGGLE_KEY` ve `GITHUB_TOKEN` tutar; bunlar yoksa defter misafir kipinde çalışır (Drive'a dokunmaz).
 Yerelde `~/.kaggle/kaggle.json` kullanılır. Veri zaten iniyse bu adım atlanır."""),
     code("""from src.pipeline import download
 raw = download()

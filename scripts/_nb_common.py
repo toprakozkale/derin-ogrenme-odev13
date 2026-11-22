@@ -2,26 +2,43 @@
 
 REPO = "toprakozkale/derin-ogrenme-odev13"
 
-# Colab'da: Drive'ı bağlar; proje kodu Drive'da yoksa GitHub'dan klonlar, varsa günceller.
-# Depo private olduğu için Colab 🔑 Secrets'ta GITHUB_TOKEN (yalnız bu depoya salt-okuma izinli) gerekir.
-# Token yalnız istek başlığında kullanılır; .git/config'e ya da çıktıya yazılmaz.
+# Colab'da iki kip:
+#  * Sahip kipi (Colab 🔑 Secrets'ta GITHUB_TOKEN var): Drive'ı bağlar; proje kodu Drive'da yoksa GitHub'dan klonlar,
+#    varsa günceller; sonuçlar Drive'da kalıcıdır. Token yalnız istek başlığında kullanılır; .git/config'e/çıktıya yazılmaz.
+#  * Misafir kipi (gizli anahtar yok — ör. hocanın hesabı, depo herkese açıkken): Drive'a dokunmaz, depoyu Colab'ın
+#    geçici diskine (/content/odev13) klonlar; veri Kaggle'dan anahtarsız indirilir (veri seti herkese açık).
 SETUP = f'''import os, sys, subprocess, base64
 from pathlib import Path
 
 IN_COLAB = "google.colab" in sys.modules
 if IN_COLAB:
     from google.colab import drive, userdata
-    drive.mount("/content/drive")
-    ROOT = Path(os.environ.setdefault("ODEV13_ROOT", "/content/drive/MyDrive/odev13"))   # kod + sonuçlar (kalıcı)
-    os.environ.setdefault("ODEV13_DATA", "/content/odev13_data")                         # veri (hızlı yerel disk)
+
+    def _gizli(ad):                      # gizli anahtar yoksa (ya da erişim verilmediyse) None
+        try:
+            return userdata.get(ad)
+        except Exception:
+            return None
+
     # Gizli anahtarların hepsi EN BAŞTA okunur: Colab her yeni notebook için erişim izni penceresi açar; pencereler
     # birlikte çıksın ve uzun paket kurulumunun ardında gözden kaçıp zaman aşımına uğramasın (TimeoutException).
     print("Gizli anahtar erişimi istenirse açılan pencerelerde 'Erişim izni ver' deyin…")
-    _gh = userdata.get("GITHUB_TOKEN")
+    _gh = _gizli("GITHUB_TOKEN")
     if not os.environ.get("KAGGLE_KEY"):
-        os.environ["KAGGLE_USERNAME"] = userdata.get("KAGGLE_USERNAME"); os.environ["KAGGLE_KEY"] = userdata.get("KAGGLE_KEY")
-    auth = base64.b64encode(("x-access-token:" + _gh).encode()).decode()
-    git = ["git", "-c", f"http.extraHeader=Authorization: Basic {{auth}}"]
+        _ku, _kk = _gizli("KAGGLE_USERNAME"), _gizli("KAGGLE_KEY")
+        if _ku and _kk:
+            os.environ["KAGGLE_USERNAME"], os.environ["KAGGLE_KEY"] = _ku, _kk
+    if _gh:                              # sahip kipi: kod + sonuçlar Drive'da (kalıcı)
+        drive.mount("/content/drive")
+        ROOT = Path(os.environ.setdefault("ODEV13_ROOT", "/content/drive/MyDrive/odev13"))
+        auth = base64.b64encode(("x-access-token:" + _gh).encode()).decode()
+        git = ["git", "-c", f"http.extraHeader=Authorization: Basic {{auth}}"]
+    else:                                # misafir kipi: Drive'a dokunulmaz, her şey Colab'ın geçici diskinde
+        ROOT = Path(os.environ.setdefault("ODEV13_ROOT", "/content/odev13"))
+        git = ["git"]
+        print("Misafir kipi: gizli anahtar yok → kod GitHub'dan (herkese açık depo) Colab'ın geçici diskine iner, "
+              "veri Kaggle'dan anahtarsız indirilir. Sonuçlar oturum kapanınca silinir.")
+    os.environ.setdefault("ODEV13_DATA", "/content/odev13_data")                         # veri (hızlı yerel disk)
     if not (ROOT / "src").exists():
         subprocess.run(git + ["clone", "-q", "https://github.com/{REPO}.git", str(ROOT)], check=True)
         print("Proje kodu GitHub'dan Drive'a klonlandı:", ROOT)
